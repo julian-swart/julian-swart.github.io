@@ -96,6 +96,8 @@ social:
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
     - "https://twitter.com/julian_swart"
+    - "https://github.com/julian-swart"
+    - "https://www.linkedin.com/in/julian-swart9/"
 
 # Analytics
 analytics:
