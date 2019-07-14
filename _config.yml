@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : ""
+title                    : "Home"
 title_separator          : "-"
 name                     : "Julian Swart"
 description              : "Data Science Portfolio"
@@ -95,7 +95,7 @@ social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
-    - "https://twitter.com/julian_swart"
+    - "https://twitter.com/julian_swar"
     - "https://github.com/julian-swart"
     - "https://www.linkedin.com/in/julian-swart9/"
 
@@ -145,7 +145,7 @@ footer:
       url: "https://twitter.com/"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      url: "https://www.facebook.com/"
+      #url: "https://www.facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/"
@@ -157,7 +157,7 @@ footer:
       # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://www.instagram.com/"
+      #url: "https://www.instagram.com/"
 
 
 # Reading Files
