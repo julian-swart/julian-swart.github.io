@@ -1,9 +1,9 @@
 ---
-title: "Exploratory Data Analysis and Web Scraping Project: The Big Rock Blue Marlin Fishing Tournament"
-date: 2019-07-13
+title: "The Big Rock"
+date: 2019-07-14
 tags: [data science, exploratory data analysis, EDA, stats, statistics, visualization, python, R, web scraping]
 header:
-  image: ""
+  image: "images/big_rock_photo.jpg"
 excerpt: "Exploratory Data Analysis, Data Science, Web Scraping, Stats"
 ---
 
