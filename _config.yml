@@ -110,11 +110,11 @@ author:
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "I am currently a Data Strategist with a passion for analytics, machine learning, and data visualization."
   location         : "Knoxville, TN"
-  email            :
+  email            : "juliandswart@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-       url: "mailto:juliandswart@gmail.com"
+      # url: mailto:juliandswart@gmail.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
