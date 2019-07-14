@@ -113,17 +113,17 @@ author:
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "I am currently a Data Strategist with a passion for analytics, machine learning, and data visualization."
   location         : "Knoxville, TN"
-  email            : "juliandswart@gmail.com"
+  email            : # "juliandswart@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:juliandswart@gmail.com
+      url: mailto:juliandswart@gmail.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-       #url: "https://twitter.com/julian_swart"
+      url: "https://twitter.com/julian_swart"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
@@ -133,9 +133,9 @@ author:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
-    #- label: "LinkedIn"
-      #icon: "fab fa-linkedin"
-       #url: "https://www.linkedin.com/in/julian-swart9/"
+    - label: "LinkedIn"
+      icon: "fab fa-linkedin"
+      url: "https://www.linkedin.com/in/julian-swart9/"
 
 # Site Footer
 footer:
