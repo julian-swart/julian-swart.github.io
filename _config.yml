@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -111,7 +111,7 @@ analytics:
 author:
   name             : "Julian Swart"
   avatar           : "/images/profile_pic2.jpg"
-  bio              : "I am currently a Data Strategist with a passion for analytics, machine learning, and data visualization."
+  bio              : "Data Strategist at Pilot Flying J"
   location         : "Knoxville, TN"
   email            : # "juliandswart@gmail.com"
   links:
@@ -123,7 +123,7 @@ author:
       # url: "https://your-website.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/julian_swart"
+      # url: "https://twitter.com/julian_swart"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
@@ -142,13 +142,13 @@ footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url:
+      url: "https://twitter.com/"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      # url:
+       url: "https://www.facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+       url: "https://github.com/"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
@@ -157,13 +157,13 @@ footer:
       # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url:
+       url: "https://www.instagram.com/"
 
 
 # Reading Files
 include:
   - .htaccess
-  - ["_pages"]
+  - _pages
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
