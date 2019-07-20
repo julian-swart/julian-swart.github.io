@@ -95,7 +95,7 @@ social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
-    - "https://twitter.com/julian_swar"
+    - "https://twitter.com/julian_swart"
     - "https://github.com/julian-swart"
     - "https://www.linkedin.com/in/julian-swart9/"
 
@@ -110,7 +110,7 @@ analytics:
 # Site Author
 author:
   name             : "Julian Swart"
-  avatar           : "/images/profile_pic2.jpg"
+  avatar           : "/images/profile_pic.jpg"
   bio              : "Data Strategist at Pilot Flying J"
   location         : "Knoxville, TN"
   email            : # "juliandswart@gmail.com"
