@@ -5,13 +5,13 @@ title: "Personal Projects"
 author_profile: false
 ---
 
-{% include base_path %}
-{% include group-by-array collection=site.posts field="tags" %}
+<h1>Latest Posts</h1>
 
-{% for tag in group_names %}
-  {% assign posts = group_items[forloop.index0] %}
-  <h2 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h2>
-  {% for post in posts %}
-    {% include archive-single.html %}
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p>{{ post.excerpt }}</p>
+    </li>
   {% endfor %}
-{% endfor %}
+</ul>
