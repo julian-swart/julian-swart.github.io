@@ -38,53 +38,53 @@ Using the data available on the Big Rock website, I can provide awareness into s
 
 I explored:
 
-  * Distribution of participants' boat lengths.
+  1. Distribution of participants' boat lengths.
 
-  * The relationship of boat size and amount of billfish caught.
+  2. The relationship of boat size and amount of billfish caught.
 
-  * The relationship of boat brand and amount of billfish caught.
+  3. The relationship of boat brand and amount of billfish caught.
 
-  * The relationship of the boat's port city/state and amount of billfish caught.
+  4. The relationship of the boat's port city/state and amount of billfish caught.
 
-  * Do the above relationships differ if the fish was released or boated?
+  5. Do the above relationships differ if the fish was released or boated?
 
-  * Do the above relationships differ by the species of billfish?
+  6. Do the above relationships differ by the species of billfish?
 
-  * Distribution of time of day when billfish are caught.
+  7. Distribution of time of day when billfish are caught.
 
-  * Distribution and summary statistics for time fighting a fish.
+  8. Distribution and summary statistics for time fighting a fish.
 
-  * How many boats did not catch anything? What is different about them?
+  9. How many boats did not catch anything? What is different about them?
 
-  * The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
+  10. The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
 
 
 ## Analysis
 
-### Distribution of participants' boat lengths
+### 1.
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
 
 * Most boats entered are 50-64 feet long. This distribution is right-skewed to longer boats because bigger boats are more expensive.
-* 60 and 61 foot boats are tied for the most participants at 14 each. 
+* 60 and 61 foot boats are tied for the most participants at 14 each.
 
+### 2.
 
+### 3.
 
+### 4.
 
+### 5.
 
+### 6.
 
+### 7.
 
+### 8.
 
+### 9.
 
-
-
-
-
-
-
-
-
-
+### 10. 
 
 
 
