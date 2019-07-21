@@ -34,57 +34,51 @@ For the person interested in how I obtained the data and and did the analysis, p
 
 As you can imagine, there are varying beliefs of what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to: the type of lure, brand of lure, color of lure, bait type, water depth, water temperature, wind direction, current direction, geographical area, time of year, moon phase, sunny/cloudy skies, calm/choppy/rough seas, boat length, local knowledge, time of day, and even engine type (yes, some people believe that certain diesel engines are better than others at attracting blue marlin due to a unique *hum* or *vibration* that they disburse in the water).
 
-Using the data available on the Big Rock website, I can provide awareness into some of these variables using descriptive statistics, data visualizations, and correlations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete a more advanced analysis (using methods such as supervised machine learning to predict a winner, or unsupervised machine learning to uncover valuable patterns). Sadly, fisherman keep data points like this very secret with hopes of having a competitive advantage.
+Using the data available on the Big Rock website, I can provide awareness into some of these variables with data visualizations of descriptive statistics and relationships. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete a more advanced analysis (using methods such as supervised machine learning to predict a winner, or unsupervised machine learning to uncover valuable patterns). Sadly, fisherman keep data points like this very secret with hopes of having a competitive advantage.
 
 I explored:
 
-  1. Distribution of participants' boat lengths.
+  1. Participants:
+    * **a)** Distribution of the lengths of all boats that entered.
+    * **b)** Map of all of the cities that the boats are from.
 
-  2. The relationship of boat size and amount of billfish caught.
+  2. Time:
+    * Frequency distribution of hook-ups by hour overall and by species
+    * Frequency distribution of hook-ups by 15 minute intervals overall and by species
+    * Distribution and summary statistics for time fighting a fish overall and by species
 
-  3. The relationship of boat brand and amount of billfish caught.
+  3. Relationships:
+    * The relationship of boat size and amount of billfish caught.
+    * The relationship of boat brand and amount of billfish caught.
+    * The relationship of the boat's port city/state and amount of billfish caught.
+    * Do the above relationships differ if the fish was released or boated?
+    * Do the above relationships differ by the species of billfish?
+    * How many boats did not catch anything? What is different about them?
 
-  4. The relationship of the boat's port city/state and amount of billfish caught.
-
-  5. Do the above relationships differ if the fish was released or boated?
-
-  6. Do the above relationships differ by the species of billfish?
-
-  7. Distribution of time of day when billfish are caught.
-
-  8. Distribution and summary statistics for time fighting a fish.
-
-  9. How many boats did not catch anything? What is different about them?
-
-  10. The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
+  4. Owners:
+    *  The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
 
 
 ## Analysis
 
-### 1.
+### 1. Participants:
+
+#### a)
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
 
-* Most boats entered are 50-64 feet long. This distribution is right-skewed to longer boats because bigger boats are more expensive.
+* Most boats entered are 50-64 feet long. This distribution is right-skewed to bigger boats because they are more expensive.
 * 60 and 61 foot boats are tied for the most participants at 14 each.
 
-### 2.
+#### b)
 
-### 3.
+### 2. Time
 
-### 4.
 
-### 5.
 
-### 6.
+### 3. Relationships
 
-### 7.
-
-### 8.
-
-### 9.
-
-### 10. 
+### 4. Owners
 
 
 
