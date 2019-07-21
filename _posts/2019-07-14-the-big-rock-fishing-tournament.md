@@ -2,7 +2,6 @@
 title: "The Big Rock"
 date: 2019-07-20
 toc: true
-toc_float: true
 tags: [data science, exploratory data analysis, EDA, stats, statistics, visualization, python, R, web scraping]
 header:
   image: "images/big_rock_photo.jpg"
