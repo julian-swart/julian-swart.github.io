@@ -40,23 +40,23 @@ I explored:
 
   1. Participants:
       * a) Distribution of the lengths of all boats that entered.  
-      * b) Map of all of the cities that the boats are from.
+      * b) Maps of all of the cities the boats are from.
 
   2. Time:
-    * Frequency distribution of hook-ups by hour overall and by species
-    * Frequency distribution of hook-ups by 15 minute intervals overall and by species
-    * Distribution and summary statistics for time fighting a fish overall and by species
+      * a) Frequency distribution of hook-ups by hour overall and by species
+      * b) Frequency distribution of hook-ups by 15 minute intervals overall and by species
+      * c) Distribution and summary statistics for time fighting a fish overall and by species
 
   3. Relationships:
-    * The relationship of boat size and amount of billfish caught.
-    * The relationship of boat brand and amount of billfish caught.
-    * The relationship of the boat's port city/state and amount of billfish caught.
-    * Do the above relationships differ if the fish was released or boated?
-    * Do the above relationships differ by the species of billfish?
-    * How many boats did not catch anything? What is different about them?
+      * a) The relationship of boat size and amount of billfish caught.
+      * b) The relationship of boat brand and amount of billfish caught.
+      * c) The relationship of the boat's port city/state and amount of billfish caught.
+      * d) Do the above relationships differ if the fish was released or boated?
+      * e) Do the above relationships differ by the species of billfish?
+      * f) How many boats did not catch anything? What is different about them?
 
   4. Owners:
-    *  The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
+      *  a) The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
 
 
 ## Analysis
@@ -74,12 +74,29 @@ I explored:
 
 ### 2. Time
 
+#### a)
 
+#### b)
+
+#### c)
 
 ### 3. Relationships
 
+#### a)
+
+#### b)
+
+#### c)
+
+#### d)
+
+#### e)
+
+#### f)
+
 ### 4. Owners
 
+#### a)
 
 
 ## Tournament Details
