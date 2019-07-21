@@ -103,19 +103,19 @@ I explored:
 
 ## Terminology
 
-The term billfish refers to the characteristic of a long spear-like nose/upper-jaw (a bill) that these fish have. They are fast, powerful, difficult to catch, fight extremely hard, and jump a lot when caught. These challenging and exciting characteristics, along with the size and beauty of these fish, are just a few reasons for the allure. Not to mention the enjoyment of being on the open ocean with the comforts of a deluxe sport fishing yacht.
+The term *billfish* refers to the characteristic of a long spear-like nose/upper-jaw (a bill) that these fish have. They are fast, powerful, difficult to catch, fight extremely hard, and jump a lot when caught. These challenging and exciting characteristics, along with the size and beauty of these fish, are just a few reasons for the allure. Not to mention the enjoyment of being on the open ocean with the comforts of a deluxe sport fishing yacht.
 
-The term meat fish refers to the fish having edible and delicious meat. These fish have no bills and are typically smaller, more abundant, and easier to catch. However, they are still big and beautiful fish (normally 10-100 pounds). Billfish are generally not thought of as good to eat (although some people do smoke them).
+The term *meat fish* refers to the fish having edible and delicious meat. These fish have no bills and are typically smaller, more abundant, and easier to catch. However, they are still big and beautiful fish (normally 10-100 pounds). Billfish are generally not thought of as good to eat (although some people do smoke them).
 
-The term releasing or released means the fish was let go instead of brought to land because it was too small, or because it wasn't a blue marlin.
+The term *releasing* or *released* means the fish was let go instead of brought to land because it was too small, or because it wasn't a blue marlin.
 
-The term hooked-up means a boat is actively fighting a fish that just ate one of the baits in the water.
+The term *hooked-up* means a boat is actively fighting a fish that just ate one of the baits in the water.
 
-The term lost means that the boat was fighting a fish, but the fish got off (it became un-hooked).
+The term *lost* means that the boat was fighting a fish, but the fish got off (it became un-hooked).
 
-The term wrong species means the hooked-up fish that was caught or lost was not a qualifying species.
+The term *wrong species* means the hooked-up fish that was caught or lost was not a qualifying species.
 
-The term boating, boated, land, or landed means the crew of a boat was able to catch and bring aboard a blue marlin that they intend to weigh on land. The fish will only be boated if the crew believes it meets the 400 lb qualification (they make this decision by measuring its length and girth to calculate its approximate weight).
+The term *boating*, *boated*, *land*, or *landed* means the crew of a boat was able to catch and bring aboard a blue marlin that they intend to weigh on land. The fish will only be boated if the crew believes it meets the 400 lb qualification (they make this decision by measuring its length and girth to calculate its approximate weight).
 
 
 ## Technical Notes
