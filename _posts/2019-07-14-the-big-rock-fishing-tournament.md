@@ -38,6 +38,8 @@ Using the data available on the Big Rock website, I can provide awareness into s
 
 I explored:
 
+  * Distribution of participants' boat lengths.
+
   * The relationship of boat size and amount of billfish caught.
 
   * The relationship of boat brand and amount of billfish caught.
@@ -58,6 +60,29 @@ I explored:
 
 
 ## Analysis
+
+### Distribution of participants' boat lengths
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
+
+* Most boats entered are 50-64 feet long. This distribution is right-skewed to longer boats because bigger boats are more expensive.
+* 60 and 61 foot boats are tied for the most participants at 14 each. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
