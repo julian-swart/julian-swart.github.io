@@ -62,32 +62,28 @@ I explored:
 ## Analysis
 
 ### 1. Participants:
+<br/><br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
-
 * Most boats entered are 50-64 feet long. This distribution is right-skewed to bigger boats because they are more expensive.
 * 60 and 61 foot boats are tied for the most participants at 14 each.
-<br/><br/>
+<br/><br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
-
 * Each red dot is a city of a participant. Multiple participants can come from one point on the map.
 * Boats that participated in the tournament are spread out as far as Texas, South Dakota, and Michigan. It makes sense that most of them are clustered near the North Carolina coast.
 * One boat was from Majuro, Marshall Islands, which is an incredibly tiny island between Hawaii and Australia.
-<br/><br/>
+<br/><br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map2.jpg)
-
 * Participants from NC are spread out all over the state.  
-<br/><br/>
+<br/><br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map3.jpg)
-
 * This map clusters nearby cities together and counts how many are from each.
-<br/><br/>
+<br/><br/><br/><br/>
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg">
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="20" width="20">
 * Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast.
 
 
