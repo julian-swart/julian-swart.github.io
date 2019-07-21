@@ -7,7 +7,7 @@ header:
 excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue marlin fishing tournament. I used Python to scrape the data from the website and used R for data manipulation and visualization."
 ---
 
-# Exploratory Data Analysis: The 61st Big Rock Blue Marlin Fishing Tournament - 2019
+## Exploratory Data Analysis: The 61st Big Rock Blue Marlin Fishing Tournament - 2019
 
 ## Overview
 
