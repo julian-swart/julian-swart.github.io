@@ -80,11 +80,11 @@ I explored:
 <br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map3.jpg)
-* This map clusters nearby cities together and counts how many are from each.
+* This map clusters nearby cities together and counts how many are from each. The red dot is a cluster of 1.
 <br/><br/><br/>
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">
-* Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast.
+<img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">{: .align-center}
+* Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast. The red dot is a cluster of 1.
 
 
 ### 2. Time
