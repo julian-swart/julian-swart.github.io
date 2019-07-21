@@ -21,7 +21,7 @@ I chose to analyze this tournament because I'm intrigued by it, I love to fish, 
 
 184 sport fishing boats entered this year (ranging from 26-97 feet long) and the prize purse was a record $2.86 million!
 
-Here is a link to [The Big Rock](https://www.thebigrock.com/) and here is a link to the [Participants](https://www.thebigrock.com/tournament/participants/).
+Here is a link to [The Big Rock](https://www.thebigrock.com/) website and a link to the [Participants](https://www.thebigrock.com/tournament/participants/).
 
 These boats fish 40-120 miles offshore and have to radio-in any activity. For instance, when they are hooked-up to a fish, lose a fish, release a fish, or boat a fish, it must be reported asap. This creates a lot of activity data, which is what I analyzed. Using this data that I was able to collect through web scraping, I uncovered some fascinating insights that I go into more detail about below.
 
