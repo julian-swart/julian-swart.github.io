@@ -3,7 +3,7 @@ title: "Analysis: The Big Rock blue marlin fishing tournament"
 date: 2019-07-20
 toc: true
 toc_min_header: 2
-toc_float: true
+toc_sticky: true
 header:
   image: "images/big_rock_photo.jpg"
 excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue marlin fishing tournament. I used Python to scrape the data from the website and used R for data manipulation and visualization."
