@@ -72,6 +72,25 @@ I explored:
 
 #### b)
 
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
+
+* Each red dot is a city of a participant. Multiple participants can come from one point on the map.
+* Boats that participated in the tournament are spread out as far as Texas, South Dakota, and Michigan. It makes sense that most of them are clustered near the North Carolina coast.
+* One boat was from Majuro, Marshall Islands, which is an incredibly tiny island between Hawaii and Australia.
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map2.jpg)
+
+* Participants from NC are spread out all over the state.  
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map3.jpg)
+
+* This map clusters nearby cities together and counts how many are from each.
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg)
+
+* Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast. 
+
+
 ### 2. Time
 
 #### a)
@@ -118,7 +137,7 @@ I explored:
 
 * The boats have to be within a certain boundary off of the North Carolina Coast. They typically fish 50 or more miles offshore around the Gulf Stream in hundreds to over a thousand feet of water.
 
-* 184 sport fishing boats ranging from 26 to 97 feet long entered the tournament. At least 4 different states, 90 cities, and 70 different boat manufacturers were represented (57 boats did not have their port city or state listed on the website).
+* 184 sport fishing boats ranging from 26 to 97 feet long entered the tournament. At least 4 different states, 86 cities, and 70 different boat manufacturers were represented (57 boats did not have their port city or state listed on the website).
 
 * Boats have to radio-in and report any activity, such as hooking-up to a fish, losing a fish, releasing a fish, or boating a fish.
 
