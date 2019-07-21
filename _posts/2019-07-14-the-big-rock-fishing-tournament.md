@@ -24,11 +24,11 @@ I go through some of my struggles and what I learned.
 
 ## Data exploration interests
 
-* As you can imagine, there are varying beliefs of what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to: the type of lure, brand of lure, color of lure, bait type, water depth, water temperature, wind direction, current direction, geographical area, time of year, moon phase, sunny/cloudy skies, calm/choppy/rough seas, boat length, local knowledge, time of day, and even engine type (yes, some people believe that certain diesel engines are better than others at attracting blue marlin due to a unique *hum* or *vibration* that they disburse in the water).
+As you can imagine, there are varying beliefs of what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to: the type of lure, brand of lure, color of lure, bait type, water depth, water temperature, wind direction, current direction, geographical area, time of year, moon phase, sunny/cloudy skies, calm/choppy/rough seas, boat length, local knowledge, time of day, and even engine type (yes, some people believe that certain diesel engines are better than others at attracting blue marlin due to a unique *hum* or *vibration* that they disburse in the water).
 
-* Using the data available on the Big Rock website, I can provide insights into some of these variables using descriptive statistics, data visualizations, and correlations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete an even more intriguing analysis using methods such as supervised machine learning to predict a winner, or unsupervised learning such as clustering to uncover valuable patterns. Sadly, fisherman keep data points like this very secret with hopes of having a competitive advantage.
+Using the data available on the Big Rock website, I can provide insights into some of these variables using descriptive statistics, data visualizations, and correlations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete an even more intriguing analysis using methods such as supervised machine learning to predict a winner, or unsupervised learning such as clustering to uncover valuable patterns. Sadly, fisherman keep data points like this very secret with hopes of having a competitive advantage.
 
-* With the data I was able to collect through web scaping, I explored:
+With the data I was able to collect through web scaping, I explored:
 
   * The relationship of boat size and amount of billfish caught.
 
