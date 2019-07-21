@@ -39,87 +39,66 @@ Using the data available on the Big Rock website, I can provide awareness into s
 I explored:
 
   1. Participants:
-      * a) Distribution of the lengths of all boats that entered.  
-      * b) Maps of all of the cities the boats are from.
+      * Distribution of the lengths of all boats that entered.  
+      * Maps of all of the cities the boats are from.
 
   2. Time:
-      * a) Frequency distribution of hook-ups by hour overall and by species
-      * b) Frequency distribution of hook-ups by 15 minute intervals overall and by species
-      * c) Distribution and summary statistics for time fighting a fish overall and by species
+      * Frequency distribution of hook-ups by hour overall and by species
+      * Frequency distribution of hook-ups by 15 minute intervals overall and by species
+      * Distribution and summary statistics for time fighting a fish overall and by species
 
   3. Relationships:
-      * a) The relationship of boat size and amount of billfish caught.
-      * b) The relationship of boat brand and amount of billfish caught.
-      * c) The relationship of the boat's port city/state and amount of billfish caught.
-      * d) Do the above relationships differ if the fish was released or boated?
-      * e) Do the above relationships differ by the species of billfish?
-      * f) How many boats did not catch anything? What is different about them?
+      * The relationship of boat size and amount of billfish caught.
+      * The relationship of boat brand and amount of billfish caught.
+      * The relationship of the boat's port city/state and amount of billfish caught.
+      * Do the above relationships differ if the fish was released or boated?
+      * Do the above relationships differ by the species of billfish?
+      * How many boats did not catch anything? What is different about them?
 
   4. Owners:
-      *  a) The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
+      * The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
 
 
 ## Analysis
 
 ### 1. Participants:
 
-#### a)
-
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
 
 * Most boats entered are 50-64 feet long. This distribution is right-skewed to bigger boats because they are more expensive.
 * 60 and 61 foot boats are tied for the most participants at 14 each.
-
-
-#### b)
+<br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
 
 * Each red dot is a city of a participant. Multiple participants can come from one point on the map.
 * Boats that participated in the tournament are spread out as far as Texas, South Dakota, and Michigan. It makes sense that most of them are clustered near the North Carolina coast.
 * One boat was from Majuro, Marshall Islands, which is an incredibly tiny island between Hawaii and Australia.
-
+<br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map2.jpg)
 
 * Participants from NC are spread out all over the state.  
-
+<br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map3.jpg)
 
 * This map clusters nearby cities together and counts how many are from each.
+<br/><br/>
 
-
-<img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="1">
+<img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg">
 
 * Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast.
 
 
 ### 2. Time
 
-#### a)
-
-#### b)
-
-#### c)
 
 ### 3. Relationships
 
-#### a)
-
-#### b)
-
-#### c)
-
-#### d)
-
-#### e)
-
-#### f)
 
 ### 4. Owners
 
-#### a)
 
 
 ## Tournament Details
