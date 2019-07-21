@@ -11,9 +11,9 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 
 ## Overview
 
-This is an exploratory data analysis of the 61st Big Rock Blue Marlin Fishing Tournament that ran from June 10th - June 15th, 2019.
+This is an exploratory data analysis of the 61st Big Rock blue marlin fishing tournament that ran from June 10th - June 15th, 2019.
 
-The Big Rock is one of the largest competitive sportfishing tournaments in the world. It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch the heaviest Atlantic blue marlin, resulting in a large monetary prize of nearly 1 million dollars.
+The Big Rock is one of the largest competitive sport fishing tournaments in the world. It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch the heaviest Atlantic blue marlin, resulting in a large monetary prize of nearly 1 million dollars.
 
 I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed.
 
@@ -26,7 +26,7 @@ I go through some of my struggles and what I learned.
 
 As you can imagine, there are varying beliefs of what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to: the type of lure, brand of lure, color of lure, bait type, water depth, water temperature, wind direction, current direction, geographical area, time of year, moon phase, sunny/cloudy skies, calm/choppy/rough seas, boat length, local knowledge, time of day, and even engine type (yes, some people believe that certain diesel engines are better than others at attracting blue marlin due to a unique *hum* or *vibration* that they disburse in the water).
 
-Using the data available on the Big Rock website, I can provide insights into some of these variables using descriptive statistics, data visualizations, and correlations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete an even more intriguing analysis using methods such as supervised machine learning to predict a winner, or unsupervised learning such as clustering to uncover valuable patterns. Sadly, fisherman keep data points like this very secret with hopes of having a competitive advantage.
+Using the data available on the Big Rock website, I can provide insights into some of these variables using descriptive statistics, data visualizations, and correlations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete a more advanced analysis (using methods such as supervised machine learning to predict a winner, or unsupervised machine learning to uncover valuable patterns). Sadly, fisherman keep data points like this very secret with hopes of having a competitive advantage.
 
 With the data I was able to collect through web scaping, I explored:
 
@@ -51,7 +51,7 @@ With the data I was able to collect through web scaping, I explored:
 
 
 
-### Tournament Details
+## Tournament Details
 
 * Besides the main "biggest blue marlin" category, participants can also compete in other categories, such as releasing the most billfish (blue marlin, white marlin, sailfish, and spearfish) or weighing in the heaviest meat fish (wahoo, tuna, mahi mahi). Please see the **Terminology** section for clarification of jargon.
 
