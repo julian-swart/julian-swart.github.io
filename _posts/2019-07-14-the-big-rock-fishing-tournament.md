@@ -39,7 +39,9 @@ Using the data available on the Big Rock website, I can provide awareness into s
 I explored:
 
   1. Participants:
+
     * **a)** Distribution of the lengths of all boats that entered.
+    
     * **b)** Map of all of the cities that the boats are from.
 
   2. Time:
