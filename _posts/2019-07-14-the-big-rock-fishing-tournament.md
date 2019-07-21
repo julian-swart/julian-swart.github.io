@@ -12,24 +12,30 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 
 ## Overview
 
-This is an exploratory data analysis of the 61st Big Rock blue marlin fishing tournament that ran from June 10th - June 15th, 2019.
+This is an exploratory data analysis of the 61st annual Big Rock blue marlin fishing tournament that ran from June 10th - June 15th, 2019.
 
-The Big Rock is one of the largest competitive sport fishing tournaments in the world. It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch the heaviest Atlantic blue marlin, resulting in a large monetary prize of nearly 1 million dollars.
+The Big Rock is one of the largest competitive sport fishing tournaments in the world. It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin, resulting in a large monetary prize of nearly 1 million dollars.
 
 I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed.
 
+184 sport fishing boats entered this year (ranging from 26-97 feet long) and the prize purse was a record $2.86 million!
+
+Here is a link to the main website [The Big Rock](https://www.thebigrock.com/)? and here is a link to the participants page [Participants](https://www.thebigrock.com/tournament/participants/)?
+
+These boats fish 40-120 miles offshore and have to radio-in any activity. For instance, when they are hooked-up to a fish, lose a fish, release a fish, or boat a fish, it must be reported asap. This creates a lot of activity data, which is what I analyzed. Using this data that I was able to collect through web scraping, I was able to uncover some fascinating insights that I go into more detail about below.
+
 If you need some context about the tournament and its rules, please refer to the **Tournament Details** section below. There's also a **Terminology** section to help explain jargon.
 
-For the person interested in how I obtained the data and and did the analysis, please read the **Technical** section. This was my first web scraping project and
-I go through some of my struggles and what I learned.   
+For the person interested in how I obtained the data and and did the analysis, please read the **Technical Notes** section. This was my first web scraping project and I go through some of my struggles and what I learned.  
+
 
 ## Data exploration interests
 
 As you can imagine, there are varying beliefs of what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to: the type of lure, brand of lure, color of lure, bait type, water depth, water temperature, wind direction, current direction, geographical area, time of year, moon phase, sunny/cloudy skies, calm/choppy/rough seas, boat length, local knowledge, time of day, and even engine type (yes, some people believe that certain diesel engines are better than others at attracting blue marlin due to a unique *hum* or *vibration* that they disburse in the water).
 
-Using the data available on the Big Rock website, I can provide insights into some of these variables using descriptive statistics, data visualizations, and correlations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete a more advanced analysis (using methods such as supervised machine learning to predict a winner, or unsupervised machine learning to uncover valuable patterns). Sadly, fisherman keep data points like this very secret with hopes of having a competitive advantage.
+Using the data available on the Big Rock website, I can provide awareness into some of these variables using descriptive statistics, data visualizations, and correlations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete a more advanced analysis (using methods such as supervised machine learning to predict a winner, or unsupervised machine learning to uncover valuable patterns). Sadly, fisherman keep data points like this very secret with hopes of having a competitive advantage.
 
-With the data I was able to collect through web scraping, I explored:
+I explored:
 
   * The relationship of boat size and amount of billfish caught.
 
@@ -48,6 +54,10 @@ With the data I was able to collect through web scraping, I explored:
   * How many boats did not catch anything? What is different about them?
 
   * The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
+
+
+## Analysis
+
 
 
 
@@ -90,28 +100,24 @@ With the data I was able to collect through web scraping, I explored:
 * This tournament provides a major economic boost through increased tourism to an otherwise small, quiet beach town.
 
 
+## Terminology explained:
+The term billfish refers to the characteristic of a long spear-like nose/upper-jaw (a bill) that these fish have. They are fast, powerful, difficult to catch, fight extremely hard, and jump a lot when caught. These challenging and exciting characteristics, along with the size and beauty of these fish, are just a few reasons for the allure. Not to mention the enjoyment of being on the open ocean with the comforts of a deluxe sportfishing yacht.
+
+The term meat fish refers to the fish having edible and delicious meat. These fish have no bills and are typically smaller, more abundant, and easier to catch. However, they are still big and beautiful fish (normally 10-100 pounds). Billfish are generally not thought of as good to eat (although some people do smoke them).
+
+The term releasing or released means the fish was let go instead of brought to land because it was too small, or because it wasn't a blue marlin.
+
+The term hooked-up means a boat is actively fighting a fish that just ate one of the baits in the water.
+
+The term lost means that the boat was fighting a fish, but the fish got off (it became un-hooked).
+
+The term wrong species means the hooked-up fish that was caught or lost was not a qualifying species.
+
+The term boating, boated, land, or landed means the crew of a boat was able to catch and bring aboard a blue marlin that they intend to weigh on land. The fish will only be boated if the crew believes it meets the 400 lb qualification (they make this decision by measuring its length and girth to calculate its approximate weight).
 
 
+## Technical Notes
 
-
-
-
-
-
-
-
-
-What about a [link](https://www.thebigrock.com/)?
-
-Here's a bulleted list:
-* first item
-+ second item
-- third item
-
-Heres a numbered list
-1. first
-2. second
-3. third
 
 Python code block
 ```python
