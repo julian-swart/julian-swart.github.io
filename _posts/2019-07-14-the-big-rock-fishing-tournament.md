@@ -1,5 +1,5 @@
 ---
-title: "The Big Rock"
+title: "Analysis: The Big Rock blue marlin fishing tournament"
 date: 2019-07-20
 toc: true
 toc_min_header: 2
@@ -9,13 +9,13 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 
 ---
 
-## Exploratory Data Analysis: The 61st Big Rock Blue Marlin Fishing Tournament - 2019
-
 ## Overview
+
+This is an exploratory data analysis of the 61st Big Rock Blue Marlin Fishing Tournament that ran from June 10th - June 15th, 2019.
 
 The Big Rock is one of the largest competitive sportfishing tournaments in the world. It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch the heaviest Atlantic blue marlin, resulting in a large monetary prize of nearly 1 million dollars.
 
-I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any patterns or relationships existed.
+I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed.
 
 If you need some context about the tournament and its rules, please refer to the **Tournament Details** section below. There's also a **Terminology** section to help explain jargon.
 
