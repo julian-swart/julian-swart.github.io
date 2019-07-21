@@ -90,7 +90,7 @@ I explored:
 * This map clusters nearby cities together and counts how many are from each.
 
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="20">
+<img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="1">
 
 * Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast.
 
