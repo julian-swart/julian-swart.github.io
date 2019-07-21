@@ -28,7 +28,7 @@ As you can imagine, there are varying beliefs of what works best to attract and 
 
 Using the data available on the Big Rock website, I can provide insights into some of these variables using descriptive statistics, data visualizations, and correlations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete a more advanced analysis (using methods such as supervised machine learning to predict a winner, or unsupervised machine learning to uncover valuable patterns). Sadly, fisherman keep data points like this very secret with hopes of having a competitive advantage.
 
-With the data I was able to collect through web scaping, I explored:
+With the data I was able to collect through web scraping, I explored:
 
   * The relationship of boat size and amount of billfish caught.
 
