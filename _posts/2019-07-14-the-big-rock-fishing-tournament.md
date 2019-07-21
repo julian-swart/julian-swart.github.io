@@ -62,7 +62,7 @@ I explored:
 ## Analysis
 
 ### 1. Participants:
-<br/><br/>
+<br/><
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
 * Most boats entered are 50-64 feet long. This distribution is right-skewed to bigger boats because they are more expensive.
@@ -83,7 +83,7 @@ I explored:
 * This map clusters nearby cities together and counts how many are from each.
 <br/><br/><br/>
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="100" width="100">
+<img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">
 * Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast.
 
 
