@@ -1,10 +1,13 @@
 ---
 title: "The Big Rock"
 date: 2019-07-20
+toc: true
+toc_sticky: true
 tags: [data science, exploratory data analysis, EDA, stats, statistics, visualization, python, R, web scraping]
 header:
   image: "images/big_rock_photo.jpg"
 excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue marlin fishing tournament. I used Python to scrape the data from the website and used R for data manipulation and visualization."
+
 ---
 
 ## Exploratory Data Analysis: The 61st Big Rock Blue Marlin Fishing Tournament - 2019
