@@ -30,7 +30,7 @@ If you need some context about the tournament and its rules, please refer to the
 For the person interested in how I obtained the data and and did the analysis, please read the **Technical Notes** section. This was my first web scraping project and I go through some of my struggles and what I learned.  
 
 
-## Data exploration interests
+## Introduction
 
 As you can imagine, there are varying beliefs of what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to: the type of lure, brand of lure, color of lure, bait type, water depth, water temperature, wind direction, current direction, geographical area, time of year, moon phase, sunny/cloudy skies, calm/choppy/rough seas, boat length, local knowledge, time of day, and even engine type (yes, some people believe that certain diesel engines are better than others at attracting blue marlin due to a unique *hum* or *vibration* that they disburse in the water).
 
@@ -82,13 +82,13 @@ I explored:
 
 * The boats have to be within a certain boundary off of the North Carolina Coast. They typically fish 50 or more miles offshore around the Gulf Stream in hundreds to over a thousand feet of water.
 
-* 184 sportfishing boats ranging from 26 to 97 feet long entered the tournament. At least 4 different states, 90 cities, and 70 different boat manufacturers were represented (57 boats did not have their port city or state listed on the website).
+* 184 sport fishing boats ranging from 26 to 97 feet long entered the tournament. At least 4 different states, 90 cities, and 70 different boat manufacturers were represented (57 boats did not have their port city or state listed on the website).
 
 * Boats have to radio-in and report any activity, such as hooking-up to a fish, losing a fish, releasing a fish, or boating a fish.
 
 * A blue marlin must weigh at least 400 pounds or be at least 110 inches long in order to qualify. If the fish is brought to land and does not meet either of these criteria, that boat is penalized 400 points in the release division and 400 lbs on the next fish they land (if they land another one). This makes it very difficult to win any prize money.
 
-* The blue marlin must also be intact when weighed. This means if a shark were to take a bite of the fish as it is getting reeled in or if the propeller of the boat happened to cut the fish (both have happened), it would be disqualifed.
+* The blue marlin must also be intact when weighed. This means if a shark were to take a bite of the fish as it is getting reeled in or if the propeller of the boat happened to cut the fish (both have happened), it would be disqualified.
 
 * There are many other rules that we won't go into detail about here (including acceptable baits and supplies, every boat must leave from the same inlet, etc).
 
@@ -101,8 +101,9 @@ I explored:
 * This tournament provides a major economic boost through increased tourism to an otherwise small, quiet beach town.
 
 
-## Terminology explained:
-The term billfish refers to the characteristic of a long spear-like nose/upper-jaw (a bill) that these fish have. They are fast, powerful, difficult to catch, fight extremely hard, and jump a lot when caught. These challenging and exciting characteristics, along with the size and beauty of these fish, are just a few reasons for the allure. Not to mention the enjoyment of being on the open ocean with the comforts of a deluxe sportfishing yacht.
+## Terminology
+
+The term billfish refers to the characteristic of a long spear-like nose/upper-jaw (a bill) that these fish have. They are fast, powerful, difficult to catch, fight extremely hard, and jump a lot when caught. These challenging and exciting characteristics, along with the size and beauty of these fish, are just a few reasons for the allure. Not to mention the enjoyment of being on the open ocean with the comforts of a deluxe sport fishing yacht.
 
 The term meat fish refers to the fish having edible and delicious meat. These fish have no bills and are typically smaller, more abundant, and easier to catch. However, they are still big and beautiful fish (normally 10-100 pounds). Billfish are generally not thought of as good to eat (although some people do smoke them).
 
