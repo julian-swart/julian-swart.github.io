@@ -20,7 +20,6 @@ title                    : "Home"
 title_separator          : "-"
 name                     : "Julian Swart"
 description              : "Data Science Portfolio"
-classes                  : wide
 url                      : #"https://julian-swart.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : #"julian-swart/julian-swart.github.io"
