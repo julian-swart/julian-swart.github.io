@@ -96,7 +96,7 @@ I explored:
 <br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time1.jpg)
-* 11-12 PM and 12-1 PM appear to be tied for the best time to expect a hook-up.
+* 11-12 PM and 12-1 PM tied for the best time to expect a hook-up.
 * I find this interesting because I thought the morning hours were better.
 * This is only billfish hook-ups. Meat fish were filtered out.
 * 8-9 AM doesn't have as much data because only one day of the week starts at 8 AM.
