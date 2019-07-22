@@ -69,10 +69,14 @@ I explored:
 * 60 and 61 foot boats are tied for the most participants at 14 each.
 <br/><br/><br/>
 
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/top25.jpg)
+* As to be expected, a local heavy tournament.
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
 * Each red dot is the city of a participant. Multiple participants can come from one point on the map.
-* Boats that participated in the tournament are spread out as far as Texas, South Dakota, Florida, and Michigan. This is good news. It means the tournament is gaining popularity in other regions.
+* Boats that participated in the tournament are spread out as far as Texas, South Dakota, Florida, and Michigan. This is good news. It means the tournament is gaining popularity in other regions. Also, owners sometimes put their hometown as the port city of the boat. Their boat isn't physically stationed in the middle of the state.
 * It makes sense that most of the cities are clustered near the North Carolina coast.
+* Morehead City, NC had the most participants with 13. Raleigh, NC had the second most with 11. Atlantic Beach, NC had the third most with 7.
 * Interesting note: One boat was from Majuro, Marshall Islands, which is a tiny island in the middle of the Pacific Ocean between Hawaii and Australia.
 <br/><br/><br/>
 
@@ -86,9 +90,22 @@ I explored:
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">{: .align-center}
 * Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast. The red dot is a cluster of 1.
-
+<br/>
 
 ### 2. Time
+<br/>
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time1.jpg)
+* 11-12 PM and 12-1 PM appear to be tied for the best time to expect a hook-up.
+* I find this interesting because I thought the morning hours were better.
+* This is only billfish hook-ups. Meat fish were filtered out.
+* 8-9 AM doesn't have as much data because only one day of the week starts at 8 AM.
+* The "bite" definitely tapers off after 2 PM.
+
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time2.jpg)
+* 11-1 PM was the best time block overall, but after I divided it further into 15-minute intervals, 10:00-10:15 AM had the most hook-ups. This was followed by a sharp decline. 10:15-10:30 AM was tied for the worst time all together for the amount of hook-ups.
+* This plot indicates what times have higher probabilities for a billfish bite. 
 
 
 ### 3. Relationships
