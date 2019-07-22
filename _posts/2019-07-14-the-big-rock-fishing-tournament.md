@@ -100,7 +100,7 @@ I explored:
 <img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">{: .align-center}
 * Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast. The red dot is a cluster of 1.
 * Does where the boat is from even matter? We'll see.
-<br/>
+<br/><br/>
 
 ### 2. Time
 <br/>
@@ -115,7 +115,7 @@ I explored:
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time2.jpg)
 * 11-1 PM was the best time block overall, but after I divided it further into 15-minute intervals, 10:00-10:15 AM had the most hook-ups. This was followed by a sharp decline. 10:15-10:30 AM was tied for the worst time all together for the amount of hook-ups.
-* This plot indicates what times have higher probabilities for a billfish bite.
+* This plot indicates what times have higher probabilities for a billfish bite. However, there appears to be pretty steady activity throughout the day. 
 <br/><br/><br/>
 
 
