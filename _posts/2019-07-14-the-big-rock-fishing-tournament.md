@@ -114,8 +114,8 @@ I explored:
 <br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time2.jpg)
-* 11-1 PM was the best time block overall, but after I divided it further into 15-minute intervals, 10:00-10:15 AM had the most hook-ups. This was followed by a sharp decline. 10:15-10:30 AM was tied for the worst time all together for the amount of hook-ups.
-* This plot indicates what times have higher probabilities for a billfish bite. However, there appears to be pretty steady activity throughout the day.
+* In the previous plot, 11-1 PM was the best time block overall. However, after I divided it further into 15-minute intervals, 10:00-10:15 AM had the most hook-ups. This was followed by a sharp decline. 10:15-10:30 AM was tied for the worst 15-minute interval all together.
+* This plot indicates what times have higher probabilities for a billfish bite. Although, there appears to be pretty steady activity throughout the day. Better stay alert!
 <br/><br/><br/>
 
 
