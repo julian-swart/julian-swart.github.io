@@ -78,7 +78,7 @@ I explored:
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/brands.jpg)
 * Viking is the overwhelming favorite with 32 boats (18 %) entered in the tournament.
 * It makes sense that Jarret Bay and Hatteras are in the top 10 since they are local brands.
-* Grady White was tied for 3rd. This is interesting because they are a "smaller" boat, normally between 26-36 feet long. I wonder how their performance compared the bigger boats?
+* Grady White was tied for 3rd. This is interesting because they are a "smaller" boat, normally between 26-36 feet long. I wonder how their performance compared with bigger boats?
 <br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
