@@ -7,7 +7,7 @@ toc_sticky: true
 toc_label: "Table of Contents"
 header:
   image: "images/big_rock_photo.jpg"
-excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue marlin fishing tournament. I used Python to scrape the data from the website and used R for data manipulation and visualization."
+excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue marlin fishing tournament. I used Python to obtain the data and R for analysis."
 
 ---
 
@@ -39,13 +39,14 @@ Using the data available on the Big Rock website, I can provide awareness into s
 I explored:
 
   1. Participants:
-      * Distribution of the lengths of all boats that entered.  
+      * Lengths of all boats that entered.  
       * Where the boats are from.
+      * Top boat brands.
 
   2. Time:
-      * Frequency distribution of hook-ups by hour overall and by species
-      * Frequency distribution of hook-ups by 15 minute intervals overall and by species
-      * Distribution and summary statistics for time fighting a fish overall and by species
+      * Hook-ups by hour
+      * Hook-ups by 15 minute intervals
+      * Time spent fighting a fish
 
   3. Relationships:
       * The relationship of boat size and amount of billfish caught.
@@ -65,12 +66,20 @@ I explored:
 <br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
-* Most boats that entered are 50-64 feet long. This distribution is right-skewed to bigger boats because they are more expensive.
+* Most boats that entered are 50-64 feet long. Not as many boats over 64 feet long. The bigger the boat the more expensive it is.
 * 60 and 61 foot boats are tied for the most participants at 14 each.
+* I wonder which length caught the most billfish?
 <br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/top25.jpg)
 * As expected, a local heavy tournament.
+<br/><br/><br/>
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/brands.jpg)
+* Viking is the overwhelming favorite with 32 boats (18 %) entered in the tournament.
+* It makes sense that Jarret Bay and Hatteras are in the top 10 since they are local brands.
+* Grady White was tied for 3rd. This is interesting because they are a "smaller" boat, normally between 26-36 feet long. I wonder how their performance compared the bigger boats?
+<br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
 * Each red dot is the city of a participant. Multiple participants can come from one point on the map.
@@ -90,6 +99,7 @@ I explored:
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">{: .align-center}
 * Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast. The red dot is a cluster of 1.
+* Does where the boat is from matter? We'll see.
 <br/>
 
 ### 2. Time
@@ -110,6 +120,7 @@ I explored:
 
 
 ### 3. Relationships
+
 
 
 
