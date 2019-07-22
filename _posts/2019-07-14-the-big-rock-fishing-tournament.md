@@ -115,7 +115,7 @@ I explored:
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time2.jpg)
 * 11-1 PM was the best time block overall, but after I divided it further into 15-minute intervals, 10:00-10:15 AM had the most hook-ups. This was followed by a sharp decline. 10:15-10:30 AM was tied for the worst time all together for the amount of hook-ups.
-* This plot indicates what times have higher probabilities for a billfish bite. However, there appears to be pretty steady activity throughout the day. 
+* This plot indicates what times have higher probabilities for a billfish bite. However, there appears to be pretty steady activity throughout the day.
 <br/><br/><br/>
 
 
@@ -146,7 +146,8 @@ I explored:
   * Fabulous Fisherman: first blue marlin to be weighed over 500 lbs (this year's winner received $531,250).
   * Daily/aggregate billfish release: points are earned based on species (this year's aggregate winner received $142,375).
   * Heaviest mahi mahi, wahoo and tuna (this year's winner for largest mahi mahi - also called a dolphin, not to be confused with Flipper - won $361,250).
-  * The tournament runs for 6 days. This year's dates were June 10th, 2019 (Monday) - June 15th, 2019 (Saturday). Boats choose 4 of the 6 days to fish, usually picking days when the ocean won't be rough, if possible.
+
+* The tournament runs for 6 days. This year's dates were June 10th, 2019 (Monday) - June 15th, 2019 (Saturday). Boats choose 4 of the 6 days to fish, usually picking days when the ocean won't be rough, if possible.
 
 * On Monday through Friday, boats are limited to fishing between 9AM and 3PM. On Saturday, boats are limited to fishing between 8AM and 2PM.
 
