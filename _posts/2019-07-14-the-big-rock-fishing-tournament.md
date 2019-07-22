@@ -84,7 +84,7 @@ I explored:
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
 * Each red dot is the city of a participant. Multiple participants can come from one point on the map.
 * Boats that participated in the tournament are spread out as far as Texas, South Dakota, Florida, and Michigan. This is good news. It means the tournament is gaining popularity in other regions. Also, owners sometimes put their hometown as the port city of the boat. Their boat isn't physically stationed in the middle of the state.
-* It makes sense that most of the cities are clustered near the North Carolina coast.
+* Most boats are from North Carolina, but I was surprised to see so many non-coastal cities. 
 * Interesting note: One boat was from Majuro, Marshall Islands, which is a tiny island in the middle of the Pacific Ocean between Hawaii and Australia.
 <br/><br/><br/>
 
