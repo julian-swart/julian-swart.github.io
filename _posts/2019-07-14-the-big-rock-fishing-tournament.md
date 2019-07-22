@@ -84,7 +84,7 @@ I explored:
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
 * Each red dot is the city of a participant. Multiple participants can come from one point on the map.
 * Boats that participated in the tournament are spread out as far as Texas, South Dakota, Florida, and Michigan. This is good news. It means the tournament is gaining popularity in other regions. Also, owners sometimes put their hometown as the port city of the boat. Their boat isn't physically stationed in the middle of the state.
-* Most boats are from North Carolina, but I was surprised to see so many non-coastal cities. 
+* Most boats are from North Carolina, but I was surprised to see so many non-coastal cities.
 * Interesting note: One boat was from Majuro, Marshall Islands, which is a tiny island in the middle of the Pacific Ocean between Hawaii and Australia.
 <br/><br/><br/>
 
@@ -94,12 +94,12 @@ I explored:
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map3.jpg)
 * This map clusters nearby cities together and counts the number of participants in that region. The red dot is a cluster of 1.
-* This tells me there is a lot of opportunity to add participants from Virginia, South Carolina, Georgia, and Florida.
+* This tells me there is a lot of opportunity to try and add participants from Virginia, South Carolina, Georgia, and Florida.
 <br/><br/><br/>
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">{: .align-center}
 * Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast. The red dot is a cluster of 1.
-* Does where the boat is from matter? We'll see.
+* Does where the boat is from even matter? We'll see.
 <br/>
 
 ### 2. Time
