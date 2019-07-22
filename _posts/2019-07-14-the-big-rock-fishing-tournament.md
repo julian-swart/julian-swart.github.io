@@ -85,6 +85,7 @@ I explored:
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map3.jpg)
 * This map clusters nearby cities together and counts the number of participants in that region. The red dot is a cluster of 1.
+* This tells me there is a lot of opportunity to add participants from Virginia, South Carolina, Georgia, and Florida. 
 <br/><br/><br/>
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">{: .align-center}
