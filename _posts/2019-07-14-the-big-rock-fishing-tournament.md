@@ -101,12 +101,12 @@ I explored:
 * This is only billfish hook-ups. Meat fish were filtered out.
 * 8-9 AM doesn't have as much data because only one day of the week starts at 8 AM.
 * The "bite" definitely tapers off after 2 PM.
-
+<br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time2.jpg)
 * 11-1 PM was the best time block overall, but after I divided it further into 15-minute intervals, 10:00-10:15 AM had the most hook-ups. This was followed by a sharp decline. 10:15-10:30 AM was tied for the worst time all together for the amount of hook-ups.
-* This plot indicates what times have higher probabilities for a billfish bite. 
-
+* This plot indicates what times have higher probabilities for a billfish bite.
+<br/><br/><br/>
 
 ### 3. Relationships
 
