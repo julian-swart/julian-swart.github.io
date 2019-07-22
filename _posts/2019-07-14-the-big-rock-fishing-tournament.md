@@ -108,10 +108,17 @@ I explored:
 * This plot indicates what times have higher probabilities for a billfish bite.
 <br/><br/><br/>
 
+
 ### 3. Relationships
 
 
+
+
+
 ### 4. Owners
+
+
+
 
 
 
@@ -171,29 +178,3 @@ The term *boating*, *boated*, *land*, or *landed* means the crew of a boat was a
 
 
 ## Technical Notes
-
-
-Python code block
-```python
-    import numpy as np
-
-    def test_fuction(x, y):
-      z = np.sum(x,y)
-      return z
-```
-
-R code block:
-```r
-library(tidyverse)
-
-df <- read_csv("some_file.csv")
-head(df)
-```
-
-Here's some inline code `x+y`
-
-Here's an image
-<img src="{{ site.url }}{{ site.baseurl }}/images/filename.jpg" alt="description"
-
-Here's another image using Kramdown:
-![alt]({{ site.url }}{{ site.baseurl }}/path/file_name.jpg)
