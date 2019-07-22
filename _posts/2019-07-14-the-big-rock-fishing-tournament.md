@@ -40,7 +40,7 @@ I explored:
 
   1. Participants:
       * Distribution of the lengths of all boats that entered.  
-      * Maps of all of the cities the boats are from.
+      * Where the boats are from.
 
   2. Time:
       * Frequency distribution of hook-ups by hour overall and by species
@@ -62,25 +62,26 @@ I explored:
 ## Analysis
 
 ### 1. Participants:
-<br/><
+<br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
-* Most boats entered are 50-64 feet long. This distribution is right-skewed to bigger boats because they are more expensive.
+* Most boats that entered are 50-64 feet long. This distribution is right-skewed to bigger boats because they are more expensive.
 * 60 and 61 foot boats are tied for the most participants at 14 each.
 <br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
-* Each red dot is a city of a participant. Multiple participants can come from one point on the map.
-* Boats that participated in the tournament are spread out as far as Texas, South Dakota, and Michigan. It makes sense that most of them are clustered near the North Carolina coast.
-* One boat was from Majuro, Marshall Islands, which is an incredibly tiny island between Hawaii and Australia.
+* Each red dot is the city of a participant. Multiple participants can come from one point on the map.
+* Boats that participated in the tournament are spread out as far as Texas, South Dakota, Florida, and Michigan. This is good news. It means the tournament is gaining popularity in other regions.
+* It makes sense that most of the cities are clustered near the North Carolina coast.
+* Interesting note: One boat was from Majuro, Marshall Islands, which is a tiny island in the middle of the Pacific Ocean between Hawaii and Australia.
 <br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map2.jpg)
 * Participants from NC are spread out all over the state.  
-<br/><br/><br/>
+<br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map3.jpg)
-* This map clusters nearby cities together and counts how many are from each. The red dot is a cluster of 1.
+* This map clusters nearby cities together and counts the number of participants in that region. The red dot is a cluster of 1.
 <br/><br/><br/>
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">{: .align-center}
