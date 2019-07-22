@@ -76,7 +76,6 @@ I explored:
 * Each red dot is the city of a participant. Multiple participants can come from one point on the map.
 * Boats that participated in the tournament are spread out as far as Texas, South Dakota, Florida, and Michigan. This is good news. It means the tournament is gaining popularity in other regions. Also, owners sometimes put their hometown as the port city of the boat. Their boat isn't physically stationed in the middle of the state.
 * It makes sense that most of the cities are clustered near the North Carolina coast.
-* Morehead City, NC had the most participants with 13. Raleigh, NC had the second most with 11. Atlantic Beach, NC had the third most with 7.
 * Interesting note: One boat was from Majuro, Marshall Islands, which is a tiny island in the middle of the Pacific Ocean between Hawaii and Australia.
 <br/><br/><br/>
 
