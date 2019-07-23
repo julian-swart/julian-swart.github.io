@@ -39,9 +39,9 @@ Using the data available on the Big Rock website, I can provide awareness into s
 I explored:
 
   1. Participants:
-      * Lengths of all boats that entered.  
-      * Where the boats are from.
-      * Top boat brands.
+      * Lengths of all boats
+      * Where the boats are from
+      * Boat brands
 
   2. Time:
       * Hook-ups by hour
@@ -67,7 +67,7 @@ I explored:
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
 * Most boats that entered are 50-64 feet long. Boats in this size range are better equipped for handling bigger seas, traveling long distances, and the demands required for this type of fishing.
-* There are not as many boats over 64 feet long, mainly because the bigger the boat the more expensive it is. But, there may be a point of diminishing returns in the amount of fish caught as length increases.
+* There are not as many boats over 64 feet long, mainly because the bigger the boat the more expensive it is.
 * 60 and 61 foot boats are tied for the most participants at 14 each. Spoiler, a 60 foot boat won the two main categories: biggest blue marlin and total billfish releases. Very interesting. Could 60 foot boats really outperform 61 foot boats? Does that 1 foot difference matter? What length performed the best overall? Lot's of questions to try and answer.
 <br/><br/><br/>
 
