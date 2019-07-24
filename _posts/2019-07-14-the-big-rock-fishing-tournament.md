@@ -25,6 +25,13 @@ Here is a link to [The Big Rock](https://www.thebigrock.com/) website and a link
 
 These boats fish 40-120 miles offshore and have to radio-in any activity. For instance, when they are hooked-up to a fish, lose a fish, release a fish, or boat a fish, it must be reported asap. This creates a lot of activity data, which is what I analyzed. Using this data that I was able to collect through web scraping, I uncovered some fascinating insights that I go into more detail about below.
 
+The Big Rock is named after a structure on the continental shelf below Gulf Stream waters. "The Big Rock – which is not a rock at all – is a series of ledges, peaks and plateaus that covers an area about 8-10 miles long by 1 mile in width. It’s a haven for small reef fish – the type of fish that attract the larger fish that blue marlin feast on. It’s a microcosm of the oceanic food chain just a short distance from the Morehead City waterfront."
+
+Here is a map to help visualize where it is off the coast of North Carolina. It's the small, kidney bean shaped thing in the middle of the big black circle.
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/grease_chart.jpg)
+<br/><br/>
+
 If you need some context about the tournament and its rules, please refer to the **Tournament Details** section below. There's also a **Terminology** section to help explain jargon.
 
 For the person interested in how I obtained the data and and did the analysis, please read the **Technical Notes** section. This was my first web scraping project and I go through some of my struggles and what I learned.  
@@ -58,13 +65,6 @@ I explored:
 
   4. Owners:
       * The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
-<br/><br/>
-
-FYI: The Big Rock is named after a structure on the continental shelf below Gulf Stream waters. "The Big Rock – which is not a rock at all – is a series of ledges, peaks and plateaus that covers an area about 8-10 miles long by 1 mile in width. It’s a haven for small reef fish – the type of fish that attract the larger fish that blue marlin feast on. It’s a microcosm of the oceanic food chain just a short distance from the Morehead City waterfront."
-
-Here is a map to help visualize where it is off the coast of North Carolina. It's the small, kidney bean shaped thing in the middle of the big black circle.
-
-![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/grease_chart.jpg)
 <br/><br/><br/>
 
 
