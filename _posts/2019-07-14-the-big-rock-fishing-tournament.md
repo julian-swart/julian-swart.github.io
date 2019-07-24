@@ -65,7 +65,7 @@ FYI: The Big Rock is named after a structure on the continental shelf below Gulf
 Here is a map to help visualize where it is off the coast of North Carolina. It's the small, kidney bean shaped thing in the middle of the big black circle.
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/grease_chart.jpg)
-<br/><br/>
+<br/><br/><br/>
 
 
 ## Analysis
