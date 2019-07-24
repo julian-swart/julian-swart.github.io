@@ -60,6 +60,14 @@ I explored:
       * The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
 
 
+FYI: The Big Rock is named after a structure on the continental shelf below Gulf Stream waters. "The Big Rock – which is not a rock at all – is a series of ledges, peaks and plateaus that covers an area about 8-10 miles long by 1 mile in width. It’s a haven for small reef fish – the type of fish that attract the larger fish that blue marlin feast on. It’s a microcosm of the oceanic food chain just a short distance from the Morehead City waterfront."
+
+Here is a map to help visualize where it is off the coast of North Carolina. It's the small, kidney bean shaped thing in the middle of the big black circle.
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/grease_chart.jpg)
+
+
+
 ## Analysis
 
 ### 1. Participants:
