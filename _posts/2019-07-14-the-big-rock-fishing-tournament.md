@@ -15,7 +15,7 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 
 This is an exploratory data analysis of the 61st annual Big Rock blue marlin fishing tournament that ran from June 10th - June 15th, 2019.
 
-The Big Rock is one of the largest competitive sport fishing tournaments in the world. It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin, resulting in a large monetary prize of nearly 1 million dollars.
+The Big Rock is one of the largest competitive sport fishing tournaments in the world. It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin, resulting in a large monetary prize of nearly 1 million dollars. The winner of this years' tournament caught and weighed a 914 pounder!
 
 I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed.
 
@@ -84,9 +84,10 @@ I explored:
 <br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/brands.jpg)
-* Hard to see with all the brands, but Viking is the overwhelming favorite with 32 boats (~18 %) entered in the tournament.
+* Viking is the overwhelming favorite with 32 boats (~18 %) entered in the tournament.
 * It makes sense that Jarret Bay and Hatteras are in the top 10 since they are local brands.
 * Grady White was tied for 3rd. This is interesting because they are a "smaller" boat, normally between 26-36 feet long. I wonder how their performance compared with bigger boats?
+* A Buddy Cannady won the biggest blue marlin category and a Guthrie won the Billfish Release division. (both 60 foot boats)
 <br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
