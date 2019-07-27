@@ -7,7 +7,9 @@ main:
   - title: "Bookshelf"
     url: /bookshelf/
   - title: "Learning"
-    url: /onlinelearning/    
+    url: /onlinelearning/
+  - title: "Articles"
+    url: /articles/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
