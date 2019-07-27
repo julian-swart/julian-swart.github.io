@@ -1,4 +1,5 @@
 ---
+layout: archive
 title: "Online Learning"
 permalink: /onlinelearning/
 ---
