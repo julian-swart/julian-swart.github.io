@@ -88,6 +88,8 @@ I explored:
 * It makes sense that Jarret Bay and Hatteras are in the top 10 since they are local brands.
 * Grady White was tied for 3rd. This is interesting because they are a "smaller" boat, normally between 26-36 feet long. I wonder how their performance compared with bigger boats?
 * A Buddy Cannady won the biggest blue marlin category and a Guthrie won the Billfish Release division. (both 60 foot boats)
+* There are 70 unique brands that entered.
+* 41 of the 184 boats (59%) are lone wolves, meaning their boat brand is the only one that entered the tournament. It's fascinating how many manufacturers there are and how much variation there is in the brands.
 <br/><br/><br/>
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
