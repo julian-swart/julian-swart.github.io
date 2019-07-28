@@ -62,11 +62,21 @@ I explored:
       * Do the above relationships differ if the fish was released or boated?
       * Do the above relationships differ by the species of billfish?
       * How many boats did not catch anything? What is different about them?
-
-  4. Owners:
-      * The businesses/job titles of the owners of the boats. I think it would be interesting to see how these people make a living.
+      
 <br/><br/><br/>
 
+## Key Takeaways
+
+* 60 foot boats did the best overall. They had 8% of all boats entered in the tournament and released/boated 25 out of the total 168 billfish that were caught (15%).
+* 61 foot boats had the second most fish caught with 15.
+* 97 foot boat did had the best fish caught per size entered ratio with 3/1.
+* Coswalt boat was the best brand.
+* 11-12 and 12-1 were tied for the most hook-ups with 38 each.
+* 10-10:15 AM was the best 15 minute interval for hook-ups with 14.
+* 10:15-10:30 and 2:15-2:30 were tied for the worst 15-minute interval for hook-ups with 2.
+* which city was the best
+* 63 boats out of the 184 had no activity at all (34%).
+<br/><br/><br/>
 
 ## Analysis
 
@@ -132,15 +142,25 @@ I explored:
 
 ### 3. Relationships
 
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r1.jpg)
 
+<br/><br/><br/>
 
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r2.jpg)
 
+<br/><br/><br/>
 
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r3.jpg)
 
-### 4. Owners
+<br/><br/><br/>
 
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r4.jpg)
 
+<br/><br/><br/>
 
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r5.jpg)
+
+<br/><br/><br/>
 
 
 
