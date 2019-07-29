@@ -85,6 +85,7 @@ I explored:
 <br/>
 
 Figure 1
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
 * Most boats that entered are 50-64 feet long. Boats in this size range are better equipped for handling bigger seas, traveling long distances, and the demands required for this type of fishing.
 * There are not as many boats over 64 feet long, mainly because the bigger the boat the more expensive it is.
@@ -92,11 +93,13 @@ Figure 1
 <br/><br/><br/>
 
 Figure 2
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/top25.jpg)
 * As expected, a local heavy tournament.
 <br/><br/><br/>
 
 Figure 3
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/brands.jpg)
 * Viking is the overwhelming favorite with 32 boats (~18 %) entered in the tournament.
 * It makes sense that Jarret Bay and Hatteras are in the top 10 since they are local brands.
@@ -107,6 +110,7 @@ Figure 3
 <br/><br/><br/>
 
 Figure 4
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
 * Each red dot is the city of a participant. Multiple participants can come from one point on the map.
 * Boats that participated in the tournament are spread out as far as Texas, South Dakota, Florida, and Michigan. This is good news. It means the tournament is gaining popularity in other regions. Also, owners sometimes put their hometown as the port city of the boat. Their boat isn't physically stationed in the middle of the state.
@@ -115,17 +119,20 @@ Figure 4
 <br/><br/><br/>
 
 Figure 5
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map2.jpg)
 * Participants from NC are spread out all over the state.  
 <br/><br/>
 
 Figure 6
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map3.jpg)
 * This map clusters nearby cities together and counts the number of participants in that region. The red dot is a cluster of 1.
 * This tells me there is a lot of opportunity to try and add participants from Virginia, South Carolina, Georgia, and Florida.
 <br/><br/><br/>
 
 Figure 7
+
 <img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">{: .align-center}
 * Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast. The red dot is a cluster of 1.
 * Does where the boat is from even matter? We'll see.
@@ -135,6 +142,7 @@ Figure 7
 <br/>
 
 Figure 8
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time1.jpg)
 * 11-12 PM and 12-1 PM tied for the best time to expect a billfish hook-up.
 * I find this interesting because I thought the morning hours were better.
@@ -144,6 +152,7 @@ Figure 8
 <br/><br/><br/>
 
 Figure 9
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time2.jpg)
 * In the previous plot, 11-1 PM was the best time block overall. However, after I divided it further into 15-minute intervals, 10:00-10:15 AM had the most hook-ups. This was followed by a sharp decline. 10:15-10:30 AM was tied for the worst 15-minute interval all together.
 * This graph indicates what times have higher probabilities for a billfish bite. Although, there appears to be pretty steady activity throughout the day. Better stay alert! (especially from 10-10:15 AM)
@@ -154,6 +163,7 @@ Figure 9
 <br/>
 
 Figure 10
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r1.jpg)
 * Looks very similar to the distribution of participants in Figure 1! 60 and 61 foot boats look to have outperformed everyone else.
 * It's intuitive that the distribution looks this way because the more boats there are of a certain length, the more opportunities they have to catch fish.
@@ -162,21 +172,25 @@ Figure 10
 <br/><br/><br/>
 
 Figure 11
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r2.jpg)
 
 <br/><br/><br/>
 
 Figure 12
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r3.jpg)
 
 <br/><br/><br/>
 
 Figure 13
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r4.jpg)
 
 <br/><br/><br/>
 
 Figure 14
+
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r5.jpg)
 
 <br/><br/><br/>
