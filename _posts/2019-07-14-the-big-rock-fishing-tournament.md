@@ -32,7 +32,7 @@ Here is a map to help visualize where it is off the coast of North Carolina. It'
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/grease_chart.jpg)
 <br/><br/>
 
-If you need some context about the tournament and its rules, please refer to the **Tournament Details** section below. There's also a **Terminology** section to help explain jargon.
+In the **Tournament Details** section below, I go over some general knowledge and rules of the tournament. I recommend reading this part before going into the analysis to gain some context. There's also a **Terminology** section to help explain jargon.
 
 For the person interested in how I obtained the data and and did the analysis, please read the **Technical Notes** section. This was my first web scraping project and I go through some of my struggles and what I learned.  
 
@@ -62,7 +62,7 @@ I explored:
       * Do the above relationships differ if the fish was released or boated?
       * Do the above relationships differ by the species of billfish?
       * How many boats did not catch anything? What is different about them?
-      
+
 <br/><br/><br/>
 
 ## Key Takeaways
@@ -76,23 +76,27 @@ I explored:
 * 10:15-10:30 and 2:15-2:30 were tied for the worst 15-minute interval for hook-ups with 2.
 * which city was the best
 * 63 boats out of the 184 had no activity at all (34%).
+* It is evident that the number of fish caught by boat length or brand is a function of how many boats of a certain length or brand enter the tournament. The distribution of fish caught mimics the distribution of the participants. This means, just by looking at the the distribution of boat lengths and brands of who enters the tournament, we can calculate a probability of a who will win. This phenomena can be described in statistical terms as a *discrete random variable*.  
 <br/><br/><br/>
 
 ## Analysis
 
-### 1. Participants:
+### 1. Participants
 <br/>
 
+Figure 1
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
 * Most boats that entered are 50-64 feet long. Boats in this size range are better equipped for handling bigger seas, traveling long distances, and the demands required for this type of fishing.
 * There are not as many boats over 64 feet long, mainly because the bigger the boat the more expensive it is.
 * 60 and 61 foot boats are tied for the most participants at 14 each. Spoiler, a 60 foot boat won the two main categories: biggest blue marlin and total billfish releases. Very interesting. Could 60 foot boats really outperform 61 foot boats? Does that 1 foot difference matter? What length performed the best overall? Lot's of questions to try and answer.
 <br/><br/><br/>
 
+Figure 2
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/top25.jpg)
 * As expected, a local heavy tournament.
 <br/><br/><br/>
 
+Figure 3
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/brands.jpg)
 * Viking is the overwhelming favorite with 32 boats (~18 %) entered in the tournament.
 * It makes sense that Jarret Bay and Hatteras are in the top 10 since they are local brands.
@@ -102,6 +106,7 @@ I explored:
 * 41 of the 184 boats (59%) are lone wolves, meaning their boat brand is the only one that entered the tournament. It's fascinating how many manufacturers there are and how much variation there is in the brands.
 <br/><br/><br/>
 
+Figure 4
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map1.jpg)
 * Each red dot is the city of a participant. Multiple participants can come from one point on the map.
 * Boats that participated in the tournament are spread out as far as Texas, South Dakota, Florida, and Michigan. This is good news. It means the tournament is gaining popularity in other regions. Also, owners sometimes put their hometown as the port city of the boat. Their boat isn't physically stationed in the middle of the state.
@@ -109,15 +114,18 @@ I explored:
 * Interesting note: One boat was from Majuro, Marshall Islands, which is a tiny island in the middle of the Pacific Ocean between Hawaii and Australia.
 <br/><br/><br/>
 
+Figure 5
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map2.jpg)
 * Participants from NC are spread out all over the state.  
 <br/><br/>
 
+Figure 6
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/map3.jpg)
 * This map clusters nearby cities together and counts the number of participants in that region. The red dot is a cluster of 1.
 * This tells me there is a lot of opportunity to try and add participants from Virginia, South Carolina, Georgia, and Florida.
 <br/><br/><br/>
 
+Figure 7
 <img src="{{ site.url }}{{ site.baseurl }}/images/big_rock/map4.jpg" height="400" width="400">{: .align-center}
 * Zooming in on the East Coast, we can see the clusters more clearly. Participants from NC are split between the middle of the state and the coast. The red dot is a cluster of 1.
 * Does where the boat is from even matter? We'll see.
@@ -126,6 +134,7 @@ I explored:
 ### 2. Time
 <br/>
 
+Figure 8
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time1.jpg)
 * 11-12 PM and 12-1 PM tied for the best time to expect a billfish hook-up.
 * I find this interesting because I thought the morning hours were better.
@@ -134,6 +143,7 @@ I explored:
 * Note: This is only billfish hook-ups. Meat fish were filtered out.
 <br/><br/><br/>
 
+Figure 9
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/time2.jpg)
 * In the previous plot, 11-1 PM was the best time block overall. However, after I divided it further into 15-minute intervals, 10:00-10:15 AM had the most hook-ups. This was followed by a sharp decline. 10:15-10:30 AM was tied for the worst 15-minute interval all together.
 * This graph indicates what times have higher probabilities for a billfish bite. Although, there appears to be pretty steady activity throughout the day. Better stay alert! (especially from 10-10:15 AM)
@@ -141,27 +151,35 @@ I explored:
 
 
 ### 3. Relationships
+<br/>
 
+Figure 10
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r1.jpg)
+* Looks very similar to the distribution of participants in Figure 1! 60 and 61 foot boats look to have outperformed everyone else.
+* It's intuitive that the distribution looks this way because the more boats there are of a certain length, the more opportunities they have to catch fish.
+* I
 
 <br/><br/><br/>
 
+Figure 11
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r2.jpg)
 
 <br/><br/><br/>
 
+Figure 12
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r3.jpg)
 
 <br/><br/><br/>
 
+Figure 13
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r4.jpg)
 
 <br/><br/><br/>
 
+Figure 14
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/r5.jpg)
 
 <br/><br/><br/>
-
 
 
 ## Tournament Details
