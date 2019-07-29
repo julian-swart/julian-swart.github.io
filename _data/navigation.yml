@@ -10,6 +10,8 @@ main:
     url: /onlinelearning/
   - title: "Articles"
     url: /articles/
+  - title: "Podcasts"
+    url: /podcasts/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"

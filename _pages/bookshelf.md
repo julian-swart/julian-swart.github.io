@@ -11,6 +11,7 @@ Digital catalog of books I own.
   **R:**
   - R for Data Science
   - Advanced R
+  - Practical Statistics for Data Scientists
   - R in Action
   - Practical Data Science with R
   - Hands-On Programming with R
@@ -41,6 +42,7 @@ Digital catalog of books I own.
   **Others:**
   - Grokking Algorithms
   - Computer Science Distilled
+  - Getting Started with Data Science
   - Heard in Data Science Interviews
   - Hundred Page Machine Learning Book
   - The Enterprise Big Data Lake
@@ -49,6 +51,7 @@ Digital catalog of books I own.
   - The Mom Test
   - Machine Learning in Production
   - Fundamentals of Clinical Trials
+  - Practical Tableau 
 
 - Good Strategy Bad Strategy
 - Thinking Fast and Slow
