@@ -11,37 +11,86 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 
 ---
 
+## Quick Summary
+
+### Facts
+
+* Sport fishing tournament in Morehead City, NC
+* Participants mainly try to catch blue marlin, white marlin, and sailfish
+* Boats choose 4 of 6 available days to fish
+* 184 boats entered, sizes ranged from 26-97 feet
+* 70 boat brands
+* 86 cities represented
+* $2.86 million purse
+* Top prize received $793,000 for weighing a 914 pound blue marlin
+<br/>
+
+### Main Questions
+
+* What sizes, brands, and cities are most popular?
+* Do certain boat sizes catch more billfish?
+* Do certain boat brands catch more billfish?
+* Do certain hometown cities catch more billfish?
+* What time of day was the best?
+<br/>
+
+### Key Takeaways
+
+* 60 and 61 foot boats are most popular with 14 of each that entered
+* Viking is the most popular brand with 32 boats that entered
+* Morehead City, NC had the most participants from a single city
+* 60 foot boats did the best overall. They had 8% of all boats entered and released/boated 25 out of the total 168 billfish that were caught (15%)
+* A Buddy Cannady brand won the biggest blue marlin category and a Guthrie won the Billfish Release division. (both 60 foot boats)
+* 61 foot boats had the second most billfish caught with 15
+* The lone 97 foot boat was the best on a billfish per boat entered basis with a 3/1 ratio
+* 61 foot boats weighed the most blue marlin with 4, 60 foot boats weighed 3, the lone 82 foot boat did the best on a billfish weighed per boat entered basis with a 1/1 ratio
+* Viking brand caught the most billfish with 30, Croswalt was the best brand on a billfish per boat entered basis with a 3/1 ratio
+* 63 boats out of the 184 had no activity at all (34%)
+* 11:00 AM - 12:00 PM and 12:00 PM - 1:00 PM were tied for the most hook-ups with 38 each
+* 10:00 AM - 10:15 AM was the best 15 minute interval for hook-ups with 14
+* 10:15 AM - 10:30 AM and 2:15 PM - 2:30 PM were tied for the worst 15-minute interval for hook-ups with 2 each
+<br/> <br/>
+
+
 ## Overview
 
-This is an exploratory data analysis of the 61st annual Big Rock blue marlin fishing tournament that ran from June 10th - June 15th, 2019.
-
-The Big Rock is one of the largest competitive sport fishing tournaments in the world. It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin, resulting in a large monetary prize of nearly 1 million dollars. The winner of this years' tournament caught and weighed a 914 pounder!
+The Big Rock is one of the largest competitive sport fishing tournaments in the world. It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin.
 
 I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed.
 
-184 sport fishing boats entered this year (ranging from 26-97 feet long) and the prize purse was a record $2.86 million!
-
 Here is a link to [The Big Rock](https://www.thebigrock.com/) website and a link to the [Participants](https://www.thebigrock.com/tournament/participants/).
 
-These boats fish 40-120 miles offshore and have to radio-in any activity. For instance, when they are hooked-up to a fish, lose a fish, release a fish, or boat a fish, it must be reported asap. This creates a lot of activity data, which is what I analyzed. Using this data that I was able to collect through web scraping, I uncovered some fascinating insights that I go into more detail about below.
+The participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it.
 
-The Big Rock is named after a structure on the continental shelf below Gulf Stream waters. "The Big Rock – which is not a rock at all – is a series of ledges, peaks and plateaus that covers an area about 8-10 miles long by 1 mile in width. It’s a haven for small reef fish – the type of fish that attract the larger fish that blue marlin feast on. It’s a microcosm of the oceanic food chain just a short distance from the Morehead City waterfront."
+I recommend skimming the the **Tournament Details** and **Terminology** sections below for some general knowledge and context of the tournament.
 
-Here is a map to help visualize where it is off the coast of North Carolina. It's the small, kidney bean shaped thing in the middle of the big black circle.
-
-![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/grease_chart.jpg)
-<br/><br/>
-
-In the **Tournament Details** section below, I go over some general knowledge and rules of the tournament. I recommend reading this part before going into the analysis to gain some context. There's also a **Terminology** section to help explain jargon.
-
-For the person interested in how I obtained the data and and did the analysis, please read the **Technical Notes** section. This was my first web scraping project and I go through some of my struggles and what I learned.  
+To see how I obtained the data, please read the **Technical Notes** section. This was my first web scraping project and I go through some of my struggles and what I learned.  
 
 
 ## Introduction
 
-As you can imagine, there are varying beliefs of what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to: the type of lure, brand of lure, color of lure, bait type, water depth, water temperature, wind direction, current direction, geographical area, time of year, moon phase, sunny/cloudy skies, calm/choppy/rough seas, boat length, local knowledge, time of day, and even engine type (yes, some people believe that certain diesel engines are better than others at attracting blue marlin due to a unique *hum* or *vibration* that they disburse in the water).
+There are varying beliefs for what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to:
+* type of lure
+* brand of lure
+* color of lure
+* size of lure
+* bait type (artificial, dead)
+* water depth
+* water temperature
+* wind direction
+* trolling direction
+* geographical area
+* time of year
+* moon phase
+* sunny/cloudy skies
+* calm/choppy/rough seas
+* boat length
+* boat brand
+* local knowledge
+* time of day
+* engine type (some people believe that certain diesel engines are better than others at attracting blue marlin due to a unique *hum* or *vibration* that they disburse through the water)
 
-Using the data available on the Big Rock website, I can provide awareness into some of these variables with data visualizations of descriptive statistics and relationships. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete a more advanced analysis (using methods such as supervised machine learning to predict a winner, or unsupervised machine learning to uncover valuable patterns). Sadly, fisherman keep data points like this very secret with hopes of having a competitive advantage.
+Using the data available on the Big Rock website, I can provide awareness into some of these variables with statistics and visualizations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete a more advanced analysis. Unfortunately, fisherman keep data points like this a secret with hopes of having a competitive advantage.
 
 I explored:
 
@@ -56,27 +105,13 @@ I explored:
       * Time spent fighting a fish
 
   3. Relationships:
-      * The relationship of boat size and amount of billfish caught.
-      * The relationship of boat brand and amount of billfish caught.
-      * The relationship of the boat's port city/state and amount of billfish caught.
-      * Do the above relationships differ if the fish was released or boated?
-      * Do the above relationships differ by the species of billfish?
+      * Boat size vs number of billfish caught
+      * Boat brand vs number of billfish caught
+      * Hometown city vs number of billfish caught
+      * What size boats catch the biggest fish?
+      * What size boats catch certain species?
       * How many boats did not catch anything? What is different about them?
 
-<br/><br/><br/>
-
-## Key Takeaways
-
-* 60 foot boats did the best overall. They had 8% of all boats entered in the tournament and released/boated 25 out of the total 168 billfish that were caught (15%).
-* 61 foot boats had the second most fish caught with 15.
-* 97 foot boat did had the best fish caught per size entered ratio with 3/1.
-* Coswalt boat was the best brand.
-* 11-12 and 12-1 were tied for the most hook-ups with 38 each.
-* 10-10:15 AM was the best 15 minute interval for hook-ups with 14.
-* 10:15-10:30 and 2:15-2:30 were tied for the worst 15-minute interval for hook-ups with 2.
-* which city was the best
-* 63 boats out of the 184 had no activity at all (34%).
-* It is evident that the number of fish caught by boat length or brand is a function of how many boats of a certain length or brand enter the tournament. The distribution of fish caught mimics the distribution of the participants. This means, just by looking at the the distribution of boat lengths and brands of who enters the tournament, we can calculate a probability of a who will win. This phenomena can be described in statistical terms as a *discrete random variable*.  
 <br/><br/><br/>
 
 ## Analysis
@@ -89,7 +124,7 @@ Figure 1
 ![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/image1.jpg)
 * Most boats that entered are 50-64 feet long. Boats in this size range are better equipped for handling bigger seas, traveling long distances, and the demands required for this type of fishing.
 * There are not as many boats over 64 feet long, mainly because the bigger the boat the more expensive it is.
-* 60 and 61 foot boats are tied for the most participants at 14 each. Spoiler, a 60 foot boat won the two main categories: biggest blue marlin and total billfish releases. Very interesting. Could 60 foot boats really outperform 61 foot boats? Does that 1 foot difference matter? What length performed the best overall? Lot's of questions to try and answer.
+* Smaller boats typically don't do as well in this tournament.
 <br/><br/><br/>
 
 Figure 2
@@ -104,9 +139,7 @@ Figure 3
 * Viking is the overwhelming favorite with 32 boats (~18 %) entered in the tournament.
 * It makes sense that Jarret Bay and Hatteras are in the top 10 since they are local brands.
 * Grady White was tied for 3rd. This is interesting because they are a "smaller" boat, normally between 26-36 feet long. I wonder how their performance compared with bigger boats?
-* A Buddy Cannady won the biggest blue marlin category and a Guthrie won the Billfish Release division. (both 60 foot boats)
-* There are 70 unique brands that entered.
-* 41 of the 184 boats (59%) are lone wolves, meaning their boat brand is the only one that entered the tournament. It's fascinating how many manufacturers there are and how much variation there is in the brands.
+* 41 of the 184 boats (59%) are loners, meaning their boat brand is the only one that entered the tournament. It's fascinating how many manufacturers there are and how much variation there is in the brands.
 <br/><br/><br/>
 
 Figure 4
@@ -198,6 +231,13 @@ Figure 14
 
 ## Tournament Details
 
+* The Big Rock is named after a structure on the continental shelf below Gulf Stream waters. "The Big Rock – which is not a rock at all – is a series of ledges, peaks and plateaus that covers an area about 8-10 miles long by 1 mile in width. It’s a haven for small reef fish – the type of fish that attract the larger fish that blue marlin feast on. It’s a microcosm of the oceanic food chain just a short distance from the Morehead City waterfront."
+
+* Here is a map to help visualize where it is off the coast of North Carolina. It's the small, kidney bean shaped thing in the middle of the big black circle.
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/big_rock/grease_chart.jpg)
+<br/><br/>
+
 * Besides the main "biggest blue marlin" category, participants can also compete in other categories, such as releasing the most billfish (blue marlin, white marlin, sailfish, and spearfish) or weighing in the heaviest meat fish (wahoo, tuna, mahi mahi). Please see the **Terminology** section for clarification of jargon.
 
 * The tournament is mainly focused on blue marlin, which can grow to weigh well over 1,000 pounds and measure up to 16 feet. The other species of billfish are much smaller and have to be released.
@@ -237,19 +277,19 @@ Figure 14
 
 ## Terminology
 
-The term *billfish* refers to the characteristic of a long spear-like nose/upper-jaw (a bill) that these fish have. They are fast, powerful, difficult to catch, fight extremely hard, and jump a lot when caught. These challenging and exciting characteristics, along with the size and beauty of these fish, are just a few reasons for the allure. Not to mention the enjoyment of being on the open ocean with the comforts of a deluxe sport fishing yacht.
+* The term *billfish* refers to the characteristic of a long spear-like nose/upper-jaw (a bill) that these fish have. They are fast, powerful, difficult to catch, fight extremely hard, and jump a lot when caught. These challenging and exciting characteristics, along with the size and beauty of these fish, are just a few reasons for the allure. Not to mention the enjoyment of being on the open ocean with the comforts of a deluxe sport fishing yacht.
 
-The term *meat fish* refers to the fish having edible and delicious meat. These fish have no bills and are typically smaller, more abundant, and easier to catch. However, they are still big and beautiful fish (normally 10-100 pounds). Billfish are generally not thought of as good to eat (although some people do smoke them).
+* The term *meat fish* refers to the fish having edible and delicious meat. These fish have no bills and are typically smaller, more abundant, and easier to catch. However, they are still big and beautiful fish (normally 10-100 pounds). Billfish are generally not thought of as good to eat (although some people do smoke them).
 
-The term *releasing* or *released* means the fish was let go instead of brought to land because it was too small, or because it wasn't a blue marlin.
+* The term *releasing* or *released* means the fish was let go instead of brought to land because it was too small, or because it wasn't a blue marlin.
 
-The term *hooked-up* means a boat is actively fighting a fish that just ate one of the baits in the water.
+* The term *hooked-up* means a boat is actively fighting a fish that just ate one of the baits in the water.
 
-The term *lost* means that the boat was fighting a fish, but the fish got off (it became un-hooked).
+* The term *lost* means that the boat was fighting a fish, but the fish got off (it became un-hooked).
 
-The term *wrong species* means the hooked-up fish that was caught or lost was not a qualifying species.
+* The term *wrong species* means the hooked-up fish that was caught or lost was not a qualifying species.
 
-The term *boating*, *boated*, *land*, or *landed* means the crew of a boat was able to catch and bring aboard a blue marlin that they intend to weigh on land. The fish will only be boated if the crew believes it meets the 400 lb qualification (they make this decision by measuring its length and girth to calculate its approximate weight).
+* The term *boating*, *boated*, *land*, or *landed* means the crew of a boat was able to catch and bring aboard a blue marlin that they intend to weigh on land. The fish will only be boated if the crew believes it meets the 400 lb qualification (they make this decision by measuring its length and girth to calculate its approximate weight).
 
 
 ## Technical Notes
