@@ -10,17 +10,19 @@ header:
 excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue marlin fishing tournament. I used Python to obtain the data and R for analysis."
 
 ---
+## Overview
+
 ### Setting the stage
 
 The Big Rock is one of the largest competitive sport fishing tournaments in the world. This years' prize purse was a record $2.86 million! It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin and win nearly 1 million dollars. Top prize this year received $793,000 for catching and weighing a 914 pound blue marlin! Participants can win big in other categories as well. For more info on this please see the **Tournament Details** section below. This is a 6 day tournament where boats choose only 4 of those days to fish. This year, 184 boats entered with sizes ranging from 26-97 feet. There were 70 unique boat brands, 86 cities, and 10 states represented.
 
 ### Why I'm doing this
 
-I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed. I also wanted to do this and show it to some friends and family that follow it every year.
+I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed. I also thought some friends and family would enjoy reading it as well.
 
 ### Main questions
 
-* What sizes, brands, and cities are most popular?
+* What boat sizes, boat brands, and hometown cities are most popular?
 * Do certain boat sizes catch more billfish?
 * Do certain boat brands catch more billfish?
 * Do certain hometown cities catch more billfish?
@@ -43,7 +45,7 @@ I recommend skimming the the **Tournament Details** and **Terminology** sections
 
 To see how I obtained the data, please read the **Technical Notes** section. This was my first web scraping project and I go through some of my struggles and what I learned.
 
-### Introduction
+## Introduction
 
 Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it.
 
@@ -92,9 +94,9 @@ I explored:
 
 <br/><br/><br/>
 
-### Analysis
+## Analysis
 
-#### 1. Participants
+### 1. Participants
 <br/>
 
 Figure 1
@@ -149,7 +151,7 @@ Figure 7
 * Does where the boat is from even matter? We'll see.
 <br/><br/>
 
-#### 2. Time
+### 2. Time
 <br/>
 
 Figure 8
@@ -170,7 +172,7 @@ Figure 9
 <br/><br/><br/>
 
 
-#### 3. Relationships
+### 3. Relationships
 <br/>
 
 Figure 10
@@ -207,7 +209,7 @@ Figure 14
 <br/><br/><br/>
 
 
-### Tournament Details
+## Tournament Details
 
 * The Big Rock is named after a structure on the continental shelf below Gulf Stream waters. "The Big Rock – which is not a rock at all – is a series of ledges, peaks and plateaus that covers an area about 8-10 miles long by 1 mile in width. It’s a haven for small reef fish – the type of fish that attract the larger fish that blue marlin feast on. It’s a microcosm of the oceanic food chain just a short distance from the Morehead City waterfront."
 
@@ -253,7 +255,7 @@ Figure 14
 * This tournament provides a major economic boost through increased tourism to an otherwise small, quiet beach town.
 
 
-### Terminology
+## Terminology
 
 * The term *billfish* refers to the characteristic of a long spear-like nose/upper-jaw (a bill) that these fish have. They are fast, powerful, difficult to catch, fight extremely hard, and jump a lot when caught. These challenging and exciting characteristics, along with the size and beauty of these fish, are just a few reasons for the allure. Not to mention the enjoyment of being on the open ocean with the comforts of a deluxe sport fishing yacht.
 
