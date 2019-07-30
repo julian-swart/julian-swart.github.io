@@ -16,6 +16,8 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 
 The Big Rock is one of the largest competitive sport fishing tournaments in the world. This years' prize purse was a record $2.86 million! It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin and win nearly 1 million dollars. Top prize this year received $793,000 for catching and weighing a 914 pound blue marlin! Participants can win big in other categories as well. For more info on this please see the *Tournament Details* section below. This is a 6 day tournament where boats choose only 4 of those days to fish. This year, 184 boats entered with sizes ranging from 26-97 feet. There were 70 unique boat brands, 86 cities, and 10 states represented.
 
+The data for this tournament comes from the [The Big Rock website](https://www.thebigrock.com/), which is real-time updated throughout the day. Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it. 
+
 **Why I'm doing this**
 
 I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed. I also thought some friends and family would enjoy reading it as well.
@@ -35,9 +37,9 @@ I chose to analyze this tournament because I'm intrigued by it, I love to fish, 
 * A Buddy Cannady brand won the biggest blue marlin category and a Guthrie won the Billfish Release division. (both 60 foot boats)
 * 10:00 AM - 10:15 AM was the best 15 minute interval for hook-ups with 14
 
-**Notes**
+**Extra**
 
-Here is a link to [The Big Rock](https://www.thebigrock.com/) website and a link to the [Participants](https://www.thebigrock.com/tournament/participants/).
+Here is a link to the [Participants](https://www.thebigrock.com/tournament/participants/).
 
 I recommend skimming the the *Tournament Details* and *Terminology* sections below for some general knowledge and context of the tournament.
 
@@ -45,8 +47,6 @@ To see how I obtained the data, please read the *Technical Notes* section. This 
 <br/>
 
 ## Introduction
-
-Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it.
 
 There are varying beliefs for what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to:
 * type of lure
@@ -271,4 +271,4 @@ Figure 14
 * The term *boating*, *boated*, *land*, or *landed* means the crew of a boat was able to catch and bring aboard a blue marlin that they intend to weigh on land. The fish will only be boated if the crew believes it meets the 400 lb qualification (they make this decision by measuring its length and girth to calculate its approximate weight).
 
 
-### Technical Notes
+## Technical Notes
