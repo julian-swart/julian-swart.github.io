@@ -10,20 +10,17 @@ header:
 excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue marlin fishing tournament. I used Python to obtain the data and R for analysis."
 
 ---
-
-## Quick Overview
-
 ### Setting the stage
 
 The Big Rock is one of the largest competitive sport fishing tournaments in the world. This years' prize purse was a record $2.86 million! It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin and win nearly 1 million dollars. Top prize this year received $793,000 for catching and weighing a 914 pound blue marlin! Participants can win big in other categories as well. For more info on this please see the **Tournament Details** section below. This is a 6 day tournament where boats choose only 4 of those days to fish. This year, 184 boats entered with sizes ranging from 26-97 feet. There were 70 unique boat brands, 86 cities, and 10 states represented.
 
 Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it.
 
-## Why I'm doing this
+### Why I'm doing this
 
 I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed. I also wanted to do this and show it to some friends and family that follow it every year.
 
-### Main questions
+#### Main questions
 
 * What sizes, brands, and cities are most popular?
 * Do certain boat sizes catch more billfish?
@@ -32,7 +29,7 @@ I chose to analyze this tournament because I'm intrigued by it, I love to fish, 
 * What time of day was the best?
 <br/>
 
-### 4 main takeaways
+#### 4 main takeaways
 
 * 60 and 61 foot boats are most popular with 14 of each that entered
 * 60 foot boats caught the most billfish with 25, but 61 foot boats weighed more blue marlin with 4
