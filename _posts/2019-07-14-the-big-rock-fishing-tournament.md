@@ -12,38 +12,37 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 ---
 ## Overview
 
-### Setting the stage
+**Setting the stage**
 
-The Big Rock is one of the largest competitive sport fishing tournaments in the world. This years' prize purse was a record $2.86 million! It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin and win nearly 1 million dollars. Top prize this year received $793,000 for catching and weighing a 914 pound blue marlin! Participants can win big in other categories as well. For more info on this please see the **Tournament Details** section below. This is a 6 day tournament where boats choose only 4 of those days to fish. This year, 184 boats entered with sizes ranging from 26-97 feet. There were 70 unique boat brands, 86 cities, and 10 states represented.
+The Big Rock is one of the largest competitive sport fishing tournaments in the world. This years' prize purse was a record $2.86 million! It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin and win nearly 1 million dollars. Top prize this year received $793,000 for catching and weighing a 914 pound blue marlin! Participants can win big in other categories as well. For more info on this please see the *Tournament Details* section below. This is a 6 day tournament where boats choose only 4 of those days to fish. This year, 184 boats entered with sizes ranging from 26-97 feet. There were 70 unique boat brands, 86 cities, and 10 states represented.
 
-### Why I'm doing this
+**Why I'm doing this**
 
 I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed. I also thought some friends and family would enjoy reading it as well.
 
-### Main questions
+**Main questions**
 
 * What boat sizes, boat brands, and hometown cities are most popular?
 * Do certain boat sizes catch more billfish?
 * Do certain boat brands catch more billfish?
 * Do certain hometown cities catch more billfish?
 * What time of day was the best?
-<br/>
 
-### 4 main takeaways
+**4 main takeaways**
 
 * 60 and 61 foot boats are most popular with 14 of each that entered
 * 60 foot boats caught the most billfish with 25, but 61 foot boats weighed more blue marlin with 4
 * A Buddy Cannady brand won the biggest blue marlin category and a Guthrie won the Billfish Release division. (both 60 foot boats)
 * 10:00 AM - 10:15 AM was the best 15 minute interval for hook-ups with 14
-<br/> <br/>
 
-### Notes
+**Notes**
 
 Here is a link to [The Big Rock](https://www.thebigrock.com/) website and a link to the [Participants](https://www.thebigrock.com/tournament/participants/).
 
-I recommend skimming the the **Tournament Details** and **Terminology** sections below for some general knowledge and context of the tournament.
+I recommend skimming the the *Tournament Details* and *Terminology* sections below for some general knowledge and context of the tournament.
 
-To see how I obtained the data, please read the **Technical Notes** section. This was my first web scraping project and I go through some of my struggles and what I learned.
+To see how I obtained the data, please read the *Technical Notes* section. This was my first web scraping project and I go through some of my struggles and what I learned.
+<br/>
 
 ## Introduction
 
