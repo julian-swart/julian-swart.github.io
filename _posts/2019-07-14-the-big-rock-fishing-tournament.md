@@ -10,6 +10,9 @@ header:
 excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue marlin fishing tournament. I used Python to obtain the data and R for analysis."
 
 ---
+Massive fish. Millions of dollars of prize money at stake. Over 100 sport fishing boats worth millions each competing. Let's dive in!
+<br/>  
+
 ## Overview
 
 **Setting the stage:**
