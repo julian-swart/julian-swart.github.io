@@ -16,7 +16,7 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 
 The Big Rock is one of the largest competitive sport fishing tournaments in the world. This years' prize purse was a record $2.86 million! It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin and win nearly 1 million dollars. Top prize this year received $793,000 for catching and weighing a 914 pound blue marlin! Participants can win big in other categories as well. For more info on this please see the *Tournament Details* section below. This is a 6 day tournament where boats choose only 4 of those days to fish. This year, 184 boats entered with sizes ranging from 26-97 feet. There were 70 unique boat brands, 86 cities, and 10 states represented.
 
-The data for this tournament comes from the [The Big Rock website](https://www.thebigrock.com/), which is real-time updated throughout the day. Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it. 
+The data for this tournament comes from the [The Big Rock website](https://www.thebigrock.com/), which is real-time updated throughout the day. Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it.
 
 **Why I'm doing this**
 
@@ -49,10 +49,7 @@ To see how I obtained the data, please read the *Technical Notes* section. This 
 ## Introduction
 
 There are varying beliefs for what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to:
-* type of lure
-* brand of lure
-* color of lure
-* size of lure
+* type, brand, color, and size of a lure
 * bait type (artificial, dead)
 * water depth
 * water temperature
@@ -69,7 +66,7 @@ There are varying beliefs for what works best to attract and catch billfish, esp
 * time of day
 * engine type (some people believe that certain diesel engines are better than others at attracting blue marlin due to a unique *hum* or *vibration* that they disburse through the water)
 
-Using the data available on the Big Rock website, I can provide awareness into some of these variables with statistics and visualizations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete a more advanced analysis. Unfortunately, fisherman keep data points like this a secret with hopes of having a competitive advantage.
+Using the activity data I retrieved, I can provide awareness into some of these variables with statistics and visualizations. If I had access to more data (like longitude and latitude of hook-ups, the lure that the fish ate, etc.), then I could complete a more advanced analysis. Unfortunately, fisherman keep data points like this a secret with hopes of having a competitive advantage.
 
 I explored:
 
