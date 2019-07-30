@@ -11,21 +11,19 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 
 ---
 
-## Quick Summary
+## Quick Overview
 
-### Facts
+### Setting the stage
 
-* Sport fishing tournament in Morehead City, NC
-* Participants mainly try to catch blue marlin, white marlin, and sailfish
-* Boats choose 4 of 6 available days to fish
-* 184 boats entered, sizes ranged from 26-97 feet
-* 70 boat brands
-* 86 cities represented
-* $2.86 million purse
-* Top prize received $793,000 for weighing a 914 pound blue marlin
-<br/>
+The Big Rock is one of the largest competitive sport fishing tournaments in the world. This years' prize purse was a record $2.86 million! It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin and win nearly 1 million dollars. Top prize this year received $793,000 for catching and weighing a 914 pound blue marlin! Participants can win big in other categories as well. For more info on this please see the **Tournament Details** section below. This is a 6 day tournament where boats choose only 4 of those days to fish. This year, 184 boats entered with sizes ranging from 26-97 feet. There were 70 unique boat brands, 86 cities, and 10 states represented.
 
-### Main Questions
+Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it.
+
+## Why I'm doing this
+
+I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed. I also wanted to do this and show it to some friends and family that follow it every year.
+
+### Main questions
 
 * What sizes, brands, and cities are most popular?
 * Do certain boat sizes catch more billfish?
@@ -34,33 +32,18 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 * What time of day was the best?
 <br/>
 
-### Key Takeaways
+### 4 main takeaways
 
 * 60 and 61 foot boats are most popular with 14 of each that entered
-* Viking is the most popular brand with 32 boats that entered
-* Morehead City, NC had the most participants from a single city
-* 60 foot boats did the best overall. They had 8% of all boats entered and released/boated 25 out of the total 168 billfish that were caught (15%)
+* 60 foot boats caught the most billfish with 25, but 61 foot boats weighed more blue marlin with 4
 * A Buddy Cannady brand won the biggest blue marlin category and a Guthrie won the Billfish Release division. (both 60 foot boats)
-* 61 foot boats had the second most billfish caught with 15
-* The lone 97 foot boat was the best on a billfish per boat entered basis with a 3/1 ratio
-* 61 foot boats weighed the most blue marlin with 4, 60 foot boats weighed 3, the lone 82 foot boat did the best on a billfish weighed per boat entered basis with a 1/1 ratio
-* Viking brand caught the most billfish with 30, Croswalt was the best brand on a billfish per boat entered basis with a 3/1 ratio
-* 63 boats out of the 184 had no activity at all (34%)
-* 11:00 AM - 12:00 PM and 12:00 PM - 1:00 PM were tied for the most hook-ups with 38 each
 * 10:00 AM - 10:15 AM was the best 15 minute interval for hook-ups with 14
-* 10:15 AM - 10:30 AM and 2:15 PM - 2:30 PM were tied for the worst 15-minute interval for hook-ups with 2 each
 <br/> <br/>
 
 
 ## Overview
 
-The Big Rock is one of the largest competitive sport fishing tournaments in the world. It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin.
-
-I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed.
-
 Here is a link to [The Big Rock](https://www.thebigrock.com/) website and a link to the [Participants](https://www.thebigrock.com/tournament/participants/).
-
-The participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it.
 
 I recommend skimming the the **Tournament Details** and **Terminology** sections below for some general knowledge and context of the tournament.
 
