@@ -14,13 +14,11 @@ excerpt: "This post is an exploratory data analysis on the 2019 Big Rock blue ma
 
 The Big Rock is one of the largest competitive sport fishing tournaments in the world. This years' prize purse was a record $2.86 million! It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin and win nearly 1 million dollars. Top prize this year received $793,000 for catching and weighing a 914 pound blue marlin! Participants can win big in other categories as well. For more info on this please see the **Tournament Details** section below. This is a 6 day tournament where boats choose only 4 of those days to fish. This year, 184 boats entered with sizes ranging from 26-97 feet. There were 70 unique boat brands, 86 cities, and 10 states represented.
 
-Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it.
-
 ### Why I'm doing this
 
 I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed. I also wanted to do this and show it to some friends and family that follow it every year.
 
-#### Main questions
+### Main questions
 
 * What sizes, brands, and cities are most popular?
 * Do certain boat sizes catch more billfish?
@@ -29,7 +27,7 @@ I chose to analyze this tournament because I'm intrigued by it, I love to fish, 
 * What time of day was the best?
 <br/>
 
-#### 4 main takeaways
+### 4 main takeaways
 
 * 60 and 61 foot boats are most popular with 14 of each that entered
 * 60 foot boats caught the most billfish with 25, but 61 foot boats weighed more blue marlin with 4
@@ -37,17 +35,17 @@ I chose to analyze this tournament because I'm intrigued by it, I love to fish, 
 * 10:00 AM - 10:15 AM was the best 15 minute interval for hook-ups with 14
 <br/> <br/>
 
-
-## Overview
+### Notes
 
 Here is a link to [The Big Rock](https://www.thebigrock.com/) website and a link to the [Participants](https://www.thebigrock.com/tournament/participants/).
 
 I recommend skimming the the **Tournament Details** and **Terminology** sections below for some general knowledge and context of the tournament.
 
-To see how I obtained the data, please read the **Technical Notes** section. This was my first web scraping project and I go through some of my struggles and what I learned.  
+To see how I obtained the data, please read the **Technical Notes** section. This was my first web scraping project and I go through some of my struggles and what I learned.
 
+### Introduction
 
-## Introduction
+Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it.
 
 There are varying beliefs for what works best to attract and catch billfish, especially blue marlin. Different contributing factors include, but are not limited to:
 * type of lure
@@ -94,9 +92,9 @@ I explored:
 
 <br/><br/><br/>
 
-## Analysis
+### Analysis
 
-### 1. Participants
+#### 1. Participants
 <br/>
 
 Figure 1
@@ -151,7 +149,7 @@ Figure 7
 * Does where the boat is from even matter? We'll see.
 <br/><br/>
 
-### 2. Time
+#### 2. Time
 <br/>
 
 Figure 8
@@ -172,7 +170,7 @@ Figure 9
 <br/><br/><br/>
 
 
-### 3. Relationships
+#### 3. Relationships
 <br/>
 
 Figure 10
@@ -209,7 +207,7 @@ Figure 14
 <br/><br/><br/>
 
 
-## Tournament Details
+### Tournament Details
 
 * The Big Rock is named after a structure on the continental shelf below Gulf Stream waters. "The Big Rock – which is not a rock at all – is a series of ledges, peaks and plateaus that covers an area about 8-10 miles long by 1 mile in width. It’s a haven for small reef fish – the type of fish that attract the larger fish that blue marlin feast on. It’s a microcosm of the oceanic food chain just a short distance from the Morehead City waterfront."
 
@@ -255,7 +253,7 @@ Figure 14
 * This tournament provides a major economic boost through increased tourism to an otherwise small, quiet beach town.
 
 
-## Terminology
+### Terminology
 
 * The term *billfish* refers to the characteristic of a long spear-like nose/upper-jaw (a bill) that these fish have. They are fast, powerful, difficult to catch, fight extremely hard, and jump a lot when caught. These challenging and exciting characteristics, along with the size and beauty of these fish, are just a few reasons for the allure. Not to mention the enjoyment of being on the open ocean with the comforts of a deluxe sport fishing yacht.
 
@@ -272,4 +270,4 @@ Figure 14
 * The term *boating*, *boated*, *land*, or *landed* means the crew of a boat was able to catch and bring aboard a blue marlin that they intend to weigh on land. The fish will only be boated if the crew believes it meets the 400 lb qualification (they make this decision by measuring its length and girth to calculate its approximate weight).
 
 
-## Technical Notes
+### Technical Notes
