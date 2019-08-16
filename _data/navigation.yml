@@ -12,6 +12,8 @@ main:
     url: /articles/
   - title: "Podcasts"
     url: /podcasts/
+  # - title: "Influences"
+  #  url: /influences/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"

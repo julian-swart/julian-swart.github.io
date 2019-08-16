@@ -1,5 +1,5 @@
 ---
-title: "Analysis: The Big Rock blue marlin fishing tournament"
+title: "Analysis: The Big Rock"
 date: 2019-07-20
 toc: true
 toc_min_header: 2
@@ -17,13 +17,26 @@ Massive fish. Millions of dollars of prize money at stake. Over 100 sport fishin
 
 **Setting the stage:**
 
-The Big Rock is one of the largest competitive sport fishing tournaments in the world. This years' prize purse was a record $2.86 million! It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal of this tournament is to catch and weigh the heaviest Atlantic blue marlin and win nearly 1 million dollars. Top prize this year received $793,000 for catching and weighing a 914 pound blue marlin! Participants can win big in other categories as well (for more info on this please see the *Tournament Details* section below). This is a 6 day tournament where boats choose only 4 of those days to fish. This year, 184 boats entered with sizes ranging from 26-97 feet. There were 70 unique boat brands, 86 cities, and 10 states represented.
+The Big Rock is one of the largest competitive sport fishing tournaments in the world. This years' prize purse was a record $2.86 million! It is held annually in the beginning of June and is based out of a small coastal town named Morehead City, North Carolina, which is about an hour from where I grew up. The ultimate goal is to catch and weigh the heaviest Atlantic blue marlin which wins you nearly 1 million dollars. This years' winner received $793,000 for catching a 914 pound blue marlin! Participants can win big in other categories as well (for more info on this please see the *Tournament Details* section below). It lasts for 6 days and the participants choose only 4 of those days to fish. 184 boats were entered with sizes ranging from 26-97 feet. There were 70 unique boat brands, 86 cities, and 10 states represented.
 
-The data for this tournament comes from the [The Big Rock website](https://www.thebigrock.com/), which is real-time updated throughout the day. Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when they are hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and did a small analysis on it.
+The data for this tournament comes from the [The Big Rock website](https://www.thebigrock.com/), which is real-time updated throughout the day. Participants have to radio-in any activity since they are far from shore and people want to know what is happening. For instance, when someone gets hooked-up to a fish, it must be reported. This creates a lot of activity data. I pulled this data from the website and analyzed it.
+
+- Trying to simplify:
+
+* billfish tournament in morehead city, nc
+* prize purse was record $2.86 million, this years winner that caught the biggest blue marlin (914 lbs) received 700k 
+* apply methods of statistics to analyze the population, research discrete random variable
+* can i give probabilities of winning just by seeing distribution of boat lengths of participants
+
+
+
+
+
+
 
 **Why I'm doing this:**
 
-I chose to analyze this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed. I also thought some friends and family would enjoy reading it as well.
+I chose to do an analysis on this tournament because I'm intrigued by it, I love to fish, and was curious to see if any interesting patterns and/or relationships existed. I also thought some friends and family would enjoy reading it as well.
 
 **Main questions:**
 

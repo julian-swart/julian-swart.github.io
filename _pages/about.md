@@ -4,4 +4,4 @@ title: "About"
 permalink: /about/
 ---
 
-I'm a data scientist who excels at machine learning, exploratory analysis, and data visualizations.
+I am currently a data strategist/scientist who enjoys solving business problems using exploratory analysis, data visualizations, and statistical learning. 
