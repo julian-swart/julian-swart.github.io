@@ -4,14 +4,14 @@ main:
     url: /about/
   - title: "Personal Projects"
     url: /personal-projects/
-  - title: "Bookshelf"
-    url: /bookshelf/
-  - title: "Learning"
-    url: /onlinelearning/
-  - title: "Articles"
-    url: /articles/
-  - title: "Podcasts"
-    url: /podcasts/
+  # - title: "Bookshelf"
+  #   url: /bookshelf/
+  # - title: "Learning"
+  #   url: /onlinelearning/
+  # - title: "Articles"
+  #   url: /articles/
+  # - title: "Podcasts"
+  #   url: /podcasts/
   # - title: "Influences"
   #  url: /influences/
   # - title: "About"
