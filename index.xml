@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Julian Swart</title>
-    <link>http://julianswart.com/</link>
+    <link>https://julianswart.com/</link>
     <description>Recent content on Julian Swart</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 08 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://julianswart.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://julianswart.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>First Post</title>
-      <link>http://julianswart.com/blog/first_post/</link>
+      <link>https://julianswart.com/blog/first_post/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://julianswart.com/blog/first_post/</guid>
+      <guid>https://julianswart.com/blog/first_post/</guid>
       <description>&lt;p&gt;this is my summary skldjf;lksadjf;lkasdjf;lksdj;flksdj jdiklsldkfj;sdlkjf;alsdkjf;alsdkjf;lkasdjf;lkasdjf;lkasdjf;lkasjd;flkjasd;lfkjasd;lkfjas;dlkfj;asldkjf;lkadsj;lkj lkasdjf;lkadsj dflk;asdjf;lkasdjf; lkadsjf;lkasdj jdfl;ksadjf;lkasdjf;l kjlkd lakdjf;alskdjf;ladskj ;lksdjv;lkasdjfg;lkasdj; lkjf;dlskj ;lkgjads;lkj as;dlkjsd ;lkjsd ;lkj&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Second Post</title>
-      <link>http://julianswart.com/blog/second_post/</link>
+      <link>https://julianswart.com/blog/second_post/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://julianswart.com/blog/second_post/</guid>
+      <guid>https://julianswart.com/blog/second_post/</guid>
       <description>&lt;p&gt;this is my summary skldjf;lksadjf;lkasdjf;lksdj;flksdj jdiklsldkfj;sdlkjf;alsdkjf;alsdkjf;lkasdjf;lkasdjf;lkasdjf;lkasjd;flkjasd;lfkjasd;lkfjas;dlkfj;asldkjf;lkadsj;lkj lkasdjf;lkadsj dflk;asdjf;lkasdjf; lkadsjf;lkasdj jdfl;ksadjf;lkasdjf;l kjlkd lakdjf;alskdjf;ladskj ;lksdjv;lkasdjfg;lkasdj; lkjf;dlskj ;lkgjads;lkj as;dlkjsd ;lkjsd ;lkj&lt;/p&gt;</description>
     </item>
     
