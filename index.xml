@@ -8,21 +8,12 @@
     <language>en</language>
     <lastBuildDate>Thu, 08 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First Post</title>
+      <title>The Big Rock: Famous Fishing Tournament</title>
       <link>https://julian-swart.github.io/blog/first_post/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://julian-swart.github.io/blog/first_post/</guid>
-      <description>&lt;p&gt;this is my summary skldjf;lksadjf;lkasdjf;lksdj;flksdj jdiklsldkfj;sdlkjf;alsdkjf;alsdkjf;lkasdjf;lkasdjf;lkasdjf;lkasjd;flkjasd;lfkjasd;lkfjas;dlkfj;asldkjf;lkadsj;lkj lkasdjf;lkadsj dflk;asdjf;lkasdjf; lkadsjf;lkasdj jdfl;ksadjf;lkasdjf;l kjlkd lakdjf;alskdjf;ladskj ;lksdjv;lkasdjfg;lkasdj; lkjf;dlskj ;lkgjads;lkj as;dlkjsd ;lkjsd ;lkj&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Second Post</title>
-      <link>https://julian-swart.github.io/blog/second_post/</link>
-      <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://julian-swart.github.io/blog/second_post/</guid>
-      <description>&lt;p&gt;this is my summary skldjf;lksadjf;lkasdjf;lksdj;flksdj jdiklsldkfj;sdlkjf;alsdkjf;alsdkjf;lkasdjf;lkasdjf;lkasdjf;lkasjd;flkjasd;lfkjasd;lkfjas;dlkfj;asldkjf;lkadsj;lkj lkasdjf;lkadsj dflk;asdjf;lkasdjf; lkadsjf;lkasdj jdfl;ksadjf;lkasdjf;l kjlkd lakdjf;alskdjf;ladskj ;lksdjv;lkasdjfg;lkasdj; lkjf;dlskj ;lkgjads;lkj as;dlkjsd ;lkjsd ;lkj&lt;/p&gt;</description>
+      <description>&lt;p&gt;Michael Jordan enters this tournament - there&amp;rsquo;s $6M in overall prize money - it&amp;rsquo;s a big deal! I have been webscraping the data from this tournament&amp;rsquo;s website for the past 5 years and in this post I will demonstrate how I do that using Python, as well as do some light analysis using R.&lt;/p&gt;</description>
     </item>
     
   </channel>
