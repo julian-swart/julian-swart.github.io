@@ -6,14 +6,23 @@
     <description>Recent content on Julian Swart</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 08 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>The Big Rock: Famous Fishing Tournament</title>
-      <link>https://julian-swart.github.io/blog/first_post/</link>
+      <title>Data Engineering is Cool Too</title>
+      <link>https://julian-swart.github.io/blog/jj_furniture/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://julian-swart.github.io/blog/jj_furniture/</guid>
+      <description>&lt;p&gt;In our separate day jobs, my colleague and I usually spend our time working on the business-facing side of data science. This project was an effort to broaden our understanding of the entire data process and deepen our knowledge within the behind-the-scenes work of data engineering. To do this, we decided to simulate the transaction, customer, and product data of a fake business, which we called JJ Furnitiure (JJ stands for Jon and Julian). Check out what we learned&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Web Scraping The Big Rock: A Famous Fishing Tournament</title>
+      <link>https://julian-swart.github.io/blog/big_rock/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://julian-swart.github.io/blog/first_post/</guid>
-      <description>&lt;p&gt;Michael Jordan enters this tournament - there&amp;rsquo;s $6M in overall prize money - it&amp;rsquo;s a big deal! I have been webscraping the data from this tournament&amp;rsquo;s website for the past 5 years and in this post I will demonstrate how I do that using Python, as well as do some light analysis using R.&lt;/p&gt;</description>
+      <guid>https://julian-swart.github.io/blog/big_rock/</guid>
+      <description>&lt;p&gt;Michael Jordan enters this tournament - there&amp;rsquo;s $6M in overall prize money - it&amp;rsquo;s a big deal! I have been web scraping the data from this tournament&amp;rsquo;s website for the past 5 years and in this post I will demonstrate how I do that using Python. Afterwards, I dig into the data and make some plots using R. Let&amp;rsquo;s get fishy 🐟&lt;/p&gt;</description>
     </item>
     
   </channel>
