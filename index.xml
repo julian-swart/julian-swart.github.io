@@ -13,7 +13,7 @@
       <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://julian-swart.github.io/blog/jj_furniture/</guid>
-      <description>&lt;p&gt;In our separate day jobs, my colleague and I usually spend our time working on the business-facing side of data science. This project was an effort to broaden our understanding of the entire data process and deepen our knowledge within the behind-the-scenes work of data engineering. To do this, we decided to simulate the transaction, customer, and product data of a fake business, which we called JJ Furnitiure (JJ stands for Jon and Julian). Check out what we learned&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;p&gt;In our day jobs, my colleague and I have spent most our time working in the business-facing world of data science. This project was an effort to deepen our understanding of the entire data process, mainly within the more hidden world of data engineering. To do this, we decided to simulate the transaction, customer, and product data of a fake business, which we called JJ Furnitiure (JJ stands for Jon and Julian). Check out what we learned&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
