@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://julianswart.com/blog/</loc>
+    <loc>https://julian-swart.github.io/blog/</loc>
     <lastmod>2022-12-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://julianswart.com/blog/first_post/</loc>
+    <loc>https://julian-swart.github.io/blog/first_post/</loc>
     <lastmod>2022-12-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://julianswart.com/</loc>
+    <loc>https://julian-swart.github.io/</loc>
     <lastmod>2022-12-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://julianswart.com/blog/second_post/</loc>
+    <loc>https://julian-swart.github.io/blog/second_post/</loc>
     <lastmod>2022-12-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://julianswart.com/categories/</loc>
+    <loc>https://julian-swart.github.io/categories/</loc>
   </url><url>
-    <loc>https://julianswart.com/tags/</loc>
+    <loc>https://julian-swart.github.io/tags/</loc>
   </url>
 </urlset>
