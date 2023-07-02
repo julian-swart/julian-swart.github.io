@@ -6,23 +6,23 @@
     <description>Recent content in Blogs on Julian Swart</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Part 1 - Data Engineering is Cool, Too</title>
-      <link>https://julian-swart.github.io/blog/jj_furniture/</link>
-      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      <title>Big Rock</title>
+      <link>https://julian-swart.github.io/blog/bigrock_part1/</link>
+      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://julian-swart.github.io/blog/jj_furniture/</guid>
-      <description>Data can be separated into two stages: processing it for use (data engineering) and using it (data science, analytics, ML, etc.) - each one needing the other. At work, my colleague and I largely stay within the scope of the latter. Lately, however, the less popular but immensely impactful subject of data engineering has been the focus.</description>
+      <guid>https://julian-swart.github.io/blog/bigrock_part1/</guid>
+      <description>The blue marlin fishing tournament called The Big Rock is an exciting event each year in Eastern North Carolina. For the past 6 years I have used &lt;code&gt;python&lt;/code&gt; to pull some interesting data from the website. In this post I display how.</description>
     </item>
     
     <item>
-      <title>Web Scraping The Big Rock: A Famous Fishing Tournament</title>
-      <link>https://julian-swart.github.io/blog/big_rock/</link>
-      <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
+      <title>Fake Business</title>
+      <link>https://julian-swart.github.io/blog/jj_furniture_part1/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://julian-swart.github.io/blog/big_rock/</guid>
-      <description>&lt;p&gt;Michael Jordan enters this tournament - there&amp;rsquo;s $6M in overall prize money - it&amp;rsquo;s a big deal! I have been web scraping the data from this tournament&amp;rsquo;s website for the past 5 years and in this post I will demonstrate how I do that using Python. Afterwards, I dig into the data and make some plots using R. Let&amp;rsquo;s get fishy 🐟&lt;/p&gt;</description>
+      <guid>https://julian-swart.github.io/blog/jj_furniture_part1/</guid>
+      <description>A colleague and I collaborated on an &lt;code&gt;AWS&lt;/code&gt; project to deepen our understanding of data engineering and to showcase some of our data science skills. We simulated a fake furniture company&amp;rsquo;s data to make it more realistc and fun.</description>
     </item>
     
   </channel>

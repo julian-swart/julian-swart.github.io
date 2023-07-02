@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Big Rock - Julian Swart </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="referrer" content="no-referrer">
+    <meta name="description" content="" />
+    <meta property="og:site_name" content="Julian Swart" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://julian-swart.github.io/blog/bigrock_part1/" />
+    <meta property="og:title" content="Big Rock" />
+    <meta property="og:image" content="https://julian-swart.github.io" />
+    <meta property="og:description" content="" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <meta name="twitter:title" content="Big Rock" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="https://julian-swart.github.io" />
+
+    <link rel="canonical" href="https://julian-swart.github.io/blog/bigrock_part1/">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://julian-swart.github.io/css/custom.css" />
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github-gist.min.css" integrity="sha512-od7JLoOTxM8w/HSKGzP9Kexc20K9p/M2zxSWsd7H1e4Ctf+8SQFtCWEZnW5u6ul5ehSECa5QmOk9ju2nQMmlVA==" crossorigin="anonymous" />
+    
+
+    
+
+    <link rel="shortcut icon"
+        href="https://julian-swart.github.io/images/wave.jpeg">
+
+    
+    <link href="https://julian-swart.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Julian Swart" />
+    
+</head>
+
+<body>
+    
+<div class="mt-xl header">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a href="https://julian-swart.github.io">
+                    <h1 class="name">Julian Swart</h1>
+                </a>
+                <span style="font-weight:300; color:#738491;"><center>Data Scientist</center></span>
+            </div>
+        </div></br>
+
+        <div class="row justify-content-center">
+            <ul class="nav nav-primary">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://julian-swart.github.io/">
+                        
+                        Home
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://julian-swart.github.io/about/">
+                        
+                        About
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/julian-swart">
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.linkedin.com/in/julian-swart9">
+                        
+                        LinkedIn
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-lg-8">
+                <br>
+                <br>
+                <h1 class="meta-blog-title">Big Rock</h1>
+
+                <div class="ml-0 meta">
+                    
+                    
+                    <span class="author" title="Julian Swart">
+                        Julian Swart
+                    </span>
+                    
+                    
+
+                    <span class="date middot" title='Mon Jan 16 2023 00:00:00 UTC'>
+                        Jan 2023
+                    </span>
+
+                    <span class="reading-time middot">
+                        15 min read
+                    </span>
+
+                    <div class="d-none d-md-inline tags">
+                        <ul class="list-unstyled d-inline">
+                            
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <aside>
+                    <nav id="TableOfContents"></nav>
+                </aside>
+                <br>
+                <div class="markdown blog-post-content">
+                    <script defer language="javascript" type="text/javascript"  src="https://julian-swart.github.io/js/custom.js"></script>
+  
+    <div class="meta-blog-subheader">
+Table of Contents
+</div>
+<blockquote>
+<p><a href="#intro">Intro</a><br>
+<a href="#getdata">Get Data</a><br>
+<a href="#import">Import</a><br>
+<a href="#prepdata">Prep Data</a><br>
+<a href="#analysis">Analysis</a><br>
+<a href="#extrainfo">Extra Info</a></p>
+</blockquote>
+<br>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/big_rock_photo.jpg" alt=""></p>
+<p class="caption">Mates prepping fishing gear on the way out to the Gulf Stream during The Big Rock </a></p>
+</div>
+<br>
+<br>
+<!-- #region Intro -->
+<div class="meta-blog-header">
+Intro <a name="intro"></a>
+</div>
+<br>
+<p>There is a popular blue marlin fishing tournament called The Big Rock that happens annually in Morehead City, NC. For the past 6 years, once the tournament is over, I extract the information from the website into clean dataframes using a popular combination of python libraries: <code>webdriver</code>, <code>requests</code>, and <code>BeautifulSoup</code>. This post walks through the process of web scraping, cleaning, and then analyzing that data.</p>
+<p>Tournament Info:
+In June, hundreds of expensive fishing boats gather to compete in a 6 day long tournament for a chance at a prize - a purse worth $6MM. Even Michael Jordan, the NBA legend, has been entering recently. The blue marlin they catch are massive and it draws a good bit of attention. The biggest payout is given to the crew that catches the heaviest blue marlin. Check it out here: <a href="https://www.thebigrock.com/" title="Click to go to the Big Rock Website">Homepage for the Big Rock Tournament</a></p>
+<p>Note: <a href="https://www.boatblurb.com/post/michael-jordan-back-at-big-rock-marlin-tournament-in-catch-23" title="Click to see Catch 23">Catch 23</a> is Michael Jordan&rsquo;s boat and was featured in this <a href="https://www.espn.com/nba/story/_/id/29289073/michael-jordan-crew-enter-big-rock-tournament-reel-monster-442-pound-marlin" title="Click to see the fish">ESPN article</a> for their 2020 catch.</p>
+<!-- #endregion -->
+<br>
+<!-- #region Get Data -->
+<div class="meta-blog-header">
+Get Data <a name="getdata"></a>
+</div>
+<br>
+<p>Running the python scripts below pulls the <a href="https://www.thebigrock.com/participants/" title="Click to see the Participants">Participants</a> and the <a href="https://www.reeltimeapps.com/live/tournaments/64th-annual-big-rock-blue-marlin-tournament/activities?day=0&amp;page=3&amp;per_page=100&amp;today=false&amp;trips=0&amp;type=all" title="Click to see the Activity Feed">Activity Feed</a> data from the website and saves them as flat files.</p>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Participants
+</div>
+<br>
+<p>This data consists of the Boat Name, Boat Brand, Boat Size, Port, Owner, and Captain. The Participants are the people and their boats that enter. The cost to participate is a measly $20K.</p>
+<br>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/participants.png" alt=""></p>
+<p class="caption">10 row sample of the Participants dataframe I obtained</a>.</p>
+</div>
+<br>
+<br>
+<br>
+<!-- #region Participants python code -->
+<div class="highlight-wrapper">
+    <div class="highlight-before">python</div>
+    
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">tqdm</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">number</span> <span class="o">=</span> <span class="s2">&#34;64th&#34;</span> <span class="c1"># update this each year</span>
+</span></span><span class="line"><span class="cl"><span class="n">chromepath</span> <span class="o">=</span> <span class="s2">&#34;/Users/Julian/Desktop/misc/chromedriver&#34;</span> <span class="c1"># update my chromedriver each year to match my current chrome version</span>
+</span></span><span class="line"><span class="cl"><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">chromepath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;https://www.reeltimeapps.com/live/tournaments/&#34;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&#34;-annual-big-rock-blue-marlin-tournament/participants&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># helpful stackoverflow link for line of code below: https://stackoverflow.com/questions/12570329/selenium-list-index-out-of-range-error</span>
+</span></span><span class="line"><span class="cl"><span class="n">links</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_xpath</span><span class="p">(</span><span class="s2">&#34;&#34;&#34;.//a&#34;&#34;&#34;</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># find first link and last link for proper subset. Use links that end in a 4 digit number</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">links</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">links_subset</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="mi">17</span><span class="p">:</span><span class="mi">283</span><span class="p">]</span> <span class="c1"># update this each year - make sure you add +1 to the last link number </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># initiate empty lists</span>
+</span></span><span class="line"><span class="cl"><span class="n">boat_names</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">sizes_and_brands</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">owners</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">ports</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">captains</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">links_subset</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># slow down the code, website gets overloaded  </span>
+</span></span><span class="line"><span class="cl">    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># get html</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># get boat names</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tag1</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;m-b-5&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">boat_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">boat_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># get boat sizes and brands</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tag2</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h5&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sizes_and_brands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sizes_and_brands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># get owners/companies and port cities and states</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tag3</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span> <span class="s1">&#39;m-0&#39;</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">tag4</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tag4</span> <span class="o">=</span> <span class="n">tag4</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="c1"># to help define if there is only a port or only an owner listed</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag3</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">tag4</span> <span class="o">==</span> <span class="s1">&#39;Port&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>   
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">tag4</span> <span class="o">==</span> <span class="s1">&#39;Owner&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>   
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="c1"># get captains of the boat (only started listing at the 62nd annual, or 2020)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="s1">&#39;lb-table-anglers&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">h4_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">no_crew_listed</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">h4_list</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;No crew to display&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h4_list</span><span class="p">))])</span> <span class="c1"># need to see if anything in the list == True to test if there are any captains listed</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">no_crew_listed</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">captains</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">table_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">num_captain_mates_listed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">table_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;small&#39;</span><span class="p">))</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">captain_mates_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="n">captain_mates_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">table_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;small&#39;</span><span class="p">)[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_captain_mates_listed</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="s1">&#39;Captain&#39;</span> <span class="ow">in</span> <span class="n">captain_mates_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">captains</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">table_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">captains</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="c1"># if every piece of data I pulled has the same length, then it matches up   </span>
+</span></span><span class="line"><span class="cl"><span class="nb">len</span><span class="p">(</span><span class="n">boat_names</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">sizes_and_brands</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">owners</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">ports</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">captains</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># create a dictionary</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;boat_name&#39;</span><span class="p">:</span><span class="n">boat_names</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="n">sizes_and_brands</span><span class="p">,</span> <span class="s1">&#39;owner&#39;</span><span class="p">:</span><span class="n">owners</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="n">ports</span><span class="p">,</span> <span class="s1">&#39;captain&#39;</span><span class="p">:</span><span class="n">captains</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># create a dataframe</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># save the dataframe to my computer - appending the annual number to the filename </span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&#34;/Users/Julian/Documents/projects/big_rock/data/participants/participants&#34;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&#34;.csv&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    
+</div>
+<!-- #endregion -->
+<br>
+<br>
+<br>
+<div class="meta-blog-subheader">
+~ Activity
+</div>
+<br>
+<p>The Activity Feed comes from boats radioing in certain actions like Hook Ups, Releases, Lost, and Boated. I explain what these terms mean in the Extra Info section below.</p>
+<br>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/activity.png" alt=""></p>
+<p class="caption">10 row sample of the Activity Feed dataframe I obtained. A "dolphin" is a nickname for a Mahi Mahi.</a></p>
+</div>
+<br>
+<br>
+<br>
+<p>This is the code that worked for the first few years. I had to do some minimal alterations after the website changed in 2022. They were similar so I didn&rsquo;t post both versions.</p>
+<br>
+<!-- #region Activity feed python codde -->
+<div class="highlight-wrapper">
+    <div class="highlight-before">python</div>
+    
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># get activity feed data </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">number</span> <span class="o">=</span> <span class="s2">&#34;64th&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;https://widgets.reeltimeapps.com/live/tournaments/&#34;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&#34;-annual-big-rock-blue-marlin-tournament/widgets/feed.json?day=0&amp;per=10000&amp;type=scores&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">page</span><span class="o">.</span><span class="n">status_code</span> <span class="c1"># a status code of 200 means the page downloaded successfully </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">newsfeed</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># include this line below for the 63rd annual:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">newsfeed</span> <span class="o">=</span> <span class="n">newsfeed</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="c1"># needed this to take out the long updates of only text with no boat names or times</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">boat_names</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">feed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">boat_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">[</span><span class="n">feed</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">activity</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">feed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">activity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">[</span><span class="n">feed</span><span class="p">]</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">time</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">feed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">[</span><span class="n">feed</span><span class="p">]</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">len</span><span class="p">(</span><span class="n">boat_names</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="c1"># check to make sure all have the same length </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;boat_name&#39;</span><span class="p">:</span><span class="n">boat_names</span><span class="p">,</span> <span class="s1">&#39;activity&#39;</span><span class="p">:</span><span class="n">activity</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="n">time</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&#34;/Users/Julian/Documents/projects/big_rock_2019/data/activity/activity&#34;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&#34;.csv&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    
+</div>
+<!-- #endregion -->
+<br>
+<br>
+<br>
+<br>
+<!-- #endregion -->
+<!-- #region Import -->
+<div class="meta-blog-header">
+Import <a name="import"></a>
+</div>
+<br>
+<p>I created helper functions and used <code>purrr:map_dfr()</code> to loop through the below file names. This will make it easier for future analyses when I have even more years of tournament data.</p>
+<pre>
+                    data/
+                    |-- activity/
+                    |   |-- activity59th.csv
+                    |   |-- activity60th.csv
+                    |   |-- activity61st.csv
+                    |   |-- activity62nd.csv
+                    |   |-- activity63rd.csv
+                    |   `-- activity64th.csv
+                    `-- participants/
+                        |-- participants59th.csv
+                        |-- participants60th.csv
+                        |-- participants61st.csv
+                        |-- participants62nd.csv
+                        |-- participants63rd.csv
+                        `-- participants64th.csv
+</pre>
+<div class="highlight-wrapper">
+    <div class="highlight-before">R</div>
+    
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">read_helper</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">df</span> <span class="o">&lt;-</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">mutate</span><span class="p">(</span><span class="n">annual</span> <span class="o">=</span> <span class="nf">str_sub</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">file</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="m">-8</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="m">-5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">df</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">files</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nf">list.files</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&#34;~/Documents/projects/big_rock/data/&#34;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">),</span> <span class="n">full.names</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">raw_partic</span> <span class="o">&lt;-</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">files</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="s">&#34;participants&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">map_dfr</span><span class="p">(</span><span class="n">read_helper</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">raw_activ</span> <span class="o">&lt;-</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">files</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="s">&#34;activity&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">map_dfr</span><span class="p">(</span><span class="n">read_helper</span><span class="p">)</span></span></span></code></pre></div>
+    
+</div>
+<!-- #endregion -->
+<br>
+<br>
+<br>
+<!-- #region Tidy -->
+<div class="meta-blog-header">
+Prep Data <a name="prepdata"></a>
+</div>
+<br>
+<p>The data was messy. Participants fill in their info in a text box, which meant spelling errors and naming variations for the same thing (like Fl, FL, FLA, Florida). The hook-up times sometimes changed if a site admin went in and added a picture to the posting. This usually happened for fish that were weighed, unfortunately.</p>
+<p>I did my best to clean the data with a brute force method of viewing unique instances and fixing any errors I saw. The 80/20 rule of time for cleaning data held true once again!</p>
+<p>Joining the two datasets was possible using the columns <code>boat_name</code> and <code>annual</code>. I created new columns that help facilitate easier filtering and analysis. I also filtered out unuseful posting activity. The only relevant activity were billfish species: blue marlin, white marlin, and sailfish. Although &ldquo;meat fish&rdquo; like Mahi Mahi, Wahoo, and Tuna can win a lot of money, I chose to ignore them because they are less of a challenge to catch when compared to billfish. Thankfully, there is consistency each year in how they post the activity, which enabled me to easily categorize and flag each posting.</p>
+ <br> 
+ <div class="figure">
+<p><img src="https://julian-swart.github.io/images/full_df.png" alt=""></p>
+<p class="caption">10 row sample of the joined and cleaned dataframe</a></p>
+</div>
+<br>
+<!-- #region tidy code -->
+<div class="highlight-wrapper">
+    <div class="highlight-before">R</div>
+    
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">options</span><span class="p">(</span><span class="n">warn</span> <span class="o">=</span> <span class="m">-1</span><span class="p">)</span> <span class="c1"># ignore the parsing to NA warnings</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># tidy participants data frame ----</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># a big manual fix</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df_partic</span> <span class="o">&lt;-</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">raw_partic</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">separate</span><span class="p">(</span><span class="n">type</span><span class="p">,</span> <span class="n">into</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;boat_length&#34;</span><span class="p">,</span> <span class="s">&#34;boat_brand&#34;</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34;&#39; &#34;</span><span class="p">,</span> <span class="n">remove</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">separate</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">into</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;city&#34;</span><span class="p">,</span> <span class="s">&#34;state&#34;</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34;,&#34;</span><span class="p">,</span> <span class="n">remove</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">boat_length</span> <span class="o">=</span> <span class="nf">suppressWarnings</span><span class="p">(</span><span class="nf">as.integer</span><span class="p">(</span><span class="n">boat_length</span><span class="p">)),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">state</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">state</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;NC|North&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;NC&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">state</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;FL|Fl|Florida|FLA&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;FL&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">state</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;MD|Maryland&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;MD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">state</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;VA&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;VA&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">state</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;DE&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;DE&#34;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">boat_name</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">           <span class="n">owner</span> <span class="o">==</span> <span class="s">&#39;Tom Groce&#39;</span> <span class="o">~</span> <span class="nf">paste</span><span class="p">(</span><span class="n">boat_name</span><span class="p">,</span> <span class="s">&#39;2&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="kc">TRUE</span> <span class="o">~</span> <span class="n">boat_name</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">boat_brand</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;BCBuddy Cannady|BC|Canady&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Buddy Cannady&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Grady|grady&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Grady White&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;C &amp; L&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;C&amp;L&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Cap N Squid&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Captain Squid&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;CONTENDER&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Contender&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Cabo&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Cabo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;BuddyDavis&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Buddy Davis&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Custom Carolina&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Custom Carolina&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Ocean&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Ocean Yacht&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Winter&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Winter&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Scarbourough|Scarbourgh|Ricky Scarbourh|Ricky Scarborough&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Scarborough&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Spencer&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Spencer&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Viking|VIKING&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Viking&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;YellowFin|YELLOWFIN&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Yellowfin&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;F and S&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;F&amp;S&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Forbes&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Forbes&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Guthrie&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Guthrie&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Hydra SPorts&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Hydrosport&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Island&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Island&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Merrit&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Merritt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Ocean&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Ocean Yacht&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;SCULLY|Sculley&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Scully&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;sea fox&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Sea Fox&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Sea Hunt&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Sea Hunt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;SPORTSMAN&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Sportsman&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Willis&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Willis&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="kc">TRUE</span> <span class="o">~</span> <span class="n">boat_brand</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;New BErn&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;New Bern&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Mt Pleasant&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Mount Pleasant&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Fredrick&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Frederick&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Summeland Key&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Summerland Key&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;N. Myrtle Beach&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Myrtle Beach&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Duck key&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Duck Key&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;wrightsville beach&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Wrightsville Beach&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Sunset Marina Ocean City&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Ocean City&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Oregon Inlet Fishing Center|Oregon Inlet FIshing Center|Oregon Inlet&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Oregon Inlet&#34;</span><span class="p">,</span>	
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Pirates Cove Marina&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Pirates Cove&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;murrells|Murrells|mMrrels&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Murrells Inlet&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Morehead|morehead&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Morehead City&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Pleasant|pleasant&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Mount Pleasant&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Lauderdale|lauderdale&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Fort Lauderdale&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;GEORGETOWN&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Georgetown&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Emerald|EMERALD|emerald&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Emerald Isle&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Ocean city|ocean city&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Ocean City&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;MajuroMarshall Islands&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Marshall Islands&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;Winston-Salem&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Winston Salem&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;southport&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Southport&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">city</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;AndrosBahamas&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Bahamas&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="kc">TRUE</span> <span class="o">~</span> <span class="n">city</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">city</span> <span class="o">==</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">city</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">=</span> <span class="nf">str_trim</span><span class="p">(</span><span class="n">city</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">state</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Sullivan&#39;s Island&#34;</span> <span class="o">~</span> <span class="s">&#34;SC&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Southlake&#34;</span> <span class="o">~</span> <span class="s">&#34;TX&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Sioux Falls&#34;</span> <span class="o">~</span> <span class="s">&#34;SD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Savannah&#34;</span> <span class="o">~</span> <span class="s">&#34;GA&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Quitman&#34;</span> <span class="o">~</span> <span class="s">&#34;TX&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Port Huron&#34;</span> <span class="o">~</span> <span class="s">&#34;MI&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;New Gretna&#34;</span> <span class="o">~</span> <span class="s">&#34;NJ&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Mount Pleasant&#34;</span> <span class="o">~</span> <span class="s">&#34;SC&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Little River&#34;</span> <span class="o">~</span> <span class="s">&#34;SC&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Greenwood&#34;</span> <span class="o">~</span> <span class="s">&#34;SC&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Comstock&#34;</span> <span class="o">~</span> <span class="s">&#34;TX&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Cape May&#34;</span> <span class="o">~</span> <span class="s">&#34;NJ&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Camden&#34;</span> <span class="o">~</span> <span class="s">&#34;SC&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#34;Athens&#34;</span> <span class="o">~</span> <span class="s">&#34;GA&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#39;Edisto Island&#39;</span> <span class="o">~</span> <span class="s">&#39;SC&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#39;Morehead City&#39;</span> <span class="o">~</span> <span class="s">&#39;NC&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">city</span> <span class="o">==</span> <span class="s">&#39;Ocean City&#39;</span> <span class="o">~</span> <span class="s">&#39;MD&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="kc">TRUE</span> <span class="o">~</span> <span class="n">state</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">unite</span><span class="p">(</span><span class="n">col</span> <span class="o">=</span> <span class="s">&#34;port&#34;</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;city&#34;</span><span class="p">,</span> <span class="s">&#34;state&#34;</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34; &#34;</span><span class="p">,</span> <span class="n">remove</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">boat_name</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">boat_length</span><span class="p">,</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span><span class="n">captain</span><span class="p">,</span> <span class="n">annual</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># tidy activity data frame ----</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># clean up the time column, round the time, filter out the meat fish (like dolphin, tuna, wahoo) and other irrelevant activity </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># make flag columns of hooked up, released, lost, boated, weighed, and fish species </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df_activ</span> <span class="o">&lt;-</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">raw_activ</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">activity</span><span class="p">),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;blue marlin|white marlin|sailfish&#34;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="o">!</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">activity</span><span class="p">),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;1st&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="nf">replace</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">time</span> <span class="o">==</span> <span class="s">&#34;Monday @ 1:37 AM&#34;</span><span class="p">,</span> <span class="s">&#34;Monday @ 1:37 PM&#34;</span><span class="p">),</span> <span class="c1"># found these two times were mislabeled as AM time</span>
+</span></span><span class="line"><span class="cl">         <span class="n">time</span> <span class="o">=</span> <span class="nf">replace</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">time</span> <span class="o">==</span> <span class="s">&#34;Monday @ 1:14 AM&#34;</span><span class="p">,</span> <span class="s">&#34;Monday @ 1:14 PM&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">separate</span><span class="p">(</span><span class="n">col</span> <span class="o">=</span> <span class="n">time</span><span class="p">,</span> <span class="n">into</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;weekday&#34;</span><span class="p">,</span> <span class="s">&#34;time&#34;</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34; @&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">blue_marlin</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">activity</span><span class="p">),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;blue marlin&#34;</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">white_marlin</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">activity</span><span class="p">),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;white marlin&#34;</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">sailfish</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">activity</span><span class="p">),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;sailfish&#34;</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">hooked_up</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">activity</span><span class="p">),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;hooked&#34;</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">lost</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">activity</span><span class="p">),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;lost&#34;</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">released</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">activity</span><span class="p">),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;released&#34;</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">boated</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">activity</span><span class="p">),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;boated&#34;</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">weighed</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">activity</span><span class="p">),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;weighed&#34;</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">species</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">           <span class="n">blue_marlin</span> <span class="o">==</span> <span class="m">1</span> <span class="o">~</span> <span class="s">&#34;Blue Marlin&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">white_marlin</span> <span class="o">==</span> <span class="m">1</span> <span class="o">~</span> <span class="s">&#34;White Marlin&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">sailfish</span> <span class="o">==</span> <span class="m">1</span> <span class="o">~</span> <span class="s">&#34;Sailfish&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">           <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;NA&#34;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">date</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;59th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Monday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2017-06-12&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;59th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Tuesday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2017-06-13&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;59th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Wednesday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2017-06-14&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;59th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Thursday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2017-06-15&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;59th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Friday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2017-06-16&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;59th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Saturday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2017-06-17&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;60th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Monday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2018-06-11&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;60th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Tuesday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2018-06-12&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;60th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Wednesday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2018-06-13&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;60th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Thursday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2018-06-14&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;60th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Friday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2018-06-15&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;60th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Saturday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2018-06-16&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;61st&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Monday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2019-06-10&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;61st&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Tuesday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2019-06-11&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;61st&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Wednesday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2019-06-12&#39;</span><span class="p">),</span> <span class="c1"># no one fished Thursday this year </span>
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;61st&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Friday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2019-06-14&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;61st&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Saturday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2019-06-15&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;62nd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Monday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2020-06-08&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;62nd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Tuesday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2020-06-09&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;62nd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Wednesday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2020-06-10&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;62nd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Thursday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2020-06-11&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;62nd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Friday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2020-06-12&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;62nd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Saturday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2020-06-13&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;63rd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Monday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2021-06-14&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;63rd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Tuesday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2021-06-15&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;63rd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Wednesday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2021-06-16&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;63rd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Thursday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2021-06-17&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;63rd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Friday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2021-06-18&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;63rd&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Saturday&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2021-06-19&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 13&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2022-06-13&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 14&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2022-06-14&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 15&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2022-06-15&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 16&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2022-06-16&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 17&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2022-06-17&#39;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 18&#39;</span> <span class="o">~</span> <span class="nf">ymd</span><span class="p">(</span><span class="s">&#39;2022-06-18&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">weekday</span> <span class="o">=</span> 
+</span></span><span class="line"><span class="cl">           <span class="nf">case_when</span><span class="p">(</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 13&#39;</span> <span class="o">~</span> <span class="s">&#39;Monday&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 14&#39;</span> <span class="o">~</span> <span class="s">&#39;Tuesday&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 15&#39;</span> <span class="o">~</span> <span class="s">&#39;Wednesday&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 16&#39;</span> <span class="o">~</span> <span class="s">&#39;Thursday&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 17&#39;</span> <span class="o">~</span> <span class="s">&#39;Friday&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">annual</span> <span class="o">==</span> <span class="s">&#39;64th&#39;</span> <span class="o">&amp;</span> <span class="n">weekday</span> <span class="o">==</span> <span class="s">&#39;Jun 18&#39;</span> <span class="o">~</span> <span class="s">&#39;Saturday&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="kc">TRUE</span> <span class="o">~</span> <span class="n">weekday</span>
+</span></span><span class="line"><span class="cl">           <span class="p">),</span> 
+</span></span><span class="line"><span class="cl">         <span class="n">round_time</span> <span class="o">=</span> <span class="nf">round_date</span><span class="p">(</span><span class="nf">parse_date_time</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="n">time</span><span class="p">),</span> <span class="s">&#39;Ymd HMp&#39;</span><span class="p">),</span> <span class="s">&#39;30 minutes&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># combine participants and activity for a final data frame that can be used for analysis ----</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">&lt;-</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">df_activ</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">left_join</span><span class="p">(</span><span class="n">df_partic</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;boat_name&#34;</span><span class="p">,</span> <span class="s">&#34;annual&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">boat_name</span><span class="p">,</span> <span class="n">boat_length</span><span class="p">,</span> <span class="n">boat_brand</span><span class="p">,</span> <span class="n">annual</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">activity</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">round_time</span><span class="p">,</span> <span class="n">blue_marlin</span><span class="p">,</span> <span class="n">white_marlin</span><span class="p">,</span> <span class="n">sailfish</span><span class="p">,</span> <span class="n">hooked_up</span><span class="p">,</span> <span class="n">lost</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">released</span><span class="p">,</span> <span class="n">boated</span><span class="p">,</span> <span class="n">weighed</span><span class="p">,</span> <span class="n">species</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">arrange</span><span class="p">(</span><span class="n">round_time</span><span class="p">,</span> <span class="n">annual</span><span class="p">,</span> <span class="n">boat_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">df_activ</span><span class="p">)</span> <span class="c1"># check to make sure these are equal - this means no duplication happened when joining</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># remove objects that are no longer needed ----</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">rm</span><span class="p">(</span><span class="n">list</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;raw_partic&#34;</span><span class="p">,</span> <span class="s">&#34;df_partic&#34;</span><span class="p">,</span> <span class="s">&#34;raw_activ&#34;</span><span class="p">,</span> <span class="s">&#34;df_activ&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> </span></span></code></pre></div>
+    
+</div>
+ <!-- #endregion -->
+<!-- #endregion -->
+<br>
+<br>
+<br>
+<br>
+<!-- #region Analysis -->
+<div class="meta-blog-header">
+Analysis <a name="analysis"></a>
+</div>
+<br>
+<p>I was interested in visualizing a few basic things and looking for trends. I don&rsquo;t think advanced statistical methods need to be applied in this case due to the limited data available.</p>
+<p>The sections below answer the questions I had, displays the code I wrote, a plot, and an insight summary.</p>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Boat Lengths
+</div>
+<br>
+<p>Task: Visualize boat length distributions for the 6 tournaments I have data for and look for any interesting trends.</p>
+<br>
+<div class="highlight-wrapper">
+    <div class="highlight-before">R</div>
+    
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">add_theme</span> <span class="o">&lt;-</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axis.text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">14</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">axis.title</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">16</span><span class="p">,</span> <span class="n">face</span> <span class="o">=</span> <span class="s">&#39;bold&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">participants</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">annual</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">boat_length</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_boxplot</span><span class="p">(</span><span class="n">width</span> <span class="o">=</span> <span class="m">.4</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">10</span><span class="p">))</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Annual&#34;</span><span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Boat Length in Feet&#34;</span><span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">add_theme</span></span></span></code></pre></div>
+    
+</div>
+<br>
+<br>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/boxplot.png" alt=""></p>
+<p class="caption">Distribution of boat lengths by annual year</a></p>
+</div>
+<p><span style="font-size:100%;color:cornflowerblue;">★</span> <font color="cornflowerblue">insight:</font></p>
+<p>Boat lengths of Participants varies widely from 21 feet to 97 feet! The distriburion has stayed about the same for the past 6 years according to the boxplots. You can also see the bulk of boat lengths reside in the 48-60 foot range, with a mean of 55-56 feet.</p>
+<p>Recent tournaments show the distribution getting thicker in the tails and in the first quartile. There are more smaller boats (20-25 foot), bigger boats (80-85 foot), and sub-mid length boats (42-48 foot). You can tell this by looking at the longer whisker lengths and longer boxes.</p>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Boat Length Performance
+</div>
+<br>
+<p>Looking at the above begs the question: Does a bigger boat give you an advantage?</p>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Boat Brands
+</div>
+<br>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Boat Brand Performance
+</div>
+<br>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Participant's Ports
+</div>
+<br>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Participant Overlap
+</div>
+<br>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Winning Weights
+</div>
+<br>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Hook-up Times
+</div>
+<br>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Annual Catch-Rate
+</div>
+<br>
+<!-- #endregion -->
+<br> 
+<br>
+<br>
+<!-- #region Import & Tidy -->
+<div class="meta-blog-header">
+Extra Info <a name="extrainfo"></a>
+</div>
+<div style="line-height:80%;">
+    <br>
+</div>
+<p>These boats are trolling 60-100 miles offshore in the Gulf Stream for the fish and the public is tuned in to what&rsquo;s happening in real time. There are a lot of other rules for the tournament that I won&rsquo;t get into here.</p>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Terms explained:
+</div>
+<ul>
+<li><strong>Port</strong>: City/State the boat is from</li>
+<li><strong>Hook Ups</strong>: When a fish bites your lure and you are now fighting it. This is refered to as being &ldquo;Hooked up&rdquo;.</li>
+<li><strong>Releases</strong>: When the fish is too small to keep, you let it go. This is called a &ldquo;Release&rdquo;. This earns you points towards the Release category.</li>
+<li><strong>Lost</strong>: When the fish gets off the hook or the line breaks it&rsquo;s considered &ldquo;Lost&rdquo;.</li>
+<li><strong>Boated</strong>: When the fish is a blue marlin and it is at least 400 pounds or 110 inches long, you can keep it and bring it back to land to be weighed. This is called &ldquo;Boated&rdquo;. The heaviest blue marlin wins the tournament (at least, that category of the tournament, which pays out the most money.)</li>
+</ul>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/grease_chart.jpg" alt=""></p>
+<p class="caption">Map of a portion of the NC Coast </a></p>
+</div>
+<!-- #endregion -->
+
+
+
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="comments">
+    <div class="py-3 content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-lg-8">
+                    <div class="comments">
+                        <script src="https://utteranc.es/client.js" repo=""
+                            issue-term="pathname" label="comment" theme="github-light" crossorigin="anonymous" async>
+                            </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<small><center>Website built with Hugo • Theme is a variation of Tanka • Hosted on Github Pages • Custom domain name from GoDaddy.com</center></small>
+
+<br>
+
+
+    
+
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" defer></script>
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js" defer></script>
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/sql.min.js" defer></script>
+        
+        <script>
+            window.addEventListener('load', function() {
+                hljs.initHighlighting();
+            }, true);
+        </script>
+    
+
+    
+
+    
+    
+        
+<script src="https://julian-swart.github.io/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+</body>
+
+</html>
