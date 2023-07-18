@@ -6,23 +6,41 @@
     <description>Recent content on Julian Swart</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Big Rock</title>
-      <link>https://julian-swart.github.io/blog/bigrock_part1/</link>
-      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
+      <title>Big Rock - Analysis</title>
+      <link>https://julian-swart.github.io/blog/bigrock_part2/</link>
+      <pubDate>Mon, 03 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://julian-swart.github.io/blog/bigrock_part1/</guid>
-      <description>The blue marlin fishing tournament called The Big Rock is an exciting event each year in Eastern North Carolina. For the past 6 years I have used &lt;code&gt;python&lt;/code&gt; to pull some interesting data from the website. In this post I display how.</description>
+      <guid>https://julian-swart.github.io/blog/bigrock_part2/</guid>
+      <description>I used the data from my previous Big Rock post to do some light analysis and data visualization using &lt;code&gt;R Studio&lt;/code&gt;.</description>
     </item>
     
     <item>
-      <title>Fake Business</title>
+      <title>JJ Furniture - Part 1</title>
       <link>https://julian-swart.github.io/blog/jj_furniture_part1/</link>
       <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://julian-swart.github.io/blog/jj_furniture_part1/</guid>
       <description>A colleague and I collaborated on an &lt;code&gt;AWS&lt;/code&gt; project to deepen our understanding of data engineering and to showcase some of our data science skills. We simulated a fake furniture company&amp;rsquo;s data to make it more realistc and fun.</description>
+    </item>
+    
+    <item>
+      <title>Big Rock - Web Scrape</title>
+      <link>https://julian-swart.github.io/blog/bigrock_part1/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://julian-swart.github.io/blog/bigrock_part1/</guid>
+      <description>The blue marlin fishing tournament called The Big Rock is an exciting event held each year in Eastern North Carolina. For the past 7 years I have used &lt;code&gt;python&lt;/code&gt; to pull some interesting data from the website. In this post I display how.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://julian-swart.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://julian-swart.github.io/about/</guid>
+      <description>Who Am I? My name is Julian Swart and I hold a Master&amp;rsquo;s in Business Analytics from the University of Tennessee. I started this website to show my enthusiam for statistics and computing. I enjoy improving upon my craft of problem solving and programming.</description>
     </item>
     
   </channel>

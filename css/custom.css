@@ -264,6 +264,19 @@ hr {
     color: #008000;
 }
 
+.content .meta-about-title {
+    font-weight: 400;
+    font-size: 1.45rem;
+    text-indent: 23px;
+    color: #000000;
+}
+
+.content .meta-about-text {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #000000;
+}
+
 .content .meta-blog-header {
     font-weight: 300;
     font-size: 1.75rem;
