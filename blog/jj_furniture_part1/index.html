@@ -115,7 +115,7 @@
                     </span>
 
                     <span class="reading-time middot">
-                        1 min read
+                        3 min read
                     </span>
 
                     <div class="d-none d-md-inline tags">
@@ -134,6 +134,211 @@
   
     <p>Instead of using an online dataset, a colleague and I decided to simulate what a real company&rsquo;s data looks like - since this is what we use in our day jobs (but are unable to share since it&rsquo;s their data). We came up with a fake business called JJ Furnitiure (JJ stands for Jon and Julian) and created artifical transaction, customer, and product data.</p>
 <p>This collaboration project stemmed from wanting to deepen our understanding of the entire data process and needing to showcase some of our capabilities to the public. Part 1 will display what we learned about data engineering. Part 2 will exhibit some of our data science skills.</p>
+<!-- #region insert rows python code -->
+<div class="highlight-wrapper">
+    <div class="highlight-before">python</div>
+    
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># import</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span> 
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">configparser</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">faker</span> <span class="kn">import</span> <span class="n">Faker</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># importing custom modules from upper directories</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mymodule_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">script_dir</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;database&#39;</span><span class="p">,</span> <span class="s1">&#39;table_setup&#39;</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">mymodule_dir</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sql_queries</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mymodule_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">script_dir</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;database&#39;</span><span class="p">,</span> <span class="s1">&#39;connection&#39;</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">mymodule_dir</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">postgres_db</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># connect to database </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-16&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">config_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">script_dir</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;database&#39;</span><span class="p">,</span> <span class="s1">&#39;connection&#39;</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">config_file_path</span> <span class="o">+=</span> <span class="s1">&#39;/config.ini&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">db_conn</span> <span class="o">=</span> <span class="n">postgres_db</span><span class="o">.</span><span class="n">PostgresConnector</span><span class="p">(</span><span class="n">config_file_path</span> <span class="o">=</span> <span class="n">config_file_path</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                       <span class="n">section</span> <span class="o">=</span> <span class="s1">&#39;jj-furniture&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                       <span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># insert data: colors</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">color_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="s1">&#39;dark grey&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;beige&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">color_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">db_conn</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sql_queries</span><span class="o">.</span><span class="n">insert_color_table</span><span class="p">,</span> <span class="p">[</span><span class="n">color</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># insert data: descriptions</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">description_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sofa&#39;</span><span class="p">,</span> <span class="s1">&#39;love-seat&#39;</span><span class="p">,</span> <span class="s1">&#39;dinette set&#39;</span><span class="p">,</span> <span class="s1">&#39;mattress&#39;</span><span class="p">,</span> <span class="s1">&#39;bedframe&#39;</span><span class="p">,</span> <span class="s1">&#39;nightstand&#39;</span><span class="p">,</span> <span class="s1">&#39;chest&#39;</span><span class="p">,</span> <span class="s1">&#39;dresser&#39;</span><span class="p">,</span> <span class="s1">&#39;chair&#39;</span><span class="p">,</span> <span class="s1">&#39;desk&#39;</span><span class="p">,</span> <span class="s1">&#39;desk chair&#39;</span><span class="p">,</span> <span class="s1">&#39;bookcase&#39;</span><span class="p">,</span> <span class="s1">&#39;coffee table&#39;</span><span class="p">,</span> <span class="s1">&#39;end table&#39;</span><span class="p">]</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">description</span> <span class="ow">in</span> <span class="n">description_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">db_conn</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sql_queries</span><span class="o">.</span><span class="n">insert_description_table</span><span class="p">,</span> <span class="p">[</span><span class="n">description</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># insert data: materials</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">material_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fabric&#39;</span><span class="p">,</span> <span class="s1">&#39;leather&#39;</span><span class="p">,</span> <span class="s1">&#39;wood&#39;</span><span class="p">,</span> <span class="s1">&#39;metal&#39;</span><span class="p">,</span> <span class="s1">&#39;plastic&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">material</span> <span class="ow">in</span> <span class="n">material_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">db_conn</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sql_queries</span><span class="o">.</span><span class="n">insert_material_table</span><span class="p">,</span> <span class="p">[</span><span class="n">material</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># insert data: products</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_ids</span><span class="p">(</span><span class="n">table_name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    select </span><span class="si">{}</span><span class="s1">_id
+</span></span></span><span class="line"><span class="cl"><span class="s1">    from </span><span class="si">{}</span><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">results</span> <span class="o">=</span> <span class="n">db_conn</span><span class="o">.</span><span class="n">queryall</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">table_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">table_name</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">results</span><span class="p">[</span><span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">material_ids</span> <span class="o">=</span> <span class="n">get_ids</span><span class="p">(</span><span class="s1">&#39;materials&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">color_ids</span> <span class="o">=</span> <span class="n">get_ids</span><span class="p">(</span><span class="s1">&#39;colors&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">description_ids</span> <span class="o">=</span> <span class="n">get_ids</span><span class="p">(</span><span class="s1">&#39;descriptions&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">products</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;material_id&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">material_ids</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;color_id&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">color_ids</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;description_id&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">description_ids</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;pieces&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">lognormal</span><span class="p">(</span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># make sure to give same cost to manufacturer </span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df_products</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">products</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_products</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">db_conn</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sql_queries</span><span class="o">.</span><span class="n">insert_product_table</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;material_id&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;color_id&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;description_id&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;pieces&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;cost&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="c1"># insert data: customers</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fake</span> <span class="o">=</span> <span class="n">Faker</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">store_type</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Store&#39;</span><span class="p">,</span> <span class="s1">&#39;Web&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">num_customers</span> <span class="o">=</span> <span class="mi">10000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">customers</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="n">fake</span><span class="o">.</span><span class="n">first_name</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="n">fake</span><span class="o">.</span><span class="n">last_name</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;email_address&#39;</span><span class="p">:</span> <span class="n">fake</span><span class="o">.</span><span class="n">email</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;dob&#39;</span><span class="p">:</span> <span class="n">fake</span><span class="o">.</span><span class="n">date_between</span><span class="p">(</span><span class="n">start_date</span> <span class="o">=</span><span class="s1">&#39;-70y&#39;</span><span class="p">,</span> <span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;-18y&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="n">fake</span><span class="o">.</span><span class="n">profile</span><span class="p">()[</span><span class="s1">&#39;sex&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;street_address&#39;</span><span class="p">:</span> <span class="n">fake</span><span class="o">.</span><span class="n">street_address</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">fake</span><span class="o">.</span><span class="n">random_element</span><span class="p">(</span><span class="n">elements</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;NC&#39;</span><span class="p">,</span> <span class="s1">&#39;SC&#39;</span><span class="p">,</span> <span class="s1">&#39;TN&#39;</span><span class="p">,</span> <span class="s1">&#39;FL&#39;</span><span class="p">,</span> <span class="s1">&#39;GA&#39;</span><span class="p">,</span> <span class="s1">&#39;MS&#39;</span><span class="p">,</span> <span class="s1">&#39;AL&#39;</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;date_created&#39;</span><span class="p">:</span> <span class="n">fake</span><span class="o">.</span><span class="n">date_between</span><span class="p">(</span><span class="n">start_date</span> <span class="o">=</span><span class="s1">&#39;-12y&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;create_source&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">store_type</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mf">.8</span><span class="p">,</span> <span class="mf">.2</span><span class="p">])</span> <span class="c1"># can give probability of selection to Store Type</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_customers</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df_customers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">customers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_customers</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">num_customers</span><span class="o">*</span><span class="mf">.25</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">db_conn</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sql_queries</span><span class="o">.</span><span class="n">insert_customer_table</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;email_address&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;dob&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;street_address&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;date_created&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;create_source&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="c1"># insert data: transactions</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_cost</span><span class="p">(</span><span class="n">product</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    select cost
+</span></span></span><span class="line"><span class="cl"><span class="s1">    from products
+</span></span></span><span class="line"><span class="cl"><span class="s1">    where product_id = </span><span class="si">{}</span><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">db_conn</span><span class="o">.</span><span class="n">queryall</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">product</span><span class="p">))[</span><span class="s1">&#39;cost&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">customer_id_list</span> <span class="o">=</span> <span class="n">get_ids</span><span class="p">(</span><span class="s1">&#39;customers&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">product_id_list</span> <span class="o">=</span> <span class="n">get_ids</span><span class="p">(</span><span class="s1">&#39;products&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">num_trans</span> <span class="o">=</span> <span class="mi">25000</span>
+</span></span><span class="line"><span class="cl"><span class="n">transaction_id</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">2023</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">weights</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">years</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">trans</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_trans</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">transaction_id</span> <span class="o">%</span> <span class="n">num_trans</span><span class="o">*</span><span class="mf">.25</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">num_items</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">year</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">weights</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">transaction_date</span> <span class="o">=</span> <span class="n">fake</span><span class="o">.</span><span class="n">date_between_dates</span><span class="p">(</span><span class="n">date_start</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">date_end</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-12-31&#39;</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customer_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">customer_id_list</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_items</span><span class="p">):</span> 
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">product_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">product_id_list</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line_item_number</span> <span class="o">=</span> <span class="n">item</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sale_or_return</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">sale_amount</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">get_cost</span><span class="p">(</span><span class="n">product_id</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span> <span class="o">=</span> <span class="mf">1.43</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">quantity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mf">.8</span><span class="p">,</span> <span class="mf">.15</span><span class="p">,</span> <span class="mf">.05</span><span class="p">])</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">db_conn</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sql_queries</span><span class="o">.</span><span class="n">insert_transactions_table</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="p">(</span><span class="n">transaction_id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">transaction_date</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">customer_id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">product_id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">line_item_number</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">sale_amount</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">quantity</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">sale_or_return</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                          
+</span></span><span class="line"><span class="cl">    <span class="n">transaction_id</span> <span class="o">+=</span> <span class="mi">1</span>                         </span></span></code></pre></div>
+    
+</div>
+<!-- #endregion -->
 
 
 
