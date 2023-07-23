@@ -115,7 +115,7 @@
                     </span>
 
                     <span class="reading-time middot">
-                        3 min read
+                        7 min read
                     </span>
 
                     <div class="d-none d-md-inline tags">
@@ -132,8 +132,335 @@
                 <div class="markdown blog-post-content">
                     <script defer language="javascript" type="text/javascript"  src="https://julian-swart.github.io/js/custom.js"></script>
   
-    <p>Instead of using an online dataset, a colleague and I decided to simulate what a real company&rsquo;s data looks like - since this is what we use in our day jobs (but are unable to share since it&rsquo;s their data). We came up with a fake business called JJ Furnitiure (JJ stands for Jon and Julian) and created artifical transaction, customer, and product data.</p>
-<p>This collaboration project stemmed from wanting to deepen our understanding of the entire data process and needing to showcase some of our capabilities to the public. Part 1 will display what we learned about data engineering. Part 2 will exhibit some of our data science skills.</p>
+    <br>
+<div class="meta-blog-subheader">
+Table of Contents
+</div>
+<blockquote>
+<p><a href="#intro">Intro</a><br>
+<a href="#arch">Architecting</a><br>
+<a href="#scripts">4 Scripts</a><br>
+<a href="#result">Results</a><br>
+<a href="#learned">What was Learned</a></p>
+</blockquote>
+<br>
+<p><font color="grey"> This post was in collaboration with <a href="linkedin.com/in/jonathan-adams-tn" title="Click to see his LinkedIn">Jonathan Adams</a> </font></p>
+<br>
+<!-- #region Intro -->
+<div class="meta-blog-header">
+Intro <a name="intro"></a>
+</div>
+<br>
+<p>Instead of using a common online dataset, a colleague and I decided to simulate what a real company&rsquo;s data looks like. This way, we could learn more about data engineering and use a data structure that we were familiar with. We called the fake company JJ Furnitiure (JJ stands for Julian and Jon) and created artifical transaction, customer, and product data.</p>
+<p>This project stemmed from wanting to deepen our understanding of the entire data process and needing to showcase some of our capabilities to the public. This post, Part 1, is about data engineering and our learnings. Part 2 will be data science oriented.</p>
+<!-- #endregion -->
+<br>
+<br>
+<!-- #region Architecting -->
+<div class="meta-blog-header">
+Architecting <a name="arch"></a>
+</div>
+<br>
+<p>ERD: Entity Relationship Diagram</p>
+<!-- #endregion -->
+<br>
+<br>
+<!-- #region 4 Scripts -->
+<div class="meta-blog-header">
+4 Scripts <a name="scripts"></a>
+</div>
+<br>
+<div class="meta-blog-subheader">
+1) Postgres connector
+</div>
+<br>
+<!-- #region postgres connector python code -->
+<div class="highlight-wrapper">
+    <div class="highlight-before">python</div>
+    
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">psycopg2</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">configparser</span> <span class="kn">import</span> <span class="n">ConfigParser</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">PostgresConnector</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;Used for creating connection to MySQL database.
+</span></span></span><span class="line"><span class="cl"><span class="s1">    Has methods for pulling data and performing database
+</span></span></span><span class="line"><span class="cl"><span class="s1">    updates&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file_path</span><span class="o">=</span><span class="s1">&#39;config.ini&#39;</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-16&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;&#39;&#39;Initialize connection to MySQL database.
+</span></span></span><span class="line"><span class="cl"><span class="s1">        This requires a config file with named section
+</span></span></span><span class="line"><span class="cl"><span class="s1">        containing the following fields:
+</span></span></span><span class="line"><span class="cl"><span class="s1">        HOST, PORT, USER, PASSWORD, DATABASE&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cf</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">config_file_path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">db_host</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="s1">&#39;HOST&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">db_port</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">getint</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="s1">&#39;PORT&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">db_user</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="s1">&#39;USER&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">db_pwd</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="s1">&#39;PASSWORD&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">db_name</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span><span class="s1">&#39;DATABASE&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">db_host</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                        <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">db_port</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">                                        <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">db_user</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                        <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">db_pwd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                        <span class="n">dbname</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">db_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">queryall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;&#39;&#39;Executes SQL query and returns the fetched dataset&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">params</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> \
+</span></span><span class="line"><span class="cl">                       <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">))]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">finally</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">return_df</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;&#39;&#39;Executes SQL queries used for updating database
+</span></span></span><span class="line"><span class="cl"><span class="s1">        such as insert and update (CRUD operations)&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">params</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">finally</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;&#39;&#39;Close connection to MySQL database&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></span></span></code></pre></div>
+    
+</div>
+<!-- #endregion -->
+<br> 
+<br>
+<br> 
+<div class="meta-blog-subheader">
+2) SQL queries
+</div>
+<br>
+<!-- #region SQL queries script python code -->
+<div class="highlight-wrapper">
+    <div class="highlight-before">python</div>
+    
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c1"># DROP TABLES</span>
+</span></span><span class="line"><span class="cl"><span class="n">drop_customer_table</span> <span class="o">=</span> <span class="s2">&#34;DROP TABLE IF EXISTS customers&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">drop_product_table</span> <span class="o">=</span> <span class="s2">&#34;DROP TABLE IF EXISTS products&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">drop_material_table</span> <span class="o">=</span> <span class="s2">&#34;DROP TABLE IF EXISTS materials&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">drop_color_table</span> <span class="o">=</span> <span class="s2">&#34;DROP TABLE IF EXISTS colors&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">drop_description_table</span> <span class="o">=</span> <span class="s2">&#34;DROP TABLE IF EXISTS desription&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">drop_transactions_table</span> <span class="o">=</span> <span class="s2">&#34;DROP TABLE IF EXISTS transactions&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># CREATE TABLES</span>
+</span></span><span class="line"><span class="cl"><span class="n">create_customer_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">CREATE TABLE IF NOT EXISTS customers
+</span></span></span><span class="line"><span class="cl"><span class="s2">(
+</span></span></span><span class="line"><span class="cl"><span class="s2">     customer_id    SERIAL PRIMARY KEY,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     first_name     VARCHAR(200),
+</span></span></span><span class="line"><span class="cl"><span class="s2">     last_name      VARCHAR(200),
+</span></span></span><span class="line"><span class="cl"><span class="s2">     email_address  VARCHAR(200),
+</span></span></span><span class="line"><span class="cl"><span class="s2">     dob            DATE,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     gender         VARCHAR(100),
+</span></span></span><span class="line"><span class="cl"><span class="s2">     street_address VARCHAR(1000),
+</span></span></span><span class="line"><span class="cl"><span class="s2">     state          VARCHAR(20),
+</span></span></span><span class="line"><span class="cl"><span class="s2">     date_created   DATE,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     create_source  VARCHAR(100)
+</span></span></span><span class="line"><span class="cl"><span class="s2"> )
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">create_product_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">CREATE TABLE IF NOT EXISTS products
+</span></span></span><span class="line"><span class="cl"><span class="s2">(
+</span></span></span><span class="line"><span class="cl"><span class="s2">     product_id       SERIAL PRIMARY KEY,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     material_id      INT,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     color_id         INT,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     description_id   INT,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     pieces           INT,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     cost             NUMERIC
+</span></span></span><span class="line"><span class="cl"><span class="s2"> )
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">create_material_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">CREATE TABLE IF NOT EXISTS materials
+</span></span></span><span class="line"><span class="cl"><span class="s2">(
+</span></span></span><span class="line"><span class="cl"><span class="s2">     material_id      SERIAL PRIMARY KEY,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     material_desc    VARCHAR(1000)
+</span></span></span><span class="line"><span class="cl"><span class="s2"> )
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">create_color_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">CREATE TABLE IF NOT EXISTS colors
+</span></span></span><span class="line"><span class="cl"><span class="s2">(
+</span></span></span><span class="line"><span class="cl"><span class="s2">     color_id       SERIAL PRIMARY KEY,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     color_desc     VARCHAR(1000)
+</span></span></span><span class="line"><span class="cl"><span class="s2"> )
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">create_description_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">CREATE TABLE IF NOT EXISTS descriptions
+</span></span></span><span class="line"><span class="cl"><span class="s2">(
+</span></span></span><span class="line"><span class="cl"><span class="s2">     description_id          SERIAL PRIMARY KEY,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     product_description     VARCHAR(1000)
+</span></span></span><span class="line"><span class="cl"><span class="s2"> )
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">create_transactions_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">CREATE TABLE IF NOT EXISTS transactions
+</span></span></span><span class="line"><span class="cl"><span class="s2">(
+</span></span></span><span class="line"><span class="cl"><span class="s2">     id                  SERIAL PRIMARY KEY,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     transaction_id          INT,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     transaction_date        DATE,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     customer_id             INT,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     product_id              INT,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     line_item_number        SMALLINT,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     sale_amount             NUMERIC(20),
+</span></span></span><span class="line"><span class="cl"><span class="s2">     quantity                SMALLINT,
+</span></span></span><span class="line"><span class="cl"><span class="s2">     sale_or_return          INT
+</span></span></span><span class="line"><span class="cl"><span class="s2"> )
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># INSERT QUERIES</span>
+</span></span><span class="line"><span class="cl"><span class="n">insert_customer_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">INSERT INTO customers (first_name, last_name, email_address,
+</span></span></span><span class="line"><span class="cl"><span class="s2">dob, gender, street_address, state, date_created, create_source)
+</span></span></span><span class="line"><span class="cl"><span class="s2">VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">insert_product_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">INSERT INTO products (material_id, color_id, description_id, pieces, cost)
+</span></span></span><span class="line"><span class="cl"><span class="s2">VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">insert_material_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">INSERT INTO materials (material_desc)
+</span></span></span><span class="line"><span class="cl"><span class="s2">VALUES (</span><span class="si">%s</span><span class="s2">)
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">insert_color_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">INSERT INTO colors (color_desc)
+</span></span></span><span class="line"><span class="cl"><span class="s2">VALUES (</span><span class="si">%s</span><span class="s2">)
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">insert_description_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">INSERT INTO descriptions (product_description)
+</span></span></span><span class="line"><span class="cl"><span class="s2">VALUES (</span><span class="si">%s</span><span class="s2">)
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">insert_transactions_table</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">INSERT INTO transactions (transaction_id, transaction_date, customer_id, product_id, line_item_number, sale_amount, quantity, sale_or_return)
+</span></span></span><span class="line"><span class="cl"><span class="s2">VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># QUERY LISTS</span>
+</span></span><span class="line"><span class="cl"><span class="n">drop_table_queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">drop_customer_table</span><span class="p">,</span> <span class="n">drop_product_table</span><span class="p">,</span> <span class="n">drop_material_table</span><span class="p">,</span> <span class="n">drop_color_table</span><span class="p">,</span> <span class="n">drop_description_table</span><span class="p">,</span> <span class="n">drop_transactions_table</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">create_table_queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">create_customer_table</span><span class="p">,</span> <span class="n">create_product_table</span><span class="p">,</span> <span class="n">create_material_table</span><span class="p">,</span> <span class="n">create_color_table</span><span class="p">,</span> <span class="n">create_description_table</span><span class="p">,</span> <span class="n">create_transactions_table</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">insert_table_queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">insert_customer_table</span><span class="p">,</span> <span class="n">insert_product_table</span><span class="p">,</span> <span class="n">insert_material_table</span><span class="p">,</span> <span class="n">insert_color_table</span><span class="p">,</span> <span class="n">insert_description_table</span><span class="p">,</span> <span class="n">insert_transactions_table</span><span class="p">]</span></span></span></code></pre></div>
+    
+</div>
+<!-- #endregion -->
+<br> 
+<br> 
+<br> 
+<div class="meta-blog-subheader">
+3) Create tables
+</div>
+<br>
+<!-- #region create tables script python code -->
+<div class="highlight-wrapper">
+    <div class="highlight-before">python</div>
+    
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">psycopg2</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sql_queries</span> <span class="kn">import</span> <span class="n">create_table_queries</span><span class="p">,</span> <span class="n">drop_table_queries</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">configparser</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ENCODING</span><span class="o">=</span><span class="s1">&#39;utf-16&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">drop_tables</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span> <span class="n">conn</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Loops through list of drop table queries
+</span></span></span><span class="line"><span class="cl"><span class="s2">    and drops tables listed in sql_queries.py
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">drop_table_queries</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_tables</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span> <span class="n">conn</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Loops through list of create table queries
+</span></span></span><span class="line"><span class="cl"><span class="s2">    and creates tables listed in sql_queries.py
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">create_table_queries</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Drops and creates tables as outlined in sql_queries.py
+</span></span></span><span class="line"><span class="cl"><span class="s2">    You will need the following information in your config.init file:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    HOST
+</span></span></span><span class="line"><span class="cl"><span class="s2">    USER
+</span></span></span><span class="line"><span class="cl"><span class="s2">    PASSWORD
+</span></span></span><span class="line"><span class="cl"><span class="s2">    DATABASE
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">ENCODING</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">HOST</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;jj-furniture&#39;</span><span class="p">,</span><span class="s1">&#39;host&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">USER</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;jj-furniture&#39;</span><span class="p">,</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">PASSWORD</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;jj-furniture&#39;</span><span class="p">,</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DATABASE</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;jj-furniture&#39;</span><span class="p">,</span><span class="s1">&#39;database&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">HOST</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">USER</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">,</span> <span class="n">dbname</span><span class="o">=</span><span class="n">DATABASE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">        <span class="c1">#drop_tables(cur, conn)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">create_tables</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="k">finally</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></span></span></code></pre></div>
+    
+</div>
+<!-- #endregion -->
+<br> 
+<br>
+<br> 
+<div class="meta-blog-subheader">
+4) Insert rows of fake data
+</div>
+<br>
 <!-- #region insert rows python code -->
 <div class="highlight-wrapper">
     <div class="highlight-before">python</div>
@@ -339,6 +666,43 @@
     
 </div>
 <!-- #endregion -->
+<!-- #endregion -->
+<br> 
+<br>
+<br> 
+<!-- #region Results -->
+<div class="meta-blog-header">
+Results <a name="result"></a>
+</div>
+<br>
+<!-- #endregion -->
+<br> 
+<br>
+<!-- #region What was Learned -->
+<div class="meta-blog-header">
+What was Learned <a name="learned"></a>
+</div>
+<br>
+<ul>
+<li>what an RDS is</li>
+<li>how to set up an RDS in AWS with postgres</li>
+<li>connecting using DBeaver sql client</li>
+<li>better github practices (it is not straightforward, I don&rsquo;t care what you say)</li>
+<li>wrtiting python scripts for automating table creation and inserting rows</li>
+</ul>
+<br>
+<p>Things we didn&rsquo;t do but know need to happen:</p>
+<ul>
+<li>automating data quality checks</li>
+<li>slow-changing dimensions</li>
+<li>design fact and dimension tables (ETL)</li>
+<li>data security</li>
+<li>group permissions</li>
+<li>privacy data omissions</li>
+</ul>
+<br>
+<p>This was a fun project and I feel more in-tune with the challenges data engineers face. Mainly, what it takes to architect a data managment solution that is efficient, secure, and makes end-users happy. It should be said that we are aware real-world data is a lot messier and larger than the watered-down example we used here.</p>
+<!-- #endregion -->
 
 
 
@@ -399,6 +763,9 @@
     
     
         
+<script src="https://julian-swart.github.io/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 
     
 </body>
