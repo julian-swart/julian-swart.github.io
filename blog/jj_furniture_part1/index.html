@@ -115,7 +115,7 @@
                     </span>
 
                     <span class="reading-time middot">
-                        7 min read
+                        10 min read
                     </span>
 
                     <div class="d-none d-md-inline tags">
@@ -138,13 +138,14 @@ Table of Contents
 </div>
 <blockquote>
 <p><a href="#intro">Intro</a><br>
-<a href="#arch">Architecting</a><br>
-<a href="#scripts">4 Scripts</a><br>
+<a href="#arch">Data Model</a><br>
+<a href="#aws">AWS</a><br>
+<a href="#scripts">Scripts</a><br>
 <a href="#result">Results</a><br>
 <a href="#learned">What was Learned</a></p>
 </blockquote>
 <br>
-<p><font color="grey"> This post was in collaboration with <a href="https://linkedin.com/in/jonathan-adams-tn" title="Click to see his LinkedIn">Jonathan Adams</a> </font></p>
+<p><font color="grey"> This post was in collaboration with <a href="https://linkedin.com/in/jonathan-adams-tn" title="Click to see his LinkedIn">Jonathan Adams.</a> </font></p>
 <br>
 <!-- #region Intro -->
 <div class="meta-blog-header">
@@ -156,11 +157,25 @@ Intro <a name="intro"></a>
 <!-- #endregion -->
 <br>
 <br>
-<!-- #region Architecting -->
+<!-- #region Data Model -->
 <div class="meta-blog-header">
-Architecting <a name="arch"></a>
+Data Model <a name="arch"></a>
 </div>
 <br>
+<p>The big thing we learned was data engineers use two types of databases to accomplish the below tasks:</p>
+<ul>
+<li>loading in raw data from source systems (OLTP: writing data | recording system | AWS RDS)</li>
+<li>designing tables that benefit end-users (OLAP: reading data | analytical system | AWS Redshift)</li>
+</ul>
+<p>We discovered that the below image is a common data model that teams follow. They load in their raw transactional data into an OLTP type system. This type is best for writing data - things like insert, update, and delete. The next part is ETL (extract, transform, load). Here, you design a star schema and load in the results to an OLAP database. This type is best for reading data, aka SQL queries. End-users who do analytics and make dashboards benefit from this system.</p>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/oltp_etl_olap.png" alt=""></p>
+<p class="caption">Typical cycle of data processing for a business </a></p>
+</div>
+<br>
+<br>
+<p>For our project, we wanted to create raw source data that somewhat imitated reality. This type of data is usually messy and needs wrangling. We also tried to design it how real data engineers would. Generally, this consists of having small tables that you would later join on in an ETL process. This enables the engineer to more easily keep track of and manipulate tables. The below image is the OLTP system we designed.</p>
 <div class="figure">
 <p><img src="https://julian-swart.github.io/images/erd_raw.png" alt=""></p>
 <p class="caption">ERD: Entity Relationship Diagram of our OLTP database </a></p>
@@ -168,9 +183,66 @@ Architecting <a name="arch"></a>
 <!-- #endregion -->
 <br>
 <br>
-<!-- #region 4 Scripts -->
+<br>
+<br>
+<!-- #region AWS -->
 <div class="meta-blog-header">
-4 Scripts <a name="scripts"></a>
+AWS <a name="aws"></a>
+</div>
+<br>
+<p>Following our above data model, we first needed to create an OLTP type structure for our transactional database. Since businesses create data through transactions, we need a place to store this data. The purpose of this database is for writing data, not reading. End-users should never see this database.</p>
+<p>We decided to use Amazon Web Services free tier to accomplish this. The OLTP model in AWS is called RDS (relational database service). This uses row-rise storage because apparently it&rsquo;s the most efficient for writing data. The OLAP model in AWS is the familiar Redshift (we didn&rsquo;t do this for our project). Redshfit stores data column-wise. For whatever reason that makes it process queries faster.</p>
+<p>To get started, we made an AWS root-user account and went to the Amazon service called RDS and clicked &ldquo;Create database&rdquo;.</p>
+<br>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/aws_signin.jpeg" alt=""></p>
+<p class="caption">AWS Sign-in page </a></p>
+</div>
+<br>
+<br>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/aws_create_db.png" alt=""></p>
+<p class="caption">Amazon RDS page for creating our OLTP database </a></p>
+</div>
+<br>
+<br>
+<br>
+<p>After going through the steps to make the RDS on Amazon&rsquo;s website, we then needed a SQL client to connect to it. We chose to use the common SQL langauge called <code>postgres</code> when we created our RDS. DBeaver is a good SQL client for Mac&rsquo;s, so we used that.</p>
+<p>Of course there were errors when we tried to connect to the database. Thankfully, others had encountered these hurdles before and made good posts online on how to overcome them. Main issues were:</p>
+<ul>
+<li>&ldquo;Connection timeout&rdquo; error. Solution: make a security group with Amazon EC2. This was not an intuitive design by Amazon.</li>
+<li>Our database name didn&rsquo;t work for the connection. Solution: use the default name &ldquo;postgres&rdquo;, not what you named your database on the Amazon RDS website&hellip;geez.</li>
+</ul>
+<br>
+<p>Here are screenshots of the solutions we found online that saved us:</p>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/aws_issue1.png" alt=""></p>
+<p class="caption">Database connection hurdle #1 </a></p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/aws_issue2.png" alt=""></p>
+<p class="caption">Database connection hurdle #2 </a></p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<p>Thanks to the above two posts, we connected to the database. It was with much gratitude that we could then turn our attention to more fun stuff, like writing some <code>python</code> code that would simulate our fake furniture company&rsquo;s data and insert it into RDS tables.</p>
+<!-- #endregion -->
+<br>
+<br>
+<br>
+<br>
+<!-- #region Scripts -->
+<div class="meta-blog-header">
+Scripts <a name="scripts"></a>
 </div>
 <br>
 <div class="meta-blog-subheader">
@@ -679,6 +751,20 @@ Results <a name="result"></a>
 </div>
 <br>
 <!-- #endregion -->
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/db_connection.png" alt=""></p>
+<p class="caption">DBeaver database connection to our Amazon RDS </a></p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/db_query.png" alt=""></p>
+<p class="caption">Image showing the OLTP tables and some results of our fake customer dataset</a></p>
+</div>
+<br> 
+<br>
 <br> 
 <br>
 <!-- #region What was Learned -->
