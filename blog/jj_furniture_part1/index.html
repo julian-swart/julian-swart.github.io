@@ -152,8 +152,9 @@ Table of Contents
 Intro <a name="intro"></a>
 </div>
 <br>
-<p>Instead of using a common online dataset, a colleague and I decided to simulate what a real company&rsquo;s data looks like. This way, we could learn more about data engineering and use a data structure that we were familiar with. We called the fake company JJ Furnitiure (JJ stands for Julian and Jon) and created artifical transaction, customer, and product data.</p>
-<p>This project stemmed from wanting to deepen our understanding of the entire data process and needing to showcase some of our capabilities to the public. This post, Part 1, is about data engineering and our learnings. Part 2 will be data science oriented.</p>
+<p>As data scientists, our job is mainly focused on using data to solve business questions, not engineering the enviroment for our use. However, a colleague and I were keen to learn more about the nuances of this work because we were suddenly tasked with some of these data engineering responsbilities. And so this collaboration project begun. We each needed to learn it for our jobs and saw it as a chance to build our online portfolio.</p>
+<p>Instead of using a common online dataset, we decided to simulate what a real company&rsquo;s data looks like. This allowed the project to be more fun and gave us a data structure we were familiar with. We called the fake company JJ Furnitiure (JJ stands for Julian and Jon) and we created artifical transaction, customer, and product data.</p>
+<p>This post (Part 1) is about data engineering and our learnings. Part 2 will be data science oriented. Thanks for reading and I hope you enjoy!</p>
 <!-- #endregion -->
 <br>
 <br>
@@ -162,12 +163,12 @@ Intro <a name="intro"></a>
 Data Model <a name="arch"></a>
 </div>
 <br>
-<p>The big thing we learned was data engineers use two types of databases to accomplish the below tasks:</p>
+<p>Data engineers use two types of databases for their main tasks of:</p>
 <ul>
 <li>loading in raw data from source systems (OLTP: writing data | recording system | AWS RDS)</li>
 <li>designing tables that benefit end-users (OLAP: reading data | analytical system | AWS Redshift)</li>
 </ul>
-<p>We discovered that the below image is a common data model that teams follow. They load in their raw transactional data into an OLTP type system. This type is best for writing data - things like insert, update, and delete. The next part is ETL (extract, transform, load). Here, you design a star schema and load in the results to an OLAP database. This type is best for reading data, aka SQL queries. End-users who do analytics and make dashboards benefit from this system.</p>
+<p>The below image is the common data model that teams follow. They load in their raw transactional data into an OLTP (online transactional processing) database. This is best for writing data - actions like insert, update, and delete. Next is ETL (extract, transform, load). Here, you design a star schema and load in the results to an OLAP (online analytical processing) database. This is best for reading data, aka SQL queries. End-users who do analytics and make dashboards benefit from this system.</p>
 <br>
 <div class="figure">
 <p><img src="https://julian-swart.github.io/images/oltp_etl_olap.png" alt=""></p>
@@ -176,6 +177,7 @@ Data Model <a name="arch"></a>
 <br>
 <br>
 <p>For our project, we wanted to create raw source data that somewhat imitated reality. This type of data is usually messy and needs wrangling. We also tried to design it how real data engineers would. Generally, this consists of having small tables that you would later join on in an ETL process. This enables the engineer to more easily keep track of and manipulate tables. The below image is the OLTP system we designed.</p>
+<br>
 <div class="figure">
 <p><img src="https://julian-swart.github.io/images/erd_raw.png" alt=""></p>
 <p class="caption">ERD: Entity Relationship Diagram of our OLTP database </a></p>
@@ -190,9 +192,9 @@ Data Model <a name="arch"></a>
 AWS <a name="aws"></a>
 </div>
 <br>
-<p>Following our above data model, we first needed to create an OLTP type structure for our transactional database. Since businesses create data through transactions, we need a place to store this data. The purpose of this database is for writing data, not reading. End-users should never see this database.</p>
-<p>We decided to use Amazon Web Services free tier to accomplish this. The OLTP model in AWS is called RDS (relational database service). This uses row-rise storage because apparently it&rsquo;s the most efficient for writing data. The OLAP model in AWS is the familiar Redshift (we didn&rsquo;t do this for our project). Redshfit stores data column-wise. For whatever reason that makes it process queries faster.</p>
-<p>To get started, we made an AWS root-user account and went to the Amazon service called RDS and clicked &ldquo;Create database&rdquo;.</p>
+<p>Businesses create data through transactions and need to store it somewhere. That&rsquo;s where the OLTP database comes in. End-users should never see this database.</p>
+<p>We used Amazon Web Services free tier to create our OLTP database. In AWS, it&rsquo;s called RDS (relational database service). It has row-wise storage because it is the most efficient for writing data. Conversely, the OLAP model in AWS is the familiar Redshift. It stores data column-wise to minimize query processesing time.</p>
+<p>For this basic project, all we had to do is make an AWS account and go to the service called RDS and click &ldquo;Create database&rdquo;.</p>
 <br>
 <br>
 <div class="figure">
@@ -209,8 +211,8 @@ AWS <a name="aws"></a>
 <br>
 <br>
 <br>
-<p>After going through the steps to make the RDS on Amazon&rsquo;s website, we then needed a SQL client to connect to it. We chose to use the common SQL langauge called <code>postgres</code> when we created our RDS. DBeaver is a good SQL client for Mac&rsquo;s, so we used that.</p>
-<p>Of course there were errors when we tried to connect to the database. Thankfully, others had encountered these hurdles before and made good posts online on how to overcome them. Main issues were:</p>
+<p>We followed the steps the website took us through to make the RDS. One of the decision points was which SQL language to use - we chose <code>postgres</code> because it&rsquo;s common and familiar. Next, we needed a SQL client to connect to it. DBeaver is a good for Mac&rsquo;s, so we used that.</p>
+<p>At this point is where we encountered friction. Thankfully, others had experienced the same errors and made good posts online on how to overcome them. Main issues were:</p>
 <ul>
 <li>&ldquo;Connection timeout&rdquo; error. Solution: make a security group with Amazon EC2. This was not an intuitive design by Amazon.</li>
 <li>Our database name didn&rsquo;t work for the connection. Solution: use the default name &ldquo;postgres&rdquo;, not what you named your database on the Amazon RDS website&hellip;geez.</li>
@@ -233,8 +235,21 @@ AWS <a name="aws"></a>
 <br>
 <br>
 <br>
+<p>We finally achieved a successful connection thanks to the above two posts and were glad to begin the next stage of writing <code>python</code> code to simulate our fake furniture company&rsquo;s data. This, along with learning how to automate table creation and data insertion into the database we just made.</p>
 <br>
-<p>We connected to the database finally thanks to the above two posts. It was with much gratitude that we could then turn our attention to more fun stuff, like writing some <code>python</code> code that would simulate our fake furniture company&rsquo;s data and insert it into RDS tables.</p>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/db_connection.png" alt=""></p>
+<p class="caption">DBeaver database connection window to our Amazon RDS </a></p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="figure">
+<p><img src="https://julian-swart.github.io/images/db_connection_test.png" alt=""></p>
+<p class="caption">A great sight! Successful database connection </a></p>
+</div>
 <!-- #endregion -->
 <br>
 <br>
