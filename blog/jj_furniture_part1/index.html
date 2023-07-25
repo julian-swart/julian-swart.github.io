@@ -176,7 +176,7 @@ Data Model <a name="arch"></a>
 </div>
 <br>
 <br>
-<p>For our project, we wanted to create raw source data that somewhat imitated reality. This type of data is usually messy and needs wrangling. We also tried to design it how real data engineers would. Generally, this consists of having small tables that you would later join on in an ETL process. This enables the engineer to more easily keep track of and manipulate tables. The below image is the OLTP system we designed.</p>
+<p>For our project, we wanted to create raw source data that somewhat imitated reality. This type of data is usually messy and needs wrangling. We also tried to design it how real data engineers would. Generally, this consists of having small tables that you would later join on in an ETL process. This enables the engineer to more easily keep track of and manipulate tables. Here is the OLTP database we designed.</p>
 <br>
 <div class="figure">
 <p><img src="https://julian-swart.github.io/images/erd_raw.png" alt=""></p>
@@ -193,7 +193,7 @@ AWS <a name="aws"></a>
 </div>
 <br>
 <p>Businesses create data through transactions and need to store it somewhere. That&rsquo;s where the OLTP database comes in. End-users should never see this database.</p>
-<p>We used Amazon Web Services free tier to create our OLTP database. In AWS, it&rsquo;s called RDS (relational database service). It has row-wise storage because it is the most efficient for writing data. Conversely, the OLAP model in AWS is the familiar Redshift. It stores data column-wise to minimize query processesing time.</p>
+<p>We used Amazon Web Services free tier to create our OLTP database. In AWS, it&rsquo;s called RDS (relational database service). It has row-wise storage which is optimized for writing data. Conversely, the OLAP model in AWS is the familiar Redshift. It stores data column-wise to minimize query processesing time.</p>
 <p>For this basic project, all we had to do is make an AWS account and go to the service called RDS and click &ldquo;Create database&rdquo;.</p>
 <br>
 <br>
@@ -766,10 +766,6 @@ Results <a name="result"></a>
 </div>
 <br>
 <!-- #endregion -->
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/db_connection.png" alt=""></p>
-<p class="caption">DBeaver database connection to our Amazon RDS </a></p>
-</div>
 <br>
 <br>
 <br>
