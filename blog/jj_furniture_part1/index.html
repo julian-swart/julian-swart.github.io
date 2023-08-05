@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://julian-swart.github.io/css/lightbox.min.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> JJ Furniture - Part 1 - Julian Swart </title>
@@ -170,16 +171,78 @@ Data Model <a name="arch"></a>
 </ul>
 <p>The below image is the usual data model that teams follow. They load in their raw transactional data into an OLTP (online transactional processing) database. This is best for writing data - actions like insert, update, and delete. Next is ETL (extract, transform, load). Here, you design a star schema and load in the results to an OLAP (online analytical processing) database. This is best for reading data, aka SQL queries. End-users who do analytics and make dashboards benefit from this system.</p>
 <br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/oltp_etl_olap.png" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="oltp_etl_olap"
+      
+      
+        href="https://julian-swart.github.io/images/oltp_etl_olap.png"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/oltp_etl_olap.png"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">Typical cycle of data processing for a business </a></p>
 </div>
 <br>
 <br>
 <p>For our project, we wanted to create raw source data that somewhat imitated reality. This type of data is usually messy and needs wrangling. We also tried to design it how real data engineers would. Generally, this consists of having small tables that you would later join on in an ETL process. This enables the engineer to more easily keep track of and manipulate tables. Here is the OLTP database we designed.</p>
 <br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/erd_raw.png" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="erd_raw"
+      
+      
+        href="https://julian-swart.github.io/images/erd_raw.png"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/erd_raw.png"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">ERD: Entity Relationship Diagram of our OLTP database </a></p>
 </div>
 <!-- #endregion -->
@@ -197,15 +260,77 @@ AWS <a name="aws"></a>
 <p>For this basic project, all we had to do is make an AWS account and go to the service called RDS and click &ldquo;Create database&rdquo;.</p>
 <br>
 <br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/aws_signin.jpeg" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="aws_signin"
+      
+      
+        href="https://julian-swart.github.io/images/aws_signin.jpeg"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/aws_signin.jpeg"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">AWS Sign-in page </a></p>
 </div>
 <br>
 <br>
 <br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/aws_create_db.png" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="aws_create_db"
+      
+      
+        href="https://julian-swart.github.io/images/aws_create_db.png"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/aws_create_db.png"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">Amazon RDS page for creating our OLTP database </a></p>
 </div>
 <br>
@@ -220,16 +345,78 @@ AWS <a name="aws"></a>
 <br>
 <p>Here are screenshots of the solutions we found online that saved us:</p>
 <br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/aws_issue1.png" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="aws_issue1"
+      
+      
+        href="https://julian-swart.github.io/images/aws_issue1.png"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/aws_issue1.png"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">Database connection hurdle #1 </a></p>
 </div>
 <br>
 <br>
 <br>
 <br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/aws_issue2.png" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="aws_issue2"
+      
+      
+        href="https://julian-swart.github.io/images/aws_issue2.png"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/aws_issue2.png"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">Database connection hurdle #2 </a></p>
 </div>
 <br>
@@ -238,16 +425,78 @@ AWS <a name="aws"></a>
 <p>We finally achieved a successful connection thanks to the above two posts and were glad to begin the next stage of writing <code>python</code> code to simulate our fake furniture company&rsquo;s data. This, along with learning how to automate table creation and data insertion into the database we just made.</p>
 <br>
 <br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/db_connection.png" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="db_connection"
+      
+      
+        href="https://julian-swart.github.io/images/db_connection.png"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/db_connection.png"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">DBeaver database connection window to our Amazon RDS </a></p>
 </div>
 <br>
 <br>
 <br>
 <br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/db_connection_test.png" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="db_connection_test"
+      
+      
+        href="https://julian-swart.github.io/images/db_connection_test.png"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/db_connection_test.png"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">A great sight! Successful database connection </a></p>
 </div>
 <!-- #endregion -->
@@ -770,8 +1019,39 @@ Results <a name="result"></a>
 <br>
 <br>
 <br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/db_query.png" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="db_query"
+      
+      
+        href="https://julian-swart.github.io/images/db_query.png"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/db_query.png"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">Image showing the OLTP tables and some results of our fake customer dataset</a></p>
 </div>
 <br> 
@@ -869,6 +1149,7 @@ What was Learned <a name="learned"></a>
 
 
     
+    <script src="https://julian-swart.github.io/js/lightbox-plus-jquery.min.js"></script>
 </body>
 
 </html>
