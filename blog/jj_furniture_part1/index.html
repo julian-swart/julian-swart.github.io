@@ -514,10 +514,9 @@ Scripts <a name="scripts"></a>
 </div>
 <br>
 <!-- #region postgres connector python code -->
-<div class="highlight-wrapper">
-    <div class="highlight-before">python</div>
-    
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">psycopg2</span>
+<div class="code-box" onclick="toggleCodeBox(this)">
+  <div class="collapsed" style="overflow: hidden; max-height: 150px;">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">psycopg2</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">configparser</span> <span class="kn">import</span> <span class="n">ConfigParser</span>
 </span></span><span class="line"><span class="cl">
@@ -583,23 +582,20 @@ Scripts <a name="scripts"></a>
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="s1">&#39;&#39;&#39;Close connection to MySQL database&#39;&#39;&#39;</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></span></span></code></pre></div>
-    
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div>  </div>
 </div>
 <!-- #endregion -->
 <br> 
 <br>
-<br> 
 <div class="meta-blog-subheader">
 2) SQL queries
 </div>
 <br>
 <!-- #region SQL queries script python code -->
-<div class="highlight-wrapper">
-    <div class="highlight-before">python</div>
-    
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="c1"># DROP TABLES</span>
+<div class="code-box" onclick="toggleCodeBox(this)">
+  <div class="collapsed" style="overflow: hidden; max-height: 150px;">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># DROP TABLES</span>
 </span></span><span class="line"><span class="cl"><span class="n">drop_customer_table</span> <span class="o">=</span> <span class="s2">&#34;DROP TABLE IF EXISTS customers&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">drop_product_table</span> <span class="o">=</span> <span class="s2">&#34;DROP TABLE IF EXISTS products&#34;</span>
@@ -715,11 +711,10 @@ Scripts <a name="scripts"></a>
 </span></span><span class="line"><span class="cl"><span class="c1"># QUERY LISTS</span>
 </span></span><span class="line"><span class="cl"><span class="n">drop_table_queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">drop_customer_table</span><span class="p">,</span> <span class="n">drop_product_table</span><span class="p">,</span> <span class="n">drop_material_table</span><span class="p">,</span> <span class="n">drop_color_table</span><span class="p">,</span> <span class="n">drop_description_table</span><span class="p">,</span> <span class="n">drop_transactions_table</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="n">create_table_queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">create_customer_table</span><span class="p">,</span> <span class="n">create_product_table</span><span class="p">,</span> <span class="n">create_material_table</span><span class="p">,</span> <span class="n">create_color_table</span><span class="p">,</span> <span class="n">create_description_table</span><span class="p">,</span> <span class="n">create_transactions_table</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">insert_table_queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">insert_customer_table</span><span class="p">,</span> <span class="n">insert_product_table</span><span class="p">,</span> <span class="n">insert_material_table</span><span class="p">,</span> <span class="n">insert_color_table</span><span class="p">,</span> <span class="n">insert_description_table</span><span class="p">,</span> <span class="n">insert_transactions_table</span><span class="p">]</span></span></span></code></pre></div>
-    
+</span></span><span class="line"><span class="cl"><span class="n">insert_table_queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">insert_customer_table</span><span class="p">,</span> <span class="n">insert_product_table</span><span class="p">,</span> <span class="n">insert_material_table</span><span class="p">,</span> <span class="n">insert_color_table</span><span class="p">,</span> <span class="n">insert_description_table</span><span class="p">,</span> <span class="n">insert_transactions_table</span><span class="p">]</span>
+</span></span></code></pre></div>  </div>
 </div>
 <!-- #endregion -->
-<br> 
 <br> 
 <br> 
 <div class="meta-blog-subheader">
@@ -727,10 +722,9 @@ Scripts <a name="scripts"></a>
 </div>
 <br>
 <!-- #region create tables script python code -->
-<div class="highlight-wrapper">
-    <div class="highlight-before">python</div>
-    
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">psycopg2</span>
+<div class="code-box" onclick="toggleCodeBox(this)">
+  <div class="collapsed" style="overflow: hidden; max-height: 150px;">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">psycopg2</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sql_queries</span> <span class="kn">import</span> <span class="n">create_table_queries</span><span class="p">,</span> <span class="n">drop_table_queries</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">configparser</span>
 </span></span><span class="line"><span class="cl">
@@ -789,24 +783,20 @@ Scripts <a name="scripts"></a>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">import</span> <span class="nn">sys</span>
-</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></span></span></code></pre></div>
-    
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span></code></pre></div>  </div>
 </div>
 <!-- #endregion -->
 <br> 
 <br>
-<br> 
 <div class="meta-blog-subheader">
 4) Insert rows of fake data
 </div>
 <br>
 <!-- #region insert rows python code -->
-<div class="highlight-wrapper">
-    <div class="highlight-before">python</div>
-    
-        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># import</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span> 
+<div class="code-box" onclick="toggleCodeBox(this)">
+  <div class="collapsed" style="overflow: hidden; max-height: 150px;">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span> 
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">configparser</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1001,8 +991,8 @@ Scripts <a name="scripts"></a>
 </span></span><span class="line"><span class="cl">                          <span class="n">quantity</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                          <span class="n">sale_or_return</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">                          
-</span></span><span class="line"><span class="cl">    <span class="n">transaction_id</span> <span class="o">+=</span> <span class="mi">1</span>                         </span></span></code></pre></div>
-    
+</span></span><span class="line"><span class="cl">    <span class="n">transaction_id</span> <span class="o">+=</span> <span class="mi">1</span>                         
+</span></span></code></pre></div>  </div>
 </div>
 <!-- #endregion -->
 <!-- #endregion -->
@@ -1150,6 +1140,7 @@ What was Learned <a name="learned"></a>
 
     
     <script src="https://julian-swart.github.io/js/lightbox-plus-jquery.min.js"></script>
+    <script src="https://julian-swart.github.io/js/code-collapse.js"></script>
 </body>
 
 </html>

@@ -297,12 +297,6 @@ hr {
 
 .highlight-wrapper {
     position: relative;
-    transition:transform 0.25s ease;
-}
-
-.highlight-wrapper:hover {
-    position: relative;
-    transform: scale(1.25);
 }
 
 .highlight-link {
@@ -332,5 +326,11 @@ hr {
 }
 
 
+.code-box {
+    cursor: pointer;
+    overflow: hidden; /* Truncate by default */
+  }
 
-
+  .expanded {
+    overflow: visible; /* Show the entire code */
+  }
