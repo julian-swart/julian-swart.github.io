@@ -502,12 +502,12 @@ AWS <a name="aws"></a>
 <!-- #endregion -->
 <br>
 <br>
-<br>
-<br>
 <!-- #region Scripts -->
 <div class="meta-blog-header">
 Scripts <a name="scripts"></a>
 </div>
+<br>
+<p>These 4 scripts work in concert with one another to connect to the database, drop/create empty tables, and then create/load data. Jon audited a data enginnering Coursera class and we re-purposed the code for this project.</p>
 <br>
 <div class="meta-blog-subheader">
 1) Postgres connector
@@ -1004,10 +1004,7 @@ Scripts <a name="scripts"></a>
 Results <a name="result"></a>
 </div>
 <br>
-<!-- #endregion -->
-<br>
-<br>
-<br>
+<p>We achived our goal of creating business-like raw datasets and loading them into a database. The below image shows our tables: <code>colors</code>, <code>descriptions</code>, <code>materials</code>, <code>products</code>, and <code>transactions</code>, along with a subset example of our fake <code>customers</code> table. The next step would be to design a star-schema, create an ETL process, and load those results into a Redshift databse. This is what data scientists and analysts would use.</p>
 <br>
 <div class="figure2">
 
@@ -1044,8 +1041,7 @@ Results <a name="result"></a>
 
 <p class="caption">Image showing the OLTP tables and some results of our fake customer dataset</a></p>
 </div>
-<br> 
-<br>
+<!-- #endregion -->
 <br> 
 <br>
 <!-- #region What was Learned -->
@@ -1053,11 +1049,12 @@ Results <a name="result"></a>
 What was Learned <a name="learned"></a>
 </div>
 <br>
+<p>This is an overview of what we learned doing this project:</p>
 <ul>
 <li>what an RDS is</li>
 <li>how to set up an RDS in AWS with postgres</li>
 <li>connecting using DBeaver sql client</li>
-<li>better github practices (it is not straightforward, I don&rsquo;t care what you say)</li>
+<li>better github practices</li>
 <li>olap vs oltp</li>
 <li>wrtiting python scripts for automating table creation and inserting rows</li>
 </ul>

@@ -116,7 +116,7 @@
                     </span>
 
                     <span class="reading-time middot">
-                        5 min read
+                        6 min read
                     </span>
 
                     <div class="d-none d-md-inline tags">
@@ -138,12 +138,44 @@ Table of Contents
 </div>
 <blockquote>
 <p><a href="#intro">Intro</a><br>
-<a href="#getdata">Get Data</a></p>
+<a href="#getdata">Get Data</a><br>
+<a href="#extrainfo">Extra Info</a></p>
 </blockquote>
 <br>
 <br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/big_rock_photo.jpg" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="big_rock_photo"
+      
+      
+        href="https://julian-swart.github.io/images/big_rock_photo.jpg"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/big_rock_photo.jpg"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">Mates prepping fishing gear on the way out to the Gulf Stream during The Big Rock </a></p>
 </div>
 <br>
@@ -174,126 +206,149 @@ Get Data <a name="getdata"></a>
 <br>
 <p>This data consists of the Boat Name, Boat Brand, Boat Size, Port, Owner, and Captain. The Participants are the people and their boats that enter. The cost to participate is a measly $20K.</p>
 <br>
-<br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/participants.png" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="participants"
+      
+      
+        href="https://julian-swart.github.io/images/participants.png"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/participants.png"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">10 row sample of the Participants dataframe I obtained</a>.</p>
 </div>
 <br>
-<br>
-<br>
+<p>Script to pull the participants data:</p>
 <!-- #region Participants python code -->
 <div class="code-box" onclick="toggleCodeBox(this)">
   <div class="collapsed" style="overflow: hidden; max-height: 150px;">
-    
-
-from selenium import webdriver
-from bs4 import BeautifulSoup
-import requests
-import pandas as pd
-import time
-import tqdm
-
-number = "64th" # update this each year
-chromepath = "/Users/Julian/Desktop/misc/chromedriver" # update my chromedriver each year to match my current chrome version
-driver = webdriver.Chrome(chromepath)
-driver.get("https://www.reeltimeapps.com/live/tournaments/" + number + "-annual-big-rock-blue-marlin-tournament/participants")
-
-# helpful stackoverflow link for line of code below: https://stackoverflow.com/questions/12570329/selenium-list-index-out-of-range-error
-links = [i.get_attribute('href') for i in driver.find_elements_by_xpath(""".//a""")]
-
-# find first link and last link for proper subset. Use links that end in a 4 digit number
-for i in links: 
-    print(i)
-
-links_subset = links[17:283] # update this each year - make sure you add +1 to the last link number 
-
-# initiate empty lists
-boat_names = []
-sizes_and_brands = []
-owners = []
-ports = []
-captains = []
-
-for link in tqdm.tqdm(links_subset):
-    
-    # slow down the code, website gets overloaded  
-    time.sleep(3)
-    
-    # get html
-    page = requests.get(link, timeout = 10) 
-    soup = BeautifulSoup(page.content, 'html.parser')
-    
-    # get boat names
-    tag1 = soup.find_all('h1', class_='m-b-5')
-
-    if len(tag1) == 1:
-        boat_names.append(tag1[0].get_text().strip())    
-    else:
-        boat_names.append('NA')  
-
-    # get boat sizes and brands
-    tag2 = soup.find_all('h5')
-
-    if len(tag2) == 1:
-        sizes_and_brands.append(tag2[0].get_text().strip())
-    else:
-        sizes_and_brands.append('NA')
-
-    # get owners/companies and port cities and states
-    tag3 = soup.find_all('h4', class_= 'm-0') 
-    tag4 = soup.find_all('span')
-    
-    if len(tag4) == 5:
-        tag4 = tag4[4].get_text().strip() # to help define if there is only a port or only an owner listed
-    if len(tag3) == 2:
-        owners.append(tag3[0].get_text().strip())
-        ports.append(tag3[1].get_text().strip()) 
-    elif len(tag3) == 1 and tag4 == 'Port':
-        owners.append('NA')
-        ports.append(tag3[0].get_text().strip())   
-    elif len(tag3) == 1 and tag4 == 'Owner':
-        ports.append('NA')
-        owners.append(tag3[0].get_text().strip())   
-    else:
-        owners.append('NA')
-        ports.append('NA')
-        
-    # get captains of the boat (only started listing at the 62nd annual, or 2020)
-    table = soup.find_all('table', id = 'lb-table-anglers')
-    h4_list = soup.find_all('h4')
-    no_crew_listed = any([h4_list[x].contents[0].strip() == 'No crew to display' for x in range(len(h4_list))]) # need to see if anything in the list == True to test if there are any captains listed
-    
-    if no_crew_listed: 
-        captains.append('NA')
-    else: 
-        table_length = len(table)
-        num_captain_mates_listed = len(table[table_length - 1].find_all('small')) 
-        captain_mates_list = []
-        [captain_mates_list.append(table[table_length - 1].find_all('small')[x].get_text()) for x in range(num_captain_mates_listed)]
-
-        if 'Captain' in captain_mates_list:
-            captains.append(table[table_length - 1].find('td').contents[0].strip())
-        else:
-            captains.append('NA')
-    
-# if every piece of data I pulled has the same length, then it matches up   
-len(boat_names) == len(sizes_and_brands) == len(owners) == len(ports) == len(captains) 
-
-# create a dictionary
-d = {'boat_name':boat_names, 'type':sizes_and_brands, 'owner':owners, 'port':ports, 'captain':captains}
-
-# create a dataframe
-df = pd.DataFrame(d)
-
-# save the dataframe to my computer - appending the annual number to the filename 
-df.to_csv("/Users/Julian/Documents/projects/big_rock/data/participants/participants" + number + ".csv")
-
-
-  </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">tqdm</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">number</span> <span class="o">=</span> <span class="s2">&#34;64th&#34;</span> <span class="c1"># update this each year</span>
+</span></span><span class="line"><span class="cl"><span class="n">chromepath</span> <span class="o">=</span> <span class="s2">&#34;/Users/Julian/Desktop/misc/chromedriver&#34;</span> <span class="c1"># update my chromedriver each year to match my current chrome version</span>
+</span></span><span class="line"><span class="cl"><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">chromepath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;https://www.reeltimeapps.com/live/tournaments/&#34;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&#34;-annual-big-rock-blue-marlin-tournament/participants&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># helpful stackoverflow link for line of code below: https://stackoverflow.com/questions/12570329/selenium-list-index-out-of-range-error</span>
+</span></span><span class="line"><span class="cl"><span class="n">links</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_xpath</span><span class="p">(</span><span class="s2">&#34;&#34;&#34;.//a&#34;&#34;&#34;</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># find first link and last link for proper subset. Use links that end in a 4 digit number</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">links</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">links_subset</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="mi">17</span><span class="p">:</span><span class="mi">283</span><span class="p">]</span> <span class="c1"># update this each year - make sure you add +1 to the last link number </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># initiate empty lists</span>
+</span></span><span class="line"><span class="cl"><span class="n">boat_names</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">sizes_and_brands</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">owners</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">ports</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">captains</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">links_subset</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># slow down the code, website gets overloaded  </span>
+</span></span><span class="line"><span class="cl">    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># get html</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># get boat names</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tag1</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;m-b-5&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">boat_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">boat_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># get boat sizes and brands</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tag2</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h5&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sizes_and_brands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sizes_and_brands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># get owners/companies and port cities and states</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tag3</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span> <span class="s1">&#39;m-0&#39;</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">tag4</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tag4</span> <span class="o">=</span> <span class="n">tag4</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="c1"># to help define if there is only a port or only an owner listed</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag3</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">tag4</span> <span class="o">==</span> <span class="s1">&#39;Port&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>   
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">tag4</span> <span class="o">==</span> <span class="s1">&#39;Owner&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>   
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="c1"># get captains of the boat (only started listing at the 62nd annual, or 2020)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="s1">&#39;lb-table-anglers&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">h4_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">no_crew_listed</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">h4_list</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;No crew to display&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h4_list</span><span class="p">))])</span> <span class="c1"># need to see if anything in the list == True to test if there are any captains listed</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">no_crew_listed</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">captains</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">table_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">num_captain_mates_listed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">table_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;small&#39;</span><span class="p">))</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">captain_mates_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="n">captain_mates_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">table_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;small&#39;</span><span class="p">)[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_captain_mates_listed</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="s1">&#39;Captain&#39;</span> <span class="ow">in</span> <span class="n">captain_mates_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">captains</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">table_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">captains</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="c1"># if every piece of data I pulled has the same length, then it matches up   </span>
+</span></span><span class="line"><span class="cl"><span class="nb">len</span><span class="p">(</span><span class="n">boat_names</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">sizes_and_brands</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">owners</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">ports</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">captains</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># create a dictionary</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;boat_name&#39;</span><span class="p">:</span><span class="n">boat_names</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="n">sizes_and_brands</span><span class="p">,</span> <span class="s1">&#39;owner&#39;</span><span class="p">:</span><span class="n">owners</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="n">ports</span><span class="p">,</span> <span class="s1">&#39;captain&#39;</span><span class="p">:</span><span class="n">captains</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># create a dataframe</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># save the dataframe to my computer - appending the annual number to the filename </span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&#34;/Users/Julian/Documents/projects/big_rock/data/participants/participants&#34;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&#34;.csv&#34;</span><span class="p">)</span>
+</span></span></code></pre></div>  </div>
 </div>
-
-
 <!-- #endregion -->
 <br>
 <br>
@@ -304,76 +359,155 @@ df.to_csv("/Users/Julian/Documents/projects/big_rock/data/participants/participa
 <br>
 <p>The Activity Feed comes from boats radioing in certain actions like Hook Ups, Releases, Lost, and Boated. I explain what these terms mean in the Extra Info section below.</p>
 <br>
-<br>
-<div class="figure">
-<p><img src="https://julian-swart.github.io/images/activity.png" alt=""></p>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="activity"
+      
+      
+        href="https://julian-swart.github.io/images/activity.png"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/activity.png"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
 <p class="caption">10 row sample of the Activity Feed dataframe I obtained. A "dolphin" is a nickname for a Mahi Mahi.</a></p>
 </div>
 <br>
-<br>
-<br>
-<p>This is the code that worked for the first few years. I had to do some minimal alterations after the website changed in 2022. They were similar so I didn&rsquo;t post both versions.</p>
-<br>
+<p>This script worked for the first few years. Some minimal alterations were required after the website changed in 2022. Since they were still similar, I didn&rsquo;t post both versions.</p>
 <!-- #region Activity feed python code -->
 <div class="code-box" onclick="toggleCodeBox(this)">
   <div class="collapsed" style="overflow: hidden; max-height: 150px;">
-    
-
-# get activity feed data 
-
-from bs4 import BeautifulSoup
-import requests
-import pandas as pd
-
-number = "64th"
-
-page = requests.get("https://widgets.reeltimeapps.com/live/tournaments/" + number + "-annual-big-rock-blue-marlin-tournament/widgets/feed.json?day=0&per=10000&type=scores")
-
-page.status_code # a status code of 200 means the page downloaded successfully 
-
-soup = BeautifulSoup(page.content, 'html.parser')
-
-newsfeed = soup.find_all('h4')
-
-# include this line below for the 63rd annual:
-
-newsfeed = newsfeed[0:100] # needed this to take out the long updates of only text with no boat names or times
-
-boat_names = []
-
-for feed in range(len(newsfeed)):
-    boat_names.append(newsfeed[feed].get_text().strip())
-
-activity = []
-
-for feed in range(len(newsfeed)):
-    activity.append(newsfeed[feed].next.next.next.strip())
-
-time = []
-
-for feed in range(len(newsfeed)):
-    time.append(newsfeed[feed].next.next.next.next.next.next.get_text().strip())
-
-len(boat_names) == len(activity) == len(time) # check to make sure all have the same length 
-
-d = {'boat_name':boat_names, 'activity':activity, 'time':time}
-
-df = pd.DataFrame(d)
-
-df.to_csv("/Users/Julian/Documents/projects/big_rock_2019/data/activity/activity" + number + ".csv")
-
-
-  </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># get activity feed data </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">number</span> <span class="o">=</span> <span class="s2">&#34;64th&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;https://widgets.reeltimeapps.com/live/tournaments/&#34;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&#34;-annual-big-rock-blue-marlin-tournament/widgets/feed.json?day=0&amp;per=10000&amp;type=scores&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">page</span><span class="o">.</span><span class="n">status_code</span> <span class="c1"># a status code of 200 means the page downloaded successfully </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">newsfeed</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># include this line below for the 63rd annual:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">newsfeed</span> <span class="o">=</span> <span class="n">newsfeed</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="c1"># needed this to take out the long updates of only text with no boat names or times</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">boat_names</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">feed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">boat_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">[</span><span class="n">feed</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">activity</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">feed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">activity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">[</span><span class="n">feed</span><span class="p">]</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">time</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">feed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newsfeed</span><span class="p">[</span><span class="n">feed</span><span class="p">]</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">len</span><span class="p">(</span><span class="n">boat_names</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="c1"># check to make sure all have the same length </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;boat_name&#39;</span><span class="p">:</span><span class="n">boat_names</span><span class="p">,</span> <span class="s1">&#39;activity&#39;</span><span class="p">:</span><span class="n">activity</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="n">time</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&#34;/Users/Julian/Documents/projects/big_rock_2019/data/activity/activity&#34;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&#34;.csv&#34;</span><span class="p">)</span>
+</span></span></code></pre></div>  </div>
 </div>
-
-
 <!-- #endregion -->
 <br>
 <br>
-<br>
-<br>
 <!-- #endregion -->
-<p>Check out the second post <a href="https://julian-swart.github.io/blog/bigrock_part2/">Big Rock - Analysis</a> to see what I did with these datasets.</p>
+<!-- #region Extra Info -->
+<div class="meta-blog-header">
+Extra Info <a name="extrainfo"></a>
+</div>
+<div style="line-height:80%;">
+    <br>
+</div>
+<p>These boats are trolling 60-100 miles offshore in the Gulf Stream for the trophy fish and the public is tuned in to what&rsquo;s happening in real time via the live updates on the site. There are a lot of other rules for the tournament that I won&rsquo;t get into here.</p>
+<div style="line-height:80%;">
+    <br>
+</div>
+<div class="meta-blog-subheader">
+~ Terms explained:
+</div>
+<ul>
+<li><strong>Port</strong>: City/State the boat is from</li>
+<li><strong>Hook Ups</strong>: When a fish bites your lure and you are now fighting it. This is refered to as being &ldquo;Hooked up&rdquo;.</li>
+<li><strong>Releases</strong>: When the fish is too small to keep, you let it go. This is called a &ldquo;Release&rdquo;. This earns you points towards the Release category if the fish species was a billfish.</li>
+<li><strong>Lost</strong>: When the fish gets off the hook or the line breaks it&rsquo;s considered &ldquo;Lost&rdquo;.</li>
+<li><strong>Boated</strong>: When the fish is a blue marlin and it is at least 400 pounds or 110 inches long, you can keep it and bring it back to land to be weighed. This is called &ldquo;Boated&rdquo;. The heaviest blue marlin wins the tournament (at least, that category of the tournament, which pays out the most money.)</li>
+</ul>
+<br>
+<div class="figure2">
+
+
+
+
+
+<figure
+  
+  
+  
+  >
+    <a 
+      
+        data-lightbox="grease_chart"
+      
+      
+        href="https://julian-swart.github.io/images/grease_chart.jpg"
+      
+    
+    >
+  <img
+      
+        src="https://julian-swart.github.io/images/grease_chart.jpg"
+      
+        
+        
+         />
+    </a>
+  
+  
+</figure>
+
+
+<p class="caption">Map of a portion of the NC Coast </a></p>
+</div>
+<!-- #endregion -->
+<br>
+<br>
+<p>Check out the second post <a href="https://julian-swart.github.io/blog/bigrock_part2/">Big Rock - Analysis</a>.</p>
 
 
 
