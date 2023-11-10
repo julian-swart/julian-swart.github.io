@@ -6,7 +6,16 @@
     <description>Recent content in Blogs on Julian Swart</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JJ Furniture - Part 2</title>
+      <link>https://julian-swart.github.io/blog/jj_furniture_part2/</link>
+      <pubDate>Sun, 20 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://julian-swart.github.io/blog/jj_furniture_part2/</guid>
+      <description>Using data created from Part 1, I examined data science use-cases such as customer segmentation, cross-sell, churn, and customer lifetime value. Here, I utlitized supervised ML algorithms like linear/logistic regression, random forest, as well as Peter Fader&amp;rsquo;s buy &amp;rsquo;till you die statistical model.</description>
+    </item>
+    
     <item>
       <title>Big Rock - Analysis</title>
       <link>https://julian-swart.github.io/blog/bigrock_part2/</link>
