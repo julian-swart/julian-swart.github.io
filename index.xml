@@ -8,12 +8,12 @@
     <language>en</language>
     <lastBuildDate>Sun, 20 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>JJ Furniture - Part 2</title>
+      <title>JJ Furniture - Predictive Model</title>
       <link>https://julian-swart.github.io/blog/jj_furniture_part2/</link>
       <pubDate>Sun, 20 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://julian-swart.github.io/blog/jj_furniture_part2/</guid>
-      <description>Using data created from Part 1, I examined data science use-cases such as customer segmentation, cross-sell, churn, and customer lifetime value. Here, I utlitized supervised ML algorithms like linear/logistic regression, random forest, as well as Peter Fader&amp;rsquo;s buy &amp;rsquo;till you die statistical model.</description>
+      <description>Using the fake data created from JJ Furniture - Data Model, I implemented a popular supervised machine learning algorithm &lt;code&gt;xgboost&lt;/code&gt; for customer cross-sell prediction.</description>
     </item>
     
     <item>
@@ -22,11 +22,11 @@
       <pubDate>Mon, 03 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://julian-swart.github.io/blog/bigrock_part2/</guid>
-      <description>I used the data from my previous Big Rock post to do some light analysis and data visualization using &lt;code&gt;R Studio&lt;/code&gt;.</description>
+      <description>Illustrating some light analysis and data visualization using &lt;code&gt;R&lt;/code&gt; with the data acquired from Big Rock - Web Scraping post.</description>
     </item>
     
     <item>
-      <title>JJ Furniture - Part 1</title>
+      <title>JJ Furniture - Data Model</title>
       <link>https://julian-swart.github.io/blog/jj_furniture_part1/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
