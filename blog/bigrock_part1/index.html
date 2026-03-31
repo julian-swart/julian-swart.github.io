@@ -509,7 +509,9 @@ Extra Info <a name="extrainfo"></a>
 <!-- #endregion -->
 <br>
 <br>
-<p>Check out the second post <a href="https://julian-swart.github.io/blog/bigrock_part2/">Big Rock - Analysis</a>.</p>
+<p>{{ if .Params.related }}
+Check out the second post <a href="{{ .Params.related }}">Big Rock - Analysis</a>
+{{ end }}</p>
 
 
 

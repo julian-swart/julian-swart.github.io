@@ -6,25 +6,7 @@
     <description>Recent content in Blogs on Julian Swart</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>JJ Furniture - Predictive Model</title>
-      <link>https://julian-swart.github.io/blog/jj_furniture_part2/</link>
-      <pubDate>Sun, 20 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://julian-swart.github.io/blog/jj_furniture_part2/</guid>
-      <description>Using the fake data created from JJ Furniture - Data Model, I implemented a popular supervised machine learning algorithm &lt;code&gt;xgboost&lt;/code&gt; for customer cross-sell prediction.</description>
-    </item>
-    
-    <item>
-      <title>Big Rock - Analysis</title>
-      <link>https://julian-swart.github.io/blog/bigrock_part2/</link>
-      <pubDate>Mon, 03 Jul 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://julian-swart.github.io/blog/bigrock_part2/</guid>
-      <description>Illustrating some light analysis and data visualization using &lt;code&gt;R&lt;/code&gt; with the data acquired from Big Rock - Web Scraping post.</description>
-    </item>
-    
+    <lastBuildDate>Wed, 10 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://julian-swart.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JJ Furniture - Data Model</title>
       <link>https://julian-swart.github.io/blog/jj_furniture_part1/</link>
